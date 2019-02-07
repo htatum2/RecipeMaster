@@ -3,14 +3,14 @@
 
 <head>
 	<title>Login to RecipeMaster</title>
-	<link rel="stylesheet" type="text/css" href="signinpagestyle.css">
+	<link rel="stylesheet" type="text/css" href="signInUpStyle.css">
 </head>
 
 <body>
 
 	<input type="button" class="buttonOrSubmit" value="Home">
 
-	<div class="login">
+	<div class="loginOrSignUp">
 
 	<form method=POST>
 
@@ -19,14 +19,14 @@
 		<div class="textbox">
 
 				<h2>Username:</h2>
-				<input class="userOrPass" name="username" id="username" type="text" placeholder="Enter Username" required>
+				<input class="userPassEmail" name="username" id="username" type="text" placeholder="Enter Username" required>
 
 		</div>
 
 		<div class="textbox">
 
 				<h2>Password:</h2>
-				<input class="userOrPass" name="password" id="password" type="password" placeholder="Enter Password" pattern=".{5,10}" required title="Password must be 5 to 10 characters long.">
+				<input class="userPassEmail" name="password" id="password" type="password" placeholder="Enter Password" pattern=".{5,10}" required title="Password must be 5 to 10 characters long.">
 
 		</div>
 
@@ -42,7 +42,7 @@
 		<a href="#" style="color:#66774c">Lost Your Password</a>
 	</div>
 	<div class="link">
-		<a href="#" style="color:#66774c">Create An Account</a>
+		<a href="signUpPage.html" style="color:#66774c">Create An Account</a>
 	</div>
 
 	</div>
