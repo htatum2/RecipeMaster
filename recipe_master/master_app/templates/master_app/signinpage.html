@@ -10,19 +10,27 @@
 
 	<input type="button" class="buttonOrSubmit" value="Home">
 
+	<div class="login">
+
 	<form method=POST>
 
-		<div class="login">
+		<h1>Login:</h1>
 
-			<h1>Login:</h1>
+		<div class="textbox">
 
-			<div class="textbox">
-				<p>Username:</p>
-				<input name="username" id="username" type="text" placeholder="Enter Username" required>
+				<h2>Username:</h2>
+				<input class="userOrPass" name="username" id="username" type="text" placeholder="Enter Username" required>
 
-				<p>Password:</p>
-				<input name="password" id="password" type="password" placeholder="Enter Password" pattern=".{5,10}" required title="Password must be 5 to 10 characters long.">
-			</div>
+		</div>
+
+		<div class="textbox">
+
+				<h2>Password:</h2>
+				<input class="userOrPass" name="password" id="password" type="password" placeholder="Enter Password" pattern=".{5,10}" required title="Password must be 5 to 10 characters long.">
+
+		</div>
+
+		<div class signInBox>
 
 			<p><input type="submit" class="buttonOrSubmit" value="Sign In" ></p>
 
@@ -31,10 +39,12 @@
 	</form>
 
 	<div class="link">
-		<a href="#">Lost Your Password</a>
+		<a href="#" style="color:#66774c">Lost Your Password</a>
 	</div>
 	<div class="link">
-		<a href="#">Create An Account</a>
+		<a href="#" style="color:#66774c">Create An Account</a>
+	</div>
+
 	</div>
 
 </body>
