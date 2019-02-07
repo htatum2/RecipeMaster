@@ -2,24 +2,39 @@
 <html>
 
 <head>
-	<title></title>
+	<title>Login to RecipeMaster</title>
 </head>
 
 <body>
 
-	<h2>This is just the base, more will be added soon</h2>
+	<input type="button" class="buttonOrSubmit" value="Home">
 
-	<h1>Sign-In</h1>
+	<form method=POST>
 
-	<label for="username">Username: </label>
-	<input name="username" id="username" type="text" placeholder="username" required>
+		<div class="login">
 
-	<p>
-	<label for="password">Password: </label>
-	<input name="password" id="password" type="password" placeholder="password" required>
-	</p>
+			<h1>Login:</h1>
 
-	<input type="submit">
+			<div class="textbox">
+				<p>Username:</p>
+				<input name="username" id="username" type="text" placeholder="Enter Username" required>
+
+				<p>Password:</p>
+				<input name="password" id="password" type="password" placeholder="Enter Password" pattern=".{5,10}" required title="Password must be 5 to 10 characters long.">
+			</div>
+
+			<p><input type="submit" class="buttonOrSubmit" value="Sign In" ></p>
+
+		</div>
+
+	</form>
+
+	<div class="link">
+		<a href="#">Lost Your Password</a>
+	</div>
+	<div class="link">
+		<a href="#">Create An Account</a>
+	</div>
 
 </body>
 
