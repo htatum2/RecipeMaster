@@ -78,14 +78,6 @@ a {
     font-size: 12pt;
 }
 
-b, strong {
-    font-weight: 600;
-}
-
-samp {
-    display: none;
-}
-
 img.img-anim {
     animation: colorize 2s cubic-bezier(0, 0, .78, .36) 1;
     background: transparent;
