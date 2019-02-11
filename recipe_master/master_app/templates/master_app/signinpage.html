@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Login to RecipeMaster</title>
+	<link rel="stylesheet" type="text/css" href="signInUpStyle.css">
+</head>
+
+<body>
+
+	<input type="button" class="buttonOrSubmit" value="Home">
+
+	<div class="loginOrSignUp">
+
+	<form method=POST>
+
+		<h1>Login:</h1>
+
+		<div class="textbox">
+
+				<h2>Username:</h2>
+				<input class="userPassEmail" name="username" id="username" type="text" placeholder="Enter Username" required>
+
+		</div>
+
+		<div class="textbox">
+
+				<h2>Password:</h2>
+				<input class="userPassEmail" name="password" id="password" type="password" placeholder="Enter Password" pattern=".{5,10}" required title="Password must be 5 to 10 characters long.">
+
+		</div>
+
+		<div class signInBox>
+
+			<p><input type="submit" class="buttonOrSubmit" value="Sign In" ></p>
+
+		</div>
+
+	</form>
+
+	<div class="link">
+		<a href="#" style="color:#66774c">Lost Your Password</a>
+	</div>
+	<div class="link">
+		<a href="signUpPage.html" style="color:#66774c">Create An Account</a>
+	</div>
+
+	</div>
+
+</body>
+
+</html>
