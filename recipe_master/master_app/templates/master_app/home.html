@@ -1,12 +1,15 @@
-<!DOCTYPE HTML>
-<html>
-
-<head>
-    <title></title>
-</head>
-
-<body>
-    <h1>RecipeMaster Main Page coming soon!</h1>
-</body>
-
-</html>
+{% extends "master_app/base.html" %} 
+{% block content %} 
+    {% for recipe in recipes %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ recipe.recipe_creator }}</a>
+                    <small class="text-muted">{{ recipe.date_posted|date:'F d, Y' }}</small>
+                </div>
+                <h2><a class="article-title" href="#">{{ recipe.recipe_name }}</a></h2>
+                <p class="article-content">{{ recipe.content }}</p>
+            </div>
+        </article>
+    {% endfor %} 
+{% endblock content %}

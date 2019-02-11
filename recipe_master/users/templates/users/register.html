@@ -1,0 +1,26 @@
+{% extends "master_app/base.html" %}
+{% load crispy_forms_tags %} 
+{% block content %} 
+    <div class="content-section">
+        <form method = "POST">
+            <!--This {%csrf_token%} is necessary for the form to work-->
+            {%csrf_token%}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Join RecipeMaster Today!</legend>
+                <!--this is for django to actually find the form and put it where you want-->
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">
+                    Sign Up
+                </button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already have an account? 
+                    <a class ="ml-2" href="{% url 'login' %}">Sign In</a>
+            </small>
+        </div>
+    </div>
+{% endblock content %}
