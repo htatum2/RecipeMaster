@@ -7,7 +7,8 @@ from django.contrib.auth.models import User
 
 class Recipe(models.Model):
     recipe_name = models.CharField(max_length=100)
-    content = models.TextField()
+    image = models.ImageField(default='food_default.jpg', upload_to='recipe_pics')
+    content = models.TextField(max_length=100)
     date_posted = models.DateTimeField(default=timezone.now)
     recipe_creator = models.ForeignKey(User, on_delete=models.CASCADE)
 

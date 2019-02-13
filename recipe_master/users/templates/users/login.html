@@ -1,14 +1,15 @@
 {% extends "master_app/base.html" %}
 {% load crispy_forms_tags %} 
-{% block content %} 
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="signInUpStyle.css">
     <div class="content-section">
         <form method = "POST">
             <!--This {%csrf_token%} is necessary for the form to work-->
             {%csrf_token%}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Log In</legend>
+                <legend class="border-bottom mb-4">Log In to RecipeMaster</legend>
                 <!--this is for django to actually find the form and put it where you want-->
-                {{ form|crispy }}
+            {{ form|crispy }}
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">

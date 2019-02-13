@@ -125,6 +125,11 @@ img.img-anim {
     animation: 40s slider infinite;
 }
 
+.bg-master
+{
+    background-color: #66774c;
+}
+
 
 
 
