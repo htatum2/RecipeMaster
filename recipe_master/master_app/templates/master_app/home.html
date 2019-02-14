@@ -31,21 +31,13 @@
     <a href="about.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">About</p></button></a>
     <a href="discover.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Discover</p></button></a>
     <a href="recipes.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Recipes</p></button></a>
-    <!--We need to decide on categories..
-    <div class="dropdown-content">
-    <a href="recipes.html">All recipes</a>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="recipes.html">Vegan</a>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="recipes.html">Vegetarian</a>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    </div>-->
+    
     <a href="social.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Social</p></button></a>
 </div>
 
 
 <div id="toplogin">
-    <p><a href="signInPage.html">Log in</a> | <a href="signUpPage.html">Sign up</a></p>
+    <p><a href="login.html">Log in</a> | <a href="signUpPage.html">Sign up</a></p>
 </div>
     
 
@@ -81,6 +73,19 @@
     <p>Maybe about shouldn't go here, but I think this space should be filled with text.</p>
     
     <h1 style = "text-align: center; border: 3px solid #e6e9e9; background-color: #f5f5f5">Featured Recipes</h1>
+
+    <!--Some categories..-->
+    <div class="dropdown-content">
+    <a href="recipes.html">All recipes</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <!-- <a href="{% url 'veganrecipes' %}">Vegan</a> -->
+    <a href="veganrecipes">Vegan</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="recipes.html">Vegetarian</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+
+
     <div class="featuredpics">
     <img src="salad.jpg" alt="Salad" class="featuredRecipes" />
     <img src="veganSammich.jpeg" alt="Vegan Sandwich" class="featuredRecipes" />

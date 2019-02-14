@@ -7,10 +7,13 @@ from django.contrib.auth.models import User
 
 class Recipe(models.Model):
     recipe_name = models.CharField(max_length=100)
+    #Won't let me set a max/min value??
+    rating=models.IntegerField(1)
+    #diettype = models.CharField(max_length=10)
     image = models.ImageField(default='food_default.jpg', upload_to='recipe_pics')
     content = models.TextField(max_length=100)
     date_posted = models.DateTimeField(default=timezone.now)
     recipe_creator = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.recipe_name 
+        return self.recipe_name,"Rating = " + self.rating

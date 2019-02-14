@@ -18,3 +18,6 @@ def search(request):
 
 def profile(request):
     return HttpResponse('<h1>Awesome profile view coming soon!</h1>')
+
+def veganrecipes(request):
+    return HttpResponse('<h1>I like vegan recipes.<h1>')
