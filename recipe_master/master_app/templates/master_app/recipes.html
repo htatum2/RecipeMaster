@@ -1,0 +1,56 @@
+<!DOCTYPE>
+<html>
+
+<head>
+<title>RecipeMaster</title>
+<link href="main.css" rel="stylesheet" type="text/css">
+<style>
+    .recipe {
+    padding: 5px;
+    float: left;
+    position: relative;
+    width: 20%;
+    }
+
+/* Clear floats after image containers */
+    .recipes::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+</style>
+</head>
+
+<body>
+    <script>
+    </script>
+    
+<div class="toplinks">
+    <a href="home.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Home</p></button></a>
+    <a href="about.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">About</p></button></a>
+    <a href="discover.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Discover</p></button></a>
+    <a href="recipes.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Recipes</p></button></a>
+    <a href="social.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Social</p></button></a>
+</div>
+    
+<div id="toplogin">
+    <p><a href="signInPage.html">Log in</a> | <a href="signUpPage.html">Sign up</a></p>
+</div>
+    
+<p>We might do a collage of recipes here! Drop down with categories.. recipes with those specific categories pop up... just images and hover over to find name + more info and link</p>
+<div class="recipes">
+    <div class="recipe">
+    <img src="veganSammich.jpeg" class="featuredRecipes" />
+    </div>
+    <div class="recipe">
+    <img src="veganqueso.jpg" class="featuredRecipes" />
+    </div>
+    <div class="recipe">
+    <img src="featured_rolls.jpg" class="featuredRecipes"/>
+    </div>
+    <div class="recipe">
+    <img src="vege.jpg" class="featuredRecipes" />
+    </div>
+</div>
+</body>
+</html>

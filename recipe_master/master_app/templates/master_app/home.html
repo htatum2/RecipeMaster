@@ -1,17 +1,106 @@
-{% extends "master_app/base.html" %}
-{% load crispy_forms_tags %} 
-{% block content %}
-    {% for recipe in recipes %}
-        <article class="media content-section">
-          <div class="media-body">
-            <div class="article-metadata">
-              <a class="mr-2" href="#">{{ recipe.recipe_creator }}</a>
-              <small class="text-muted">{{ recipe.date_posted|date:"F d, Y" }}</small>
-            </div>
-            <h2><a class="article-title" href="#">{{ recipe.recipe_name }}</a></h2>
-            <p class="article-content">{{ recipe.content }}</p>
-          </div>
-          <img class="rounded-circle account-img" src="{{ recipe.image.url }}">
-        </article>
-    {% endfor %}
-{% endblock content %}
+<!DOCTYPE>
+<html>
+
+<head>
+<title>RecipeMaster</title>
+<link href="main.css" rel="stylesheet" type="text/css">
+<style>
+    div.featuredpics {
+    text-align: center;
+    }
+
+    div.featuredpics img {
+    width: 350px;
+    height: 500px;
+    }
+
+    .featuredRecipes {
+    width: 100%;
+    padding: 3px;
+    position: relative;
+    animation: colorize 2s cubic-bezier(0, 0, .78, .36) 1;
+    border: 3px solid #e6e9e9;
+}
+</style>
+</head>
+
+<body>
+    
+<div class="toplinks">
+    <a href="home.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Home</p></button></a>
+    <a href="about.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">About</p></button></a>
+    <a href="discover.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Discover</p></button></a>
+    <a href="recipes.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Recipes</p></button></a>
+    <!--We need to decide on categories..
+    <div class="dropdown-content">
+    <a href="recipes.html">All recipes</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="recipes.html">Vegan</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="recipes.html">Vegetarian</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    </div>-->
+    <a href="social.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Social</p></button></a>
+</div>
+
+
+<div id="toplogin">
+    <p><a href="signInPage.html">Log in</a> | <a href="signUpPage.html">Sign up</a></p>
+</div>
+    
+
+<div id="headerImage">
+    <div class="headerText">
+        <h1 style="color:white; font-size:40pt">Discover Recipes</h1>
+        <div class="searchbar">
+            <input type="text" placeholder="Search for new recipes...">
+        </div>
+    </div>
+</div>
+
+
+<!--We may add a login box later...
+    <div id="login">
+        <form>
+            <p>Login Here</p>
+            <p>Username</p>
+            <input type="text" name="" placeholder="Enter Username">
+            <p>Password</p>
+            <input type="password" name="" placeholder="Enter Password">
+            <input type="submit" name="" value="Login">
+            <br/>
+            <a href="#">Lost your password?</a><br/>
+            <a href="#">Don't have an account?</a>
+        </form>
+    </div>-->
+    
+
+<div id="mid">
+    <h1 style = "text-align: center; border: 3px solid #e6e9e9; background-color: #f5f5f5">RecipeMaster</h1>
+    <p style = "text-align: justify;">RecipeMaster was founded by 6 Computer Science/Computer Engineering students at Louisiana State University. The students are Casey Campbell, Nadin Khalil, Rachel Pitcher, Javier Solorzano, Alyssa Smith and Haley Tatum.</p>
+    <p>Maybe about shouldn't go here, but I think this space should be filled with text.</p>
+    
+    <h1 style = "text-align: center; border: 3px solid #e6e9e9; background-color: #f5f5f5">Featured Recipes</h1>
+    <div class="featuredpics">
+    <img src="salad.jpg" alt="Salad" class="featuredRecipes" />
+    <img src="veganSammich.jpeg" alt="Vegan Sandwich" class="featuredRecipes" />
+    <!--Add images to github
+    jav-solo.github.io/jav-solo/RecipeMaster/media/strawberrycake.jpg-->
+    <img src="RecipeMaster/recipe_master/media/strawberrycake.jpg" alt="Strawberry and Raspberry Cake" class="featuredRecipes" />
+    </div>
+</div>
+<br/>
+
+<div id="bottomlinks">
+<a href="home.html">Home</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="discover.html">Discover</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="recipes.html">Recipes</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="social.html">Social Page</a>
+</div>
+<br/>
+
+</body>
+</html>
