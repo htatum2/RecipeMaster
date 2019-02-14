@@ -37,7 +37,7 @@
 
 
 <div id="toplogin">
-    <p><a href="login.html">Log in</a> | <a href="signUpPage.html">Sign up</a></p>
+    <p><a href="{% url 'login' %}">Log in</a> | <a href="{% url 'register' %}">Sign up</a></p>
 </div>
     
 
@@ -87,11 +87,11 @@
 
 
     <div class="featuredpics">
-    <img src="salad.jpg" alt="Salad" class="featuredRecipes" />
-    <img src="veganSammich.jpeg" alt="Vegan Sandwich" class="featuredRecipes" />
+    <img src="/media/salad.jpg" alt="Salad" class="featuredRecipes" />
+    <img src="/media/veganSammich.jpeg" alt="Vegan Sandwich" class="featuredRecipes" />
     <!--Add images to github
     jav-solo.github.io/jav-solo/RecipeMaster/media/strawberrycake.jpg-->
-    <img src="RecipeMaster/recipe_master/media/strawberrycake.jpg" alt="Strawberry and Raspberry Cake" class="featuredRecipes" />
+    <img src="/media/strawberrycake.jpg" alt="Strawberry and Raspberry Cake" class="featuredRecipes" />
     </div>
 </div>
 <br/>
