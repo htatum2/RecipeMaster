@@ -1,11 +1,11 @@
 html {
     background: #fff;
     -webkit-font-smoothing: antialiased;
-    max-width: auto;
-    width: auto;
 }
 
 body {
+    width: auto;
+    height: auto;
     background: #fff;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
     color: #545454;
