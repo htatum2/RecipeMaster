@@ -1,0 +1,2 @@
+def google():
+    print("GoOgle")
