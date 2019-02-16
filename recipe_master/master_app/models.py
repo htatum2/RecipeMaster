@@ -10,6 +10,7 @@ class Recipe(models.Model):
     #Won't let me set a max/min value??
     rating=models.IntegerField(1)
     #diettype = models.CharField(max_length=10)
+    #tags=models.ManyToManyField(String)
     image = models.ImageField(default='food_default.jpg', upload_to='recipe_pics')
     content = models.TextField(max_length=100)
     date_posted = models.DateTimeField(default=timezone.now)
