@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Recipe
 from django.shortcuts import render_to_response
 from django.shortcuts import Http404,HttpResponse, HttpResponseRedirect
+from searchengine.web_search import google
 #from websearch
 
 
@@ -24,13 +25,11 @@ def about(request):
 def profile(request):
     return HttpResponse('<h1>Awesome profile view coming soon!</h1>')
 
-def veganrecipes(request):
-    return HttpResponse('<h1>I like vegan recipes.<h1>')
-
 
 def search(request):
     if request.POST:
-        return render_to_response('search.html', {'result': recipe_master(request.POST['term'], 10)})
-        return HttpResponseRedirect("/")
+        return render_to_response('search.html', {'result': google()})
+        #return HttpResponseRedirect("/")
     else:
         return render_to_response('search.html')
+        
