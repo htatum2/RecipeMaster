@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
-
+    'simple_elasticsearch',
 
   
 ]
@@ -53,6 +53,11 @@ HAYSTACK_CONNECTIONS = {
     },
 }
 
+ELASTIC_TYPE_CLASSES = [
+
+    'master_app.models.Recipe'
+
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

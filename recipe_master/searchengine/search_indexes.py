@@ -7,7 +7,7 @@ class RecipeSearch (indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
     author = indexes.CharField(model_attr='user')
     pub_date = indexes.DateTimeField(model_attr='pub_date')
-    diettype = indexes.CharField(model_attr = 'user', max_length = 20)
+    descriptionTags = indexes.CharField(model_attr = 'user', max_length = 20)
  
 
     def get_model(self):
