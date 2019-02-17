@@ -8,4 +8,5 @@ urlpatterns = [
     path('profile/', views.profile, name='master-profile'),
     path('veganrecipes/', views.veganrecipes, name='veganrecipes'),
     path('search/', views.search,name='searchengine-search'),
+    path('recipes/', views.recipes,name='master-recipes'),
 ]

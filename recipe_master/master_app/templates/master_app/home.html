@@ -27,10 +27,10 @@
 <body>
     
 <div class="toplinks">
-    <a href="home.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Home</p></button></a>
+    <a href="{% url 'master-home' %}"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Home</p></button></a>
     <a href="about.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">About</p></button></a>
     <a href="discover.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Discover</p></button></a>
-    <a href="recipes.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Recipes</p></button></a>
+    <a href="{% url 'master-recipes' %}"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Recipes</p></button></a>
     <a href="search"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Search</p></button></a>
     <a href="social.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Social</p></button></a>
 </div>
@@ -97,11 +97,11 @@
 <br/>
 
 <div id="bottomlinks">
-<a href="home.html">Home</a>
+<a href="{% url 'master-home' %}">Home</a>
 &nbsp;&nbsp;|&nbsp;&nbsp;
 <a href="discover.html">Discover</a>
 &nbsp;&nbsp;|&nbsp;&nbsp;
-<a href="recipes.html">Recipes</a>
+<a href="{% url 'master-recipes' %}">Recipes</a>
 &nbsp;&nbsp;|&nbsp;&nbsp;
 <a href="social.html">Social Page</a>
 </div>
