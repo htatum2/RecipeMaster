@@ -3,6 +3,9 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 import numpy as np
 
+
+
+
 # You must save the file and run python manage.py makemigrations 
 # for changes to take effect
 class MinMaxFloat(models.FloatField):
@@ -34,15 +37,5 @@ class Recipe(models.Model):
     def __str__(self):
         return self.recipe_name,"Rating = " + self.overallRating
 
-    #def display(self):
 
-"""
-    class FloatRangeField(models.FloatField):
-    def __init__(self, verbose_name=None, name=None, min_value=None, max_value=None, **kwargs):
-        self.min_value, self.max_value = min_value, max_value
-        models.FloatField.__init__(self, verbose_name, name, **kwargs)
-    def formfield(self, **kwargs):
-        defaults = {'min_value': self.min_value, 'max_value':self.max_value}
-        defaults.update(kwargs)
-        return super(FloatRangeField, self).formfield(**defaults)
-"""
+
