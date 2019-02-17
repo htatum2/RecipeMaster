@@ -7,4 +7,5 @@ urlpatterns = [
     #path('search/', views.search, name='master-search'),
     path('profile/', views.profile, name='master-profile'),
     path('search/', views.search,name='searchengine-search'),
+    path('recipes/', views.recipes,name='master-recipes'),
 ]

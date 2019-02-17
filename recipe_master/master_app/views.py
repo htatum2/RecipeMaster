@@ -25,6 +25,11 @@ def about(request):
 def profile(request):
     return HttpResponse('<h1>Awesome profile view coming soon!</h1>')
 
+def veganrecipes(request):
+    return HttpResponse('<h1>I like vegan recipes.<h1>')
+
+def recipes(request):
+    return render(request, 'master_app/recipes.html')
 
 def search(request):
     if request.POST:
