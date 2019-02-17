@@ -1,0 +1,4 @@
+{{object.text}}
+{{object.author}}
+{{object.pub_date}}
+{{object.descriptionTags}}
