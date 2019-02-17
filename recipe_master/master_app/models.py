@@ -51,7 +51,7 @@ class Recipe(models.Model):
     recipe_creator = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.recipe_name,"Rating = " + self.overallRating
+        return self.recipe_name + " Rating = " + str(self.overallRating)
 
 
 
