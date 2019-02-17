@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Recipe
 from django.shortcuts import render_to_response
 from django.shortcuts import Http404,HttpResponse, HttpResponseRedirect
+from searchengine.web_search import google
 #from websearch
 
 
@@ -11,7 +12,7 @@ from django.shortcuts import Http404,HttpResponse, HttpResponseRedirect
 
 def home(request):
     context = {
-        'recipes': Recipe.objects.all()
+        #'recipes': Recipe.objects.all()
     }
     return render(request, 'master_app/home.html', context)
 
@@ -32,7 +33,8 @@ def recipes(request):
 
 def search(request):
     if request.POST:
-        return render_to_response('search.html', {'result': recipe_master(request.POST['term'], 10)})
-        return HttpResponseRedirect("/")
+        return render_to_response('search.html', {'result': google()})
+        #return HttpResponseRedirect("/")
     else:
         return render_to_response('search.html')
+        
