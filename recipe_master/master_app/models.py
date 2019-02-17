@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from simple_elasticsearch.mixins import ElasticsearchTypeMixin
 
 
 
@@ -36,7 +37,7 @@ class RecipeManager(models.Manager):
         return recipe
     """    
 
-class Recipe(models.Model):
+class Recipe(models.Model, ElasticsearchTypeMixin):
     recipe_name = models.CharField(max_length=100)
    # rating=models.FloatRangeField(min_value=1.0, max_value=5.0)
     overallRating = MinMaxFloat(min_value=0.0, max_value=5.0)

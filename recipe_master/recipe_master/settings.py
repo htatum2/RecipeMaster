@@ -38,13 +38,26 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'simple_elasticsearch',
 
   
-
-
 ]
 
+import os
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'haystack',
+    },
+}
+
+ELASTIC_TYPE_CLASSES = [
+
+    'master_app.models.Recipe'
+
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
