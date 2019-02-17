@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
-import numpy as np
 
 
 
@@ -18,7 +17,24 @@ class MinMaxFloat(models.FloatField):
         defaults.update(kwargs)
         return super(MinMaxFloat, self).formfield(**defaults)
 
-
+class RecipeManager(models.Manager):
+    
+    def create_recipe(self, recipe_name, overallRating, authenticityRating,
+    mealPrepTimeMinutes, descriptionTags, image, content, date_posted, 
+    recipe_creater):
+        recipe=self.create(recipe_name=recipe_name, overallRating=overallRating, 
+        authenticityRating=authenticityRating, mealPrepTimeMinutes=mealPrepTimeMinutes, 
+        descriptionTags=descriptionTags, image=image, content=content, 
+        date_posted=date_posted)
+        return recipe
+        
+    """
+    def create_recipe(self, recipe_name, overallRating, authenticityRating,
+    mealPrepTimeMinutes):
+        recipe=self.create(recipe_name=recipe_name, overallRating=overallRating, 
+        authenticityRating=authenticityRating, mealPrepTimeMinutes=mealPrepTimeMinutes)
+        return recipe
+    """    
 
 class Recipe(models.Model):
     recipe_name = models.CharField(max_length=100)
@@ -28,14 +44,14 @@ class Recipe(models.Model):
     mealPrepTimeMinutes=models.IntegerField(1)
     #diettype = models.CharField(max_length=10)
     #tags=models.ManyToManyField(String)
-    descriptionTags = np.array([])
+    descriptionTags = []
     image = models.ImageField(default='food_default.jpg', upload_to='recipe_pics')
     content = models.TextField(max_length=100)
     date_posted = models.DateTimeField(default=timezone.now)
     recipe_creator = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.recipe_name,"Rating = " + self.overallRating
+        return self.recipe_name + " Rating = " + str(self.overallRating)
 
 
 
