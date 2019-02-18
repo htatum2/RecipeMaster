@@ -40,8 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.sites',
     'simple_elasticsearch',
-    
-  
 ]
 
 import os

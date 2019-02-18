@@ -1,0 +1,99 @@
+body {
+	height: 100%;
+	width: 100%;
+	background-image: url("https://images.unsplash.com/photo-1534433385363-b0ad36baed84?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.navbar {
+	padding: 10px;
+	margin-top: 1%;
+	margin-right: 7%;
+	border: 5px solid #556C5B;
+	background: rgba(238, 238, 238, 0.7);
+	font-family: 'Work Sans', sans-serif;
+}
+
+.siteName {
+	font-size: 30px;
+	padding-right: 50px;
+}
+
+.link {
+	font-size: 20px;
+	padding-right: 50px;
+}
+
+.header {
+	text-align: left;
+}
+
+.searchBar {
+	padding-left: 2px;
+	width: 50%;
+}
+
+input[type="text"], textarea {
+	border: 1px solid black;
+	padding-left: 2px;
+}
+
+input[type="password"], textarea {
+	border: 1px solid black;
+	padding-left: 2px;
+}
+
+input[type="email"], textarea {
+	border: 1px solid black;
+	padding-left: 2px;
+}
+
+input[type="button"], textarea {
+	border: 1px solid black;
+}
+
+.about {
+	font-size: 20px;
+	padding-left: 200px;
+}
+
+.login {
+	/*text-align: center;*/
+	font-family: 'Work Sans', sans-serif;
+	width: 20%;
+	background: rgba(238, 238, 238, 0.7);
+	padding: 1%;
+	position: absolute;
+	margin: auto;
+	margin-top: 10%;
+	margin-left: 40%;
+	border: 5px solid #556C5B;
+	/*border: 5px solid gray;*/
+}
+
+form {
+	width: 100%;
+	padding: 3%;
+}
+
+h2 {
+	text-align: center;
+	text-decoration: underline;
+}
+
+/*.title {
+	text-decoration: underline;
+}*/
+
+/*.loginButton {
+	margin-left: 40%;
+}*/
+
+.loginButton {
+
+}
+
+.login a {
+	text-align: center;
+}
