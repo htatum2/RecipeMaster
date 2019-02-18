@@ -85,6 +85,3 @@ class Recipe(models.Model, ElasticsearchTypeMixin):
 
     def __str__(self):
         return self.recipe_name + " Rating = " + str(self.overallRating)
-
-
-

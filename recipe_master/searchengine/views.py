@@ -17,3 +17,6 @@ def recipe(request):
     form = RecipeSearchForm(request.GET)
     notes = form.search()
     return render_to_response('search.html', {'recipe': recipe})
+
+#def veg_search(request):
+    return render(request, 'search/veg_search.html')

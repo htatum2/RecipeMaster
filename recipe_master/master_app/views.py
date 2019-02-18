@@ -37,4 +37,7 @@ def search(request):
         #return HttpResponseRedirect("/")
     else:
         return render_to_response('search.html')
+
+#def veg_search(request):
+    return render(request, 'search/veg_search.html')
         
