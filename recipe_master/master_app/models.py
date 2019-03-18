@@ -4,9 +4,6 @@ from django.contrib.auth.models import User
 from simple_elasticsearch.mixins import ElasticsearchTypeMixin
 from django.db.models.signals import post_save, pre_delete
 
-
-
-
 # You must save the file and run python manage.py makemigrations 
 # for changes to take effect
 class MinMaxFloat(models.FloatField):

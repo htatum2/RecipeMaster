@@ -1,20 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django.http import HttpResponse
 from .models import Recipe
-from django.shortcuts import render_to_response
-from django.shortcuts import Http404,HttpResponse, HttpResponseRedirect
+from django.shortcuts import Http404, HttpResponse, HttpResponseRedirect
 from searchengine.web_search import google
 #from websearch
-
-
 
 # Create your views here.
 
 def home(request):
     context = {
-        #'recipes': Recipe.objects.all()
+        'recipes': Recipe.objects.all()
     }
-    return render(request, 'master_app/home.html', context)
+    return render(request, 'master_app/home_javier.html', context)
 
 def about(request):
     return render(request, 'master_app/about.html')

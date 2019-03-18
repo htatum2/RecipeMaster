@@ -8,5 +8,4 @@ urlpatterns = [
     path('search/', views.search, name='searchengine-search'),
     path('recipes/', views.recipes, name='master-recipes'),
     path('search/veg_search.html', views.veg_search, name='searchengine-search'),
-    
 ]
