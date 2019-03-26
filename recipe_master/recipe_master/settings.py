@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'simple_elasticsearch',
 ]
 
-#import os
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
