@@ -56,11 +56,6 @@ HAYSTACK_SIGNAL_PROCESSOR = {
     'haystack.signals.RealtimeSignalProcessor'
 }
 
-ELASTIC_TYPE_CLASSES = [
-
-    'master_app.models.Recipe'
-
-]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

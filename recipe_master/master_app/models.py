@@ -1,8 +1,6 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
-from simple_elasticsearch.mixins import ElasticsearchTypeMixin
-from django.db.models.signals import post_save, pre_delete
 
 # You must save the file and run python manage.py makemigrations 
 # for changes to take effect
@@ -35,7 +33,7 @@ class RecipeManager(models.Manager):
         return recipe
     """    
 
-class Recipe(models.Model, ElasticsearchTypeMixin):
+class Recipe(models.Model):
     recipe_name = models.CharField(max_length=100)
    # rating=models.FloatRangeField(min_value=1.0, max_value=5.0)
     overallRating = MinMaxFloat(min_value=0.0, max_value=5.0)
@@ -48,37 +46,6 @@ class Recipe(models.Model, ElasticsearchTypeMixin):
     content = models.TextField(max_length=100)
     date_posted = models.DateTimeField(default=timezone.now)
     recipe_creator = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    @classmethod
-    def get_queryset(cls):
-        return Recipe.objects.all().select_related('recipesearch')
-    @classmethod
-    def get_index_name(cls):
-        return 'recipesearch'
-
-    @classmethod
-    def get_type_name(cls):
-        return 'recipes'
-
-    @classmethod
-    def get_type_mapping(cls):
-        return {
-            "properties": {
-                "text": {
-                    "type": "string"
-                },
-                "author": {
-                    "type": "string"
-                },
-                "pub_date": {
-                    "type": "dateTimeField"
-                },
-                "descriptionTags": {
-                    "type": "string[]"
-                },
-            }
-        }
-        
 
     def __str__(self):
         return self.recipe_name + " Rating = " + str(self.overallRating)
