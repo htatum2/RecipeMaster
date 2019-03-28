@@ -4,60 +4,154 @@
 <head>
 	<title>Salad</title>
 	<link rel="stylesheet" type="text/css" href="recipePagesStyle.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<style>
+
+		.jumbotron{
+			/*background-image: ("");*/
+			/*background-color: green;*/
+		}
+
+		.titlePicAndSum{
+			/*padding-left: 10%;*/
+		}
+
+		#recipeName{
+			text-align: center;
+			padding-bottom: 1%;
+			/*padding-left: 10%;*/
+		}
+
+		#recipePicture{
+			border-radius: 1%;
+		}
+
+		.summary{
+			padding: 3%;
+		}
+
+		h2{
+			font-size: 40px;
+		}
+
+		li{
+			font-size: 20px;
+		}
+
+		.summary{
+			font-size: 20px;
+		}
+
+		howTo{
+			margin-left: 3%%;
+		}
+
+	</style>
+
 </head>
 
 <body>
 
 	<div class="heading">
 
-		<input type="button" class="button" value="Home">
+		<div class="jumbotron jumbotron-fluid">
+			<!-- <div class="text-center">
+				<h2>RecipeMaster</h2>
+			</div> -->
+  			<div class="container">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				  <a class="navbar-brand" href="#">RecipeMaster</a>
+				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				    <span class="navbar-toggler-icon"></span>
+				  </button>
+				  <div class="collapse navbar-collapse" id="navbarNav">
+				    <ul class="navbar-nav">
+				      <!-- <li class="nav-item active">
+				        <a class="nav-link" href="#">Home </a>
+				      </li> -->
+				      <li class="nav-item active">
+				        <a class="nav-link" href="#">Login</a>
+				      </li>
+				      <li class="nav-item active">
+				        <a class="nav-link" href="#">Sign Up</a>
+				      </li>
+				      <li class="nav-item active">
+				        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Discover</a>
+				      </li>
+				    </ul>
+				  </div>
+				</nav>
+  			</div>
+		</div>
+
+		<!-- <input type="button" class="button" value="Home">
 		<input type="button" class="button" value="Login">
 		<input type="button" class="button" value="Sign Up">
-		<input type="text" class="searchBar" placeholder="Search">
+		<input type="text" class="searchBar" placeholder="Search"> -->
 
 	</div>
 
-	<div class="title">
+	<class="bodyNotNav">
 
-		<h1>Salad</h1>
-
-		<!-- <img src=""> -->
-
+	<div class="recipeTitle">
+		<h1 class="display-4" id="recipeName"><u>Salad</u></h1>
+			<p></p>
+			<div class="titlePicAndSum">
+				<div class="text-center">
+					<img id="recipePicture" src="https://img1.cookinglight.timeinc.net/sites/default/files/styles/4_3_horizontal_-_1200x900/public/image/2017/10/main/cl_digi_58.jpg?itok=C2WHk01D" "rounded center" alt="..." width="30%" height="30%">
+					<!-- <p class="text-justify"><p class="text-right">This dish is easy to make and fun to eat. Perfect for those hot summer days or as a quick lunch. This regular, mary-sue salad can't do you wrong!</p></p> -->
+				</div>
+			</div>
 	</div>
 
-	<div class="ingredients">
+	<p></p>
+	<p></p>
 
-		<h2>Ingredients:</h2>
-
-		<ul>
-			<li>Lettuce</li>
-			<li>Chopped Tomatoes</li>
-			<li>Ranch Dressing</li>
-			<li>Croutons</li>
-			<li>Parmesan Cheese</li>
-		</ul>
-
+	<div class="summary">
+		<div class="text-center">
+			This dish is easy to make and fun to eat. Perfect for those hot summer days or as a quick lunch. This regular, mary-sue salad can't do you wrong!
+		</div>
 	</div>
 
-	<div class="directions">	
+	<p></p>
+	<p></p>
+    
+    <div class="howTo">
+	<div class="container">
+	  <div class="row">
+	    <div class="col">
+	    	<h2><u>Directions:</u></h2>
+			<ol>
+				<li>Place the lettuce and tomatoes in a bowl</li>
+				<li>Add the ranch dressing onto the lettuce and tomatoes</li>
+				<li>Sprinkle the croutons on top</li>
+				<li>Add as much parmesan cheese as you like</li>
+				<li>Enjoy!</li>
+			</ol>
+		</div>
+	    <div class="col">
+	    	<h2><u>Ingredients:</u></h2>
 
-		<h2>Directions</h2>
-
-		<ol>
-			<li>Place the lettuce and tomatoes in a bowl</li>
-			<li>Add the ranch dressing onto the lettuce and tomatoes</li>
-			<li>Sprinkle the croutons on top</li>
-			<li>Add as much parmesan cheese as you like</li>
-			<li>Enjoy!</li>
-		</ol>
-
+			<ul>
+				<li>Lettuce</li>
+				<li>Chopped Tomatoes</li>
+				<li>Ranch Dressing</li>
+				<li>Croutons</li>
+				<li>Parmesan Cheese</li>
+			</ul>
+	    </div>
+	  </div>
+	</div>
 	</div>
 
-	<div class="bottom">
+	</class="bodyNotNav">
 
-		<input type="button" class="button" value="About RecipeMaster">
+	<p></p>
+	<p></p>
 
-	</div>
+	<!-- <div class="jumbotron jumbotron-fluid">
+	</div> -->
 
 </body>
 
