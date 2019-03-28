@@ -2,9 +2,6 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
-
-
-
 # You must save the file and run python manage.py makemigrations 
 # for changes to take effect
 class MinMaxFloat(models.FloatField):
@@ -52,6 +49,3 @@ class Recipe(models.Model):
 
     def __str__(self):
         return self.recipe_name + " Rating = " + str(self.overallRating)
-
-
-
