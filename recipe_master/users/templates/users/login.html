@@ -1,70 +1,21 @@
-{% extends "master_app/base.html" %}
-{% load crispy_forms_tags %} 
+{% extends "master-app/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
-    <!-- <link rel="stylesheet" type="text/css" href="signInUpStyle.css"> -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <div class="content-section">
-        <form method = "POST">
-            <!--This {%csrf_token%} is necessary for the form to work-->
-            {%csrf_token%}
+        <form method="POST">
+            {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Log In to RecipeMaster</legend>
-                <!--this is for django to actually find the form and put it where you want-->
-            {{ form|crispy }}
+                <legend class="border-bottom mb-4">Log In</legend>
+                {{ form|crispy }}
             </fieldset>
-            <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">RecipeMaster</a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Sign Up</a></li>
-          <form class="navbar-form navbar-left">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
+                <button class="btn btn-outline-info" type="submit">Login</button>
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">About</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Recipes of the Week</a></li>
-                <li><a href="#">Authentic Cuisines</a></li>
-                <li><a href="#">Vegan Recipes</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <div class="container">
-        <div class="jumbotron loginRegister">
-            <h1>Login: </h1>
-            <form>
-                 <div class="form-group">
-                   <label for="username">Username</label>
-                   <input type="username" class="form-control" id="username" placeholder="Username">
-                 </div>
-                 <div class="form-group">
-                   <label for="password">Password</label>
-                   <input type="password" class="form-control" id="password" placeholder="Password">
-                 </div>
-                 <button type="submit" class="btn btn-default">Submit</button>
-            </form>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
+            </small>
         </div>
     </div>
 {% endblock content %}

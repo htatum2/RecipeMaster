@@ -34,6 +34,12 @@ p {
     max-height: 25px;
 }
 
+button.toplinksbutton {
+    font-size: 5pt;
+    color: black;
+    /*delete style intext*/
+}
+
 .toplinks {
     position: relative;
     display: inline-block;

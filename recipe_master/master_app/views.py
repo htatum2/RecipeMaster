@@ -9,7 +9,7 @@ from searchengine.web_search import google
 
 def home(request):
     context = {
-        #'recipes': Recipe.objects.all()
+        'recipes': Recipe.objects.all()
     }
     return render(request, 'master_app/home.html', context)
 

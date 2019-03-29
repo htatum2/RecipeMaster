@@ -1,0 +1,47 @@
+
+
+
+{% block content %}
+<form type="get" action=".">
+<input type="text" name="q">
+<button type="submit">Search</button>
+</form>
+
+{% for note in notes %}
+<h1>{{ note.title }}</h1>
+<p>
+{{ note.body }}
+</p>
+{% endfor %}
+{% endblock %}
+
+<html>
+<head>
+<title>My Page</title>
+</head>
+<body>
+
+<h1>"Sort by:"</h1>
+<ul role="navigation">
+    <li><a href="veg_search.html">Vegan</a></li>
+    <li><a href="somewhereelse">Keto</a></li>
+    <li><a href="somewhereelse2">Kosher</a></li>
+    <li><a href="anothersomewhere">Highest Rated</a></li>
+    <li><a href="lastsomewhere">Lowest Rated</a></li>
+</ul>
+
+
+</body>
+</html>
+
+<div id="mid">
+
+     <div class="featuredpics">
+    <h1>Garbage Salad: </h1><img src="/media/garabagesalad.jpg" alt="Garbage Salad" class="featuredRecipes" />
+    <h1>Black Bean Dip: </h1><img src="/media/beandip.jpg" alt="Black Bean Dip" class="featuredRecipes" />
+    <!--Add images to github
+    jav-solo.github.io/jav-solo/RecipeMaster/media/strawberrycake.jpg-->
+    <h1>Black Bean Burger: </h1><img src="/media/blackbeanburger.jpg" alt="Black Bean Burger" class="featuredRecipes" />
+    </div>
+</div>
+<br/>
