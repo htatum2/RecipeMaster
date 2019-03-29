@@ -36,5 +36,4 @@ def search(request):
         return render_to_response('master_app/search.html')
 
 def veg_search(request):
-    return render(request, 'veg_search.html')       
-        
+    return render(request, 'master_app/veg_search.html')     
