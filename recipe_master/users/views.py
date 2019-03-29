@@ -13,16 +13,25 @@ def register(request):
             return redirect('login')
     else:
         form = UserRegisterForm()
-    return render(request, 'users/signUpPage.html', {'form':form})
+    return render(request, 'users/register.html', {'form':form})
 
 #profile view
 @login_required
 def profile(request):
-    u_form = UserUpdateForm()
-    p_form = ProfileUpdateForm()
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST,instance=request.user)
+        p_form = ProfileUpdateForm(request.POST, 
+                                   request.FILES, 
+                                   instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
 
-    context = {
+    context = { # variables to pass into template
         'u_form': u_form,
-        'p_form': p_form
+        'p_form': p_form 
     }
-    return render(request, 'users/profile.html')
+    return render(request, 'users/profile.html', context)

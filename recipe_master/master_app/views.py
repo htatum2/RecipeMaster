@@ -14,7 +14,7 @@ def home(request):
     return render(request, 'master_app/home.html', context)
 
 def about(request):
-    return render(request, 'master_app/about.html')
+    return render(request, 'master_app/grilledCheeseNaan.html')
 
 # def search(request):
 #    return HttpResponse('<h1>Awesome searching results coming soon!</h1>')

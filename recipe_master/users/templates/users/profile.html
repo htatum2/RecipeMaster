@@ -14,39 +14,15 @@
             <!--This {%csrf_token%} is necessary for the form to work-->
             {%csrf_token%}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Log In to RecipeMaster</legend>
+                <legend class="border-bottom mb-4">Profile Info</legend>
                 <!--this is for django to actually find the form and put it where you want-->
             {{ u_form|crispy }}
             {{ p_form|crispy }}
-            <!-- </fieldset> -->
+             </fieldset>
 
-            <div class="navbar">
-
-        <!-- <form> -->
-                <class="header">
-                    <a href='#' style="color:#302F2F" class="siteName">RecipeMaster</a>
-                    <a href='#' style="color:#302F2F" class="link">Login</a>
-                    <input type="text" class="searchBar" placeholder="Search">
-                    <input type="button" value="Search">
-                    <a href="#" style="color:#302F2F" class="about">About</a>
-                </class="header">
-        <!-- </form> -->
-
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Update</button>
             </div>
-
-            <div class="login">
-                <form method=POST>
-                    <h2>Sign Up:</h2>
-                    Email: <input type="email" id="email" placeholder="email"> <br><br>
-                    Username: <input type="text" id="username" placeholder="username"> <br><br>
-                    Password: <input type="password" id="password" placeholder="password"> <br><br>
-                    <input type="button" value="Create Account" class="loginButton">
-                    <br><br>
-                    <a href="#" style="color:#302F2F">Login</a>
-                    <br><br>
-                </form>
-            </div>
-
-        </form>
+    </form>
 </div>
 {% endblock content %}
