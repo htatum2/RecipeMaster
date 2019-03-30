@@ -35,7 +35,7 @@ class RecipeManager(models.Manager):
 
 class Recipe(models.Model):
     recipe_name = models.CharField(max_length=100)
-   # rating=models.FloatRangeField(min_value=1.0, max_value=5.0)
+    #rating=models.FloatRangeField(min_value=1.0, max_value=5.0)
     overallRating = MinMaxFloat(min_value=0.0, max_value=5.0)
     authenticityRating = MinMaxFloat(min_value=0.0, max_value=5.0)
     mealPrepTimeMinutes=models.IntegerField(1)
