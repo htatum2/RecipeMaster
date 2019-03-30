@@ -1,7 +1,11 @@
 from django.urls import path, include
+from django.conf.urls import url, include
+from .views import RecipeListView, RecipeDetailView
 from . import views
+
 urlpatterns = [
-    path('', views.home, name='master-home'),
+    path('', RecipeListView.as_view(), name='master-home'),
+    path('recipe/<pk>/', RecipeDetailView.as_view(), name='recipe-detail'),
     path('about/', views.about, name='master-about'),
     path('search/', views.search, name='master-search'),
     path('profile/', views.profile, name='master-profile'),
