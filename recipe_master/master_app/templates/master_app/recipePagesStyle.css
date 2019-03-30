@@ -1,0 +1,28 @@
+#recipeName{
+	text-align: center;
+	padding-bottom: 1%;
+}
+
+#recipePicture{
+	border-radius: 1%;
+}
+
+.summary{
+	padding: 3%;
+}
+
+h2{
+	font-size: 40px;
+}
+
+li{
+	font-size: 20px;
+}
+
+.summary{
+	font-size: 20px;
+}
+
+howTo{
+	margin-left: 3%%;
+}
