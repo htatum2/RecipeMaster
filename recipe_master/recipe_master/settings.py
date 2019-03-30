@@ -38,13 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.sites',
+    #'django.contrib.sites', # If you add this build will break
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'simple_elasticsearch',
 ]
 
-#import os
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
@@ -52,15 +51,10 @@ HAYSTACK_CONNECTIONS = {
         'INDEX_NAME': 'haystack',
     },
 }
+
 HAYSTACK_SIGNAL_PROCESSOR = {
     'haystack.signals.RealtimeSignalProcessor'
 }
-
-ELASTIC_TYPE_CLASSES = [
-
-    'master_app.models.Recipe'
-
-]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
