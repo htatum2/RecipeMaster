@@ -6,49 +6,6 @@
 	<link rel="stylesheet" type="text/css" href="recipePagesStyle.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-	<style>
-
-		.jumbotron{
-			/*background-image: ("");*/
-			/*background-color: green;*/
-		}
-
-		.titlePicAndSum{
-			/*padding-left: 10%;*/
-		}
-
-		#recipeName{
-			text-align: center;
-			padding-bottom: 1%;
-			/*padding-left: 10%;*/
-		}
-
-		#recipePicture{
-			border-radius: 1%;
-		}
-
-		.summary{
-			padding: 3%;
-		}
-
-		h2{
-			font-size: 40px;
-		}
-
-		li{
-			font-size: 20px;
-		}
-
-		.summary{
-			font-size: 20px;
-		}
-
-		howTo{
-			margin-left: 3%%;
-		}
-
-	</style>
-
 </head>
 
 <body>
@@ -56,25 +13,19 @@
 	<div class="heading">
 
 		<div class="jumbotron jumbotron-fluid">
-			<!-- <div class="text-center">
-				<h2>RecipeMaster</h2>
-			</div> -->
   			<div class="container">
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				  <a class="navbar-brand" href="#">RecipeMaster</a>
+				  <a class="navbar-brand" href="{% url 'master-home' %}">RecipeMaster</a>
 				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				    <span class="navbar-toggler-icon"></span>
 				  </button>
 				  <div class="collapse navbar-collapse" id="navbarNav">
 				    <ul class="navbar-nav">
-				      <!-- <li class="nav-item active">
-				        <a class="nav-link" href="#">Home </a>
-				      </li> -->
 				      <li class="nav-item active">
-				        <a class="nav-link" href="#">Login</a>
+				        <a class="nav-link" href="{% url 'login' %}">Login</a>
 				      </li>
 				      <li class="nav-item active">
-				        <a class="nav-link" href="#">Sign Up</a>
+				        <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
 				      </li>
 				      <li class="nav-item active">
 				        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Discover</a>
@@ -84,11 +35,6 @@
 				</nav>
   			</div>
 		</div>
-
-		<!-- <input type="button" class="button" value="Home">
-		<input type="button" class="button" value="Login">
-		<input type="button" class="button" value="Sign Up">
-		<input type="text" class="searchBar" placeholder="Search"> -->
 
 	</div>
 
@@ -100,7 +46,6 @@
 			<div class="titlePicAndSum">
 				<div class="text-center">
 					<img id="recipePicture" src="https://img1.cookinglight.timeinc.net/sites/default/files/styles/4_3_horizontal_-_1200x900/public/image/2017/10/main/cl_digi_58.jpg?itok=C2WHk01D" "rounded center" alt="..." width="30%" height="30%">
-					<!-- <p class="text-justify"><p class="text-right">This dish is easy to make and fun to eat. Perfect for those hot summer days or as a quick lunch. This regular, mary-sue salad can't do you wrong!</p></p> -->
 				</div>
 			</div>
 	</div>
@@ -148,9 +93,6 @@
 
 	<p></p>
 	<p></p>
-
-	<!-- <div class="jumbotron jumbotron-fluid">
-	</div> -->
 
 </body>
 
