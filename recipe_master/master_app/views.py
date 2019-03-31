@@ -1,5 +1,5 @@
 from django.shortcuts import render, render_to_response
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from django.http import HttpResponse
 from .models import Recipe
 from django.shortcuts import Http404,HttpResponse, HttpResponseRedirect
