@@ -4,6 +4,9 @@ from django.http import HttpResponse
 from .models import Recipe
 from django.shortcuts import Http404,HttpResponse, HttpResponseRedirect
 from searchengine.web_search import google
+import operator
+from django.db.models import Q
+from functools import reduce
 
 # Create your views here.
 # Class based views look for <app>/<model>_<viewtype>.html by default
@@ -13,6 +16,9 @@ def home(request):
         'recipes': Recipe.objects.all()
     }
     return render(request, 'master_app/home.html', context)
+
+
+
 
 class RecipeListView(ListView):
     model = Recipe
@@ -44,4 +50,26 @@ def search(request):
         return render_to_response('master_app/search.html')
 
 def veg_search(request):
-    return render(request, 'master_app/veg_search.html')     
+    return render(request, 'master_app/veg_search.html')   
+
+
+class RecipeSearchListView(RecipeListView):
+    """
+    Display a Blog List page filtered by the search query.
+    """
+    paginate_by = 10
+
+    def get_queryset(self):
+        result = super(RecipeSearchListView, self).get_queryset()
+
+        query = self.request.GET.get('q')
+        if query:
+            query_list = query.split()
+            result = result.filter(
+                reduce(operator.and_,
+                       (Q(title__icontains=q) for q in query_list)) |
+                reduce(operator.and_,
+                       (Q(content__icontains=q) for q in query_list))
+            )
+
+        return result
