@@ -21,15 +21,11 @@ def home(request):
     }
     return render(request, 'master_app/home.html', context)
 
-
-
-
 class RecipeListView(ListView):
     model = Recipe
     template_name = 'master_app/home.html'
     context_object_name = 'recipes'
     ordering = ['-date_posted']
-
 
 class RecipeDetailView(DetailView):
     model = Recipe
