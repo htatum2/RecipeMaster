@@ -39,6 +39,7 @@ class Recipe(models.Model):
     overallRating = MinMaxFloat(min_value=0.0, max_value=5.0)
     authenticityRating = MinMaxFloat(min_value=0.0, max_value=5.0)
     mealPrepTimeMinutes=models.IntegerField(1)
+    recipeCategory = models.CharField(max_length=15)
     #diettype = models.CharField(max_length=10)
     #tags=models.ManyToManyField(String)
     descriptionTags = []
