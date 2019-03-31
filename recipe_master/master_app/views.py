@@ -3,7 +3,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
     ListView, 
     DetailView, 
-    CreateView
+    CreateView,
+    UpdateView
 )
 from .models import Recipe
 from django.shortcuts import Http404,HttpResponse, HttpResponseRedirect
@@ -31,6 +32,19 @@ class RecipeDetailView(DetailView):
     model = Recipe
 
 class RecipeCreateView(LoginRequiredMixin, CreateView):
+    model = Recipe
+    fields = ['recipe_name', 
+              'ingredients_list',
+              'instructions', 
+              'overallRating', 
+              'image', 
+              'mealPrepTimeMinutes']
+
+    def form_valid(self, form):
+        form.instance.recipe_creator = self.request.user
+        return super().form_valid(form)
+
+class RecipeUpdateView(LoginRequiredMixin, UpdateView):
     model = Recipe
     fields = ['recipe_name', 
               'ingredients_list',
