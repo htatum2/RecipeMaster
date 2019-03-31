@@ -65,6 +65,8 @@ def search(request):
 def veg_search(request):
     return render(request, 'master_app/veg_search.html')   
 
+def discover(request):
+    return render(request, 'master_app/discover.html')
 
 class RecipeSearchListView(RecipeListView):
     """
