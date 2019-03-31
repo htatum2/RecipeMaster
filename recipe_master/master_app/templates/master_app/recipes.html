@@ -5,18 +5,26 @@
 <title>RecipeMaster</title>
 <link href="main.css" rel="stylesheet" type="text/css">
 <style>
-    .recipe {
-    padding: 5px;
-    float: left;
-    position: relative;
-    width: 20%;
+    
+    .recipeCollage {
+        margin: 7px;
+        border: 1px solid #ccc;
+        float: left;
+        width: 200px;
     }
 
-/* Clear floats after image containers */
-    .recipes::after {
-      content: "";
-      clear: both;
-      display: table;
+    div.recipeCollage:hover {
+        border: 1px solid #777;
+    }
+
+    div.recipeCollage img {
+        width: 100%;
+        height: auto;
+    }
+
+    .title {
+        padding: 15px;
+        text-align: center;
     }
     
 </style>
@@ -25,12 +33,12 @@
 <body>
     <script>
     </script>
-    
+
+<!--Haley replace navbar on all pages besides home-->
 <div class="toplinks">
-    <a href="{% url 'master-home' %}"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Home</p></button></a>
+    <a href="home.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Home</p></button></a>
     <a href="about.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">About</p></button></a>
     <a href="discover.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Discover</p></button></a>
-    <a href="recipes.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Recipes</p></button></a>
     <a href="social.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Social</p></button></a>
 </div>
     
@@ -38,20 +46,55 @@
     <p><a href="signInPage.html">Log in</a> | <a href="signUpPage.html">Sign up</a></p>
 </div>
     
-<p>We might do a collage of recipes here! Drop down with categories.. recipes with those specific categories pop up... just images and hover over to find name + more info and link</p>
-<div class="recipes">
-    <div class="recipe">
-    <img src="/media/veganSammich.jpeg" class="featuredRecipes" />
-    </div>
-    <div class="recipe">
-    <img src="/media/veganqueso.jpg" class="featuredRecipes" />
-    </div>
-    <div class="recipe">
-    <img src="/media/featured_rolls.jpg" class="featuredRecipes"/>
-    </div>
-    <div class="recipe">
-    <img src="vege.jpg" class="featuredRecipes" />
-    </div>
+    
+<div class="recipeCollage">
+  <a target="_blank" href="">
+    <img src="veganSammich.jpeg" alt="Vegan Sandwich" width="600" height="400">
+  </a>
+  <div class="title">Vegan Sandwich</div>
 </div>
+
+<div class="recipeCollage">
+  <a target="_blank" href="">
+    <img src="veganqueso.jpg" alt="Vegan Queso" width="600" height="400">
+  </a>
+  <div class="title">Vegan Queso</div>
+</div>
+
+<div class="recipeCollage">
+  <a target="_blank" href="">
+    <img src="featured_rolls.jpg" alt="Spring Rolls" width="600" height="400">
+  </a>
+  <div class="title">Spring Rolls</div>
+</div>
+
+<div class="recipeCollage">
+  <a target="_blank" href="">
+    <img src="cake.jpg" alt="Cake" width="600" height="400">
+  </a>
+  <div class="title">Cake</div>
+</div>
+    
+<div class="recipeCollage">
+  <a target="_blank" href="">
+    <img src="creamypotatoes.jpg" alt="Creamy Potatoes" width="600" height="400">
+  </a>
+  <div class="title">Creamy Potatoes</div>
+</div>
+    
+<div class="recipeCollage">
+  <a target="_blank" href="">
+    <img src="burger.jpg" alt="Burger" width="600" height="400">
+  </a>
+  <div class="title">Burger</div>
+</div>
+    
+<div class="recipeCollage">
+  <a target="_blank" href="">
+    <img src="VegeLasagnaSoup.jpg" alt="Vegetarian Lasagna Soup" width="600" height="400">
+  </a>
+  <div class="title">Vegetarian Lasagna Soup</div>
+</div>
+    
 </body>
 </html>
