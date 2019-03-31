@@ -1,11 +1,12 @@
 from django.shortcuts import render, render_to_response
+from django.views.generic import ListView, DetailView
 from django.http import HttpResponse
 from .models import Recipe
 from django.shortcuts import Http404,HttpResponse, HttpResponseRedirect
 from searchengine.web_search import google
-#from websearch
 
 # Create your views here.
+# Class based views look for <app>/<model>_<viewtype>.html by default
 
 def home(request):
     context = {
@@ -13,11 +14,18 @@ def home(request):
     }
     return render(request, 'master_app/home.html', context)
 
+class RecipeListView(ListView):
+    model = Recipe
+    template_name = 'master_app/home.html'
+    context_object_name = 'recipes'
+    ordering = ['-date_posted']
+
+
+class RecipeDetailView(DetailView):
+    model = Recipe
+
 def about(request):
     return render(request, 'master_app/grilledCheeseNaan.html')
-
-# def search(request):
-#    return HttpResponse('<h1>Awesome searching results coming soon!</h1>')
 
 def profile(request):
     return HttpResponse('<h1>Awesome profile view coming soon!</h1>')

@@ -8,7 +8,7 @@
               <a class="mr-2" href="#">{{ recipe.recipe_creator }}</a>
               <small class="text-muted">{{ recipe.date_posted|date:"F d, Y" }}</small>
             </div>
-            <h2><a class="article-title" href="#">{{ recipe.recipe_name }}</a></h2>
+            <h2><a class="article-title" href="{% url 'recipe-detail' recipe.id %}">{{ recipe.recipe_name }}</a></h2>
             <p class="article-content">{{ recipe.content }}</p>
           </div>
           <img class="rounded-circle account-img" src="{{ recipe.image.url }}">
