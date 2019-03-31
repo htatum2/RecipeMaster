@@ -23,8 +23,6 @@ class RecipeListView(ListView):
 
 class RecipeDetailView(DetailView):
     model = Recipe
-    pk_url_kwarg = 'pk'
-
 
 def about(request):
     return render(request, 'master_app/grilledCheeseNaan.html')
