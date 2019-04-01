@@ -8,14 +8,31 @@ from django.views.generic import (
     UpdateView
 )
 from .models import Recipe
+from django.core.exceptions import PermissionDenied
 from django.shortcuts import Http404,HttpResponse, HttpResponseRedirect
 from searchengine.web_search import google
+from django.contrib.auth.decorators import login_required
 import operator
+from django.utils.decorators import method_decorator
 from django.db.models import Q
 from functools import reduce
 
 # Create your views here.
 # Class based views look for <app>/<model>_<viewtype>.html by default
+
+class LoginRequiredMixin(object):
+    @method_decorator(login_required())
+    def dispatch(self, *args, **kwargs):
+        return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
+
+class CheckOwner(object):
+    def get_object(self, *args, **kwargs):
+        obj=super(CheckOwner, self).get_object(*args, **kwargs)
+        if not obj.user == self.request.user:
+            raise PermissionDenied
+        return obj
+class LogInBeforeChanging(LoginRequiredMixin, CheckOwner, UpdateView):
+    template_name ='master_app/form.html'
 
 def home(request):
     context = {
@@ -66,6 +83,7 @@ class RecipeUpdateView(LoginRequiredMixin, UpdateView):
         form.instance.recipe_creator = self.request.user
         return super().form_valid(form)
 
+@login_required
 def review(request, pk):
     recipe = get_object_or_404(Recipe, pk=pk)
     if RecipeReview.objects.filter(recipe=recipe, user=request.user).exists():
