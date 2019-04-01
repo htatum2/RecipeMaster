@@ -59,12 +59,12 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
     model = Recipe
     template_name = 'master_app/form.html'
     form_class = RecipeForm
-    #fields = ['recipe_name', 
-            #  'ingredients_list',
-             # 'instructions', 
-             # 'overallRating', 
-            #  'image', 
-            #  'mealPrepTimeMinutes']
+    fields = ['recipe_name', 
+             'ingredients_list',
+             'instructions', 
+             'overallRating', 
+             'image', 
+             'mealPrepTimeMinutes']
 
     def form_valid(self, form):
         form.instance.recipe_creator = self.request.user
@@ -82,6 +82,12 @@ class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def form_valid(self, form):
         form.instance.recipe_creator = self.request.user
         return super().form_valid(form)
+
+    def test_func(self):
+        recipe = self.get_object()
+        if self.request.user == recipe.recipe_creator:
+            return True
+        return False
 
 @login_required
 def review(request, pk):
