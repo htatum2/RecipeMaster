@@ -1,4 +1,5 @@
 from django.shortcuts import render, render_to_response
+from .forms import RecipeForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
     ListView, 
@@ -30,19 +31,27 @@ class RecipeListView(ListView):
 
 class RecipeDetailView(DetailView):
     model = Recipe
+    template_name='master_app/recipe_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(RecipeDetailView,self).get_context_data(**kwargs)
+        context['RATING_CHOICES']=RecipeReview.RATING_CHOICES
+        return context
 
 class RecipeCreateView(LoginRequiredMixin, CreateView):
     model = Recipe
-    fields = ['recipe_name', 
-              'ingredients_list',
-              'instructions', 
-              'overallRating', 
-              'image', 
-              'mealPrepTimeMinutes']
+    template_name = 'master_app/form.html'
+    form_class = RecipeForm
+    #fields = ['recipe_name', 
+            #  'ingredients_list',
+             # 'instructions', 
+             # 'overallRating', 
+            #  'image', 
+            #  'mealPrepTimeMinutes']
 
     def form_valid(self, form):
         form.instance.recipe_creator = self.request.user
-        return super().form_valid(form)
+        return super(RecipeCreateView, self).form_valid(form)
 
 class RecipeUpdateView(LoginRequiredMixin, UpdateView):
     model = Recipe
@@ -56,6 +65,21 @@ class RecipeUpdateView(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         form.instance.recipe_creator = self.request.user
         return super().form_valid(form)
+
+def review(request, pk):
+    recipe = get_object_or_404(Recipe, pk=pk)
+    if RecipeReview.objects.filter(recipe=recipe, user=request.user).exists():
+        RecipeReview.objects.get(recipe=recipe, user=request.user).delete()
+    valid_review = RecipeReview(
+        overallRating=request.POST['overallRating'],
+        authenticityRating=request.POST['authenticityRating'],
+        comment=request.POST['comment'],
+        user=request.user,
+        recipe=recipe)
+    valid_review.save()
+    return HttpResponseRedirect(reverse('master_app:recipe_detail', args=(recipe.id,)))
+
+
 
 def about(request):
     return render(request, 'master_app/grilledCheeseNaan.html')
