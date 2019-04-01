@@ -32,9 +32,9 @@ class RecipeManager(models.Manager):
 class Recipe(models.Model):
     name = models.CharField(max_length=100)
     country = models.TextField(blank = True, null = True)
-    calories = models.TextField(max_length=1000, default='')
+    calories = MinMaxFloat(min_value=0.0, max_value=.0)
     #rating=models.FloatRangeField(min_value=1.0, max_value=5.0)
-    meal_PrepTime_Minutes= MinMaxFloat(min_value=5.0, max_value=480.0, default='5.0')
+    meal_PrepTime_Minutes= MinMaxFloat(min_value=5.0, max_value=10000.0)
     image = models.ImageField(default='food_default.jpg', upload_to='recipe_pics')
     ingredients_list = models.TextField(max_length=500, default='')
     instructions = models.TextField(max_length=1000, default='')
