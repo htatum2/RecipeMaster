@@ -1,9 +1,17 @@
 from django.shortcuts import render, render_to_response
-from django.views.generic import ListView, DetailView, CreateView
-from django.http import HttpResponse
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import (
+    ListView, 
+    DetailView, 
+    CreateView,
+    UpdateView
+)
 from .models import Recipe
 from django.shortcuts import Http404,HttpResponse, HttpResponseRedirect
 from searchengine.web_search import google
+import operator
+from django.db.models import Q
+from functools import reduce
 
 # Create your views here.
 # Class based views look for <app>/<model>_<viewtype>.html by default
@@ -20,9 +28,34 @@ class RecipeListView(ListView):
     context_object_name = 'recipes'
     ordering = ['-date_posted']
 
-
 class RecipeDetailView(DetailView):
     model = Recipe
+
+class RecipeCreateView(LoginRequiredMixin, CreateView):
+    model = Recipe
+    fields = ['recipe_name', 
+              'ingredients_list',
+              'instructions', 
+              'overallRating', 
+              'image', 
+              'mealPrepTimeMinutes']
+
+    def form_valid(self, form):
+        form.instance.recipe_creator = self.request.user
+        return super().form_valid(form)
+
+class RecipeUpdateView(LoginRequiredMixin, UpdateView):
+    model = Recipe
+    fields = ['recipe_name', 
+              'ingredients_list',
+              'instructions', 
+              'overallRating', 
+              'image', 
+              'mealPrepTimeMinutes']
+
+    def form_valid(self, form):
+        form.instance.recipe_creator = self.request.user
+        return super().form_valid(form)
 
 def about(request):
     return render(request, 'master_app/grilledCheeseNaan.html')
@@ -44,4 +77,28 @@ def search(request):
         return render_to_response('master_app/search.html')
 
 def veg_search(request):
-    return render(request, 'master_app/veg_search.html')     
+    return render(request, 'master_app/veg_search.html')   
+
+def discover(request):
+    return render(request, 'master_app/discover.html')
+
+class RecipeSearchListView(RecipeListView):
+    """
+    Display a Blog List page filtered by the search query.
+    """
+    paginate_by = 10
+
+    def get_queryset(self):
+        result = super(RecipeSearchListView, self).get_queryset()
+
+        query = self.request.GET.get('q')
+        if query:
+            query_list = query.split()
+            result = result.filter(
+                reduce(operator.and_,
+                       (Q(title__icontains=q) for q in query_list)) |
+                reduce(operator.and_,
+                       (Q(content__icontains=q) for q in query_list))
+            )
+
+        return result

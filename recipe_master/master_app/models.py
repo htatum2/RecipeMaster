@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 # You must save the file and run python manage.py makemigrations 
 # for changes to take effect
@@ -25,28 +26,20 @@ class RecipeManager(models.Manager):
         date_posted=date_posted)
         return recipe
         
-    """
-    def create_recipe(self, recipe_name, overallRating, authenticityRating,
-    mealPrepTimeMinutes):
-        recipe=self.create(recipe_name=recipe_name, overallRating=overallRating, 
-        authenticityRating=authenticityRating, mealPrepTimeMinutes=mealPrepTimeMinutes)
-        return recipe
-    """    
-
 class Recipe(models.Model):
     recipe_name = models.CharField(max_length=100)
-    #rating=models.FloatRangeField(min_value=1.0, max_value=5.0)
     overallRating = MinMaxFloat(min_value=0.0, max_value=5.0)
     authenticityRating = MinMaxFloat(min_value=0.0, max_value=5.0)
-    mealPrepTimeMinutes=models.IntegerField(1)
-    #recipeCategory = models.CharField(max_length=15)
-    #diettype = models.CharField(max_length=10)
-    #tags=models.ManyToManyField(String)
-    descriptionTags = []
+    mealPrepTimeMinutes = MinMaxFloat(min_value=5.0, max_value=1000.0)
     image = models.ImageField(default='food_default.jpg', upload_to='recipe_pics')
-    content = models.TextField(max_length=100)
+    ingredients_list = models.TextField(max_length=500, default='')
+    instructions = models.TextField(max_length=1000, default='')
     date_posted = models.DateTimeField(default=timezone.now)
     recipe_creator = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.recipe_name + " Rating = " + str(self.overallRating)
+        return self.recipe_name
+
+    def get_absolute_url(self):
+        return reverse('recipe-detail', kwargs={'pk': self.pk})
+    

@@ -87,7 +87,8 @@
               <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
             </div>
             <h2 class="article-title">{{ object.recipe_name }}</h2>
-            <p class="article-content">{{ object.content }}</p>
+            <p class="article-content">{{ object.ingredients_list }}</p>
+            <p class="article-content">{{ object.instructions }}</p>
           </div>
           <img class="rounded-circle account-img" src="{{ object.image.url }}">
         </article>

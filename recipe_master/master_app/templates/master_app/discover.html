@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE>
 <html>
 
@@ -14,10 +15,10 @@
     </script>
     
 <div class="toplinks">
-    <a href="home.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Home</p></button></a>
-    <a href="about.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">About</p></button></a>
+    <a href="{% url 'master-home' %}"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Home</p></button></a>
+    <a href="{% url 'master-about' %}"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">About</p></button></a>
     <!-- Hover over discover button, change color of button when on a specific page -->
-    <a href="discover.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Discover</p></button></a>
+    <a href="{% url 'master-discover' %}"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Discover</p></button></a>
     <a href="recipes.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Recipes</p></button></a>
     <a href="social.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Social</p></button></a>
 </div>
@@ -43,20 +44,23 @@
       <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
 
+
     <!-- Wrapper for slides -->
+{% comment %} {% for recipe in recipes %} {% endcomment %}
     <div class="carousel-inner">
       <div class="item active">
-        <img src="easy.jpg" alt="Salmon for Breakfast" style="width:100%;">
+        <img src="/media/recipe_pics/easy.jpg" alt="Salmon for Breakfast" style="width:100%;">
       </div>
-
+{% comment %} {% endfor %}     {% endcomment %}
       <div class="item">
-        <img src="easy.jpg" alt="Salmon for Lunch" style="width:100%;">
+        <img src="/media/recipe_pics/easy.jpg" alt="Salmon for Lunch" style="width:100%;">
       </div>
     
       <div class="item">
-        <img src="easy.jpg" alt="Salmon for Dinner" style="width:100%;">
+        <img src="/media/recipe_pics/easy.jpg" alt="Salmon for Dinner" style="width:100%;">
       </div>
     </div>
+    
 
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -70,7 +74,6 @@
   </div>
 </div>
 
-    
 <div id="toplogin">
     <p><a href="signInPage.html">Log in</a> | <a href="signUpPage.html">Sign up</a></p>
 </div>
