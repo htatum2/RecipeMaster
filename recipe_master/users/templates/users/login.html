@@ -1,21 +1,59 @@
 {% extends "master_app/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <div class="content-section">
-        <form method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Log In</legend>
-                {{ form|crispy }}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Login</button>
+
+    <style>
+
+        body{
+            background: url(https://www.gannett-cdn.com/presto/2018/10/23/USAT/b9808fa5-03e7-4393-bf82-8f05d2b51040-GettyImages-882314812.jpg?crop=2120,1186,x0,y0&width=3200&height=1680&fit=bounds);
+        }
+
+        .login{
+            background-color: #9caf80;
+            height: auto;
+            width: 420px;
+            margin-top: 20%;
+            position: absolute;
+            left: 50%;
+            border: 3px solid black;
+            padding: 20px 20px;
+        }
+
+        .leg{
+            font-size: 30px;
+            padding-bottom: 4px;
+            border-bottom: 2px solid black;
+        }
+
+        form{
+            border-bottom: 2px solid black;
+        }
+
+        button{
+            border-color: black;
+        }
+
+
+    </style>
+
+<body>
+    <div class="container-center login">
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="leg">Log In</legend>
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-dark" type="submit">Login</button>
+                </div>
+            </form>
+            <div class="links">
+                <small class="text-muted">
+                    Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
+                </small>
             </div>
-        </form>
-        <div class="border-top pt-3">
-            <small class="text-muted">
-                Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
-            </small>
-        </div>
     </div>
+</body>
+
 {% endblock content %}
