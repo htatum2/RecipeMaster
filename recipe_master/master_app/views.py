@@ -70,7 +70,7 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
         form.instance.recipe_creator = self.request.user
         return super(RecipeCreateView, self).form_valid(form)
 
-class RecipeUpdateView(LoginRequiredMixin, UpdateView):
+class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Recipe
     fields = ['recipe_name', 
               'ingredients_list',

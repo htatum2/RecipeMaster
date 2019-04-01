@@ -34,7 +34,7 @@ class Recipe(models.Model):
     country = models.TextField(blank = True, null = True)
     calories = models.TextField(max_length=1000, default='')
     #rating=models.FloatRangeField(min_value=1.0, max_value=5.0)
-    meal_PrepTime_Minutes=models.IntegerField()
+    meal_PrepTime_Minutes= MinMaxFloat(min_value=5.0, max_value=480.0, default='5.0')
     image = models.ImageField(default='food_default.jpg', upload_to='recipe_pics')
     ingredients_list = models.TextField(max_length=500, default='')
     instructions = models.TextField(max_length=1000, default='')
