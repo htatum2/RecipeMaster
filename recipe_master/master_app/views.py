@@ -8,6 +8,7 @@ from django.views.generic import (
     UpdateView
 )
 from .models import Recipe
+from .filters import RecipeFilter
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import Http404,HttpResponse, HttpResponseRedirect
 from searchengine.web_search import google
@@ -112,11 +113,14 @@ def recipes(request):
     return render(request, 'master_app/recipes.html')
 
 def search(request):
-    if request.POST:
-        return render_to_response('master_app/search.html', {'result': google()})
+    recipes = Recipe.objects.all()
+    recipe_filter = RecipeFilter(request.GET, queryset=recipes)
+    return render(request, 'master_app/recipe_list.html',{'filter':recipe_filter})
+    #if request.POST:
+      #  return render_to_response('master_app/search.html', {'result': google()})
         #return HttpResponseRedirect("/")
-    else:
-        return render_to_response('master_app/search.html')
+    #else:
+        #return render_to_response('master_app/search.html')
 
 def veg_search(request):
     return render(request, 'master_app/veg_search.html')   

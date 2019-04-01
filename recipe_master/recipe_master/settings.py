@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'simple_elasticsearch',
+    'django_filters'
 ]
 
 HAYSTACK_CONNECTIONS = {
