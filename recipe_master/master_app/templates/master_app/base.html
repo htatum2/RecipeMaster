@@ -1,8 +1,49 @@
 {% load static %} <!--Loads static directory for .css files-->
+{% load static %} <!--Loads static directory for .css files-->
 <!DOCTYPE HTML>
 <html>
 <head>
         <head>
+
+            <style>
+
+                ul {
+                  list-style-type: none;
+                  margin: 0;
+                  padding: 0;
+                  overflow: hidden;
+                  background-color: #333;
+                }
+
+                li {
+                  float: left;
+                }
+
+                li a {
+                  display: block;
+                  color: white;
+                  text-align: center;
+                  padding: 14px 16px;
+                  text-decoration: none;
+                }
+
+                /* Change the link color to #111 (black) on hover */
+                li a:hover {
+                  background-color: #111;
+                }
+
+                .active {
+                    background-color: #4CAF50;
+                }
+
+                .about{
+                    text-decoration-color: #4CAF50; 
+                    float: center;
+                    text-align: center;
+                }
+
+            </style>
+
             <!-- Required meta tags -->
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,7 +62,26 @@
 </head>
 <body>
     <header class="site-header">
-        <nav class="navbar navbar-expand-md navbar-nav navbar-custom bg-success fixed-top">
+        <div class="head fixed-top">
+            <ul>
+                <li><a class="active" href="{% url 'master-home' %}">Home</a></li>
+                {% if user.is_authenticated %}
+                    <li style="float:right"><a href="{% url 'profile' %}">Profile</a></li>
+                    <li style="float:right"><a href="{% url 'logout' %}">Logout</a></li>
+                <!-- <a class="link fixed-top" href="{% url 'profile' %}">Profile</a>
+                    <a class="link fixed-top" href="{% url 'logout' %}">Logout</a> -->
+                {% else %}
+                    <li style="float:right"><a href="{% url 'login' %}">Login</a></li>
+                    <li style="float:right"><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="bottom fixed-bottom">
+            <ul>
+                <li><a class="about" href="{% url 'master-about' %}">About</a></li>
+            </ul>
+        </div>
+        <!-- <nav class="navbar navbar-expand-md navbar-nav navbar-custom bg-success fixed-top">
             <div class="container">
                 <a class="navbar-brand mr-4" href="{% url 'master-home' %}">RecipeMaster</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,9 +91,9 @@
                     <div class="navbar-nav mr-auto">
                       <a class="nav-item nav-link" href="{% url 'master-home' %}">Home</a>
                       <a class="nav-item nav-link" href="{% url 'master-about' %}">About</a>
-                    </div>
+                    </div> -->
                     <!-- Navbar Right Side -->
-                    <div class="navbar-nav">
+                    <!-- <div class="navbar-nav">
                         {% if user.is_authenticated %}
                             <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
                             <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
@@ -44,7 +104,7 @@
                     </div>
                 </div>
             </div>
-        </nav>
+        </nav> -->
     </header>
     <main role="main" class="container">
         <div class="row">
@@ -58,7 +118,7 @@
                 {% endif %}
                 {% block content %}{% endblock %}
             </div>
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
                 <div class="content-section">
                   <h3>Our Sidebar</h3>
                   <p class='text-muted'>Links to other Cool Stuff!
@@ -69,7 +129,7 @@
                     </ul>
                   </p>
                 </div>
-            </div>
+            </div> -->
         </div>
     </main>
 
