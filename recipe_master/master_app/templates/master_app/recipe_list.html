@@ -2,6 +2,17 @@
 
 
 {% block content %}
+<form method="get">
+  {{ filter.form.as_p }}
+  <button type="submit">Search</button>
+</form>
+<ul>
+{% for recipe in filter.qs %}
+  <li>{{ recipe. }} - {{ recipe.country }}</li>
+{% endfor %}
+</ul>
+
+<!---
 <h1>
   Recipe
   {% if user %}(<a href="{% url 'master_app:recipe_create' %}">add</a>){% endif %}
@@ -13,5 +24,6 @@
     {{ recipe.name }}</a></li>
   {% empty %}<li>Sorry, no recipes registered yet.</li>
   {% endfor %}
-</ul>
+</ul>-->
+
 {% endblock %}

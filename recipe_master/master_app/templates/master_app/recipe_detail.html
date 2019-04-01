@@ -1,22 +1,19 @@
 {% extends "master_app/base.html" %}
 {% block content %}
 <h1>
-
-    <span property="name">{{ recipe.name }}</span>
-
+{{ recipe.name }}
     {% if user == recipe.user %}
-
         (<a href="{% url 'master_app:recipe_edit' recipe.id %}">edit</a>)
-
     {% endif %}
+<p>    {{recipe.country}}</p>
 
 </h1>
+
+<h2>Description</h2>
 
 {% if recipe.image %}
   <p><img src="{{ recipe.image.url }}"/></p>
 {% endif %}
-
-<h2>Reviews</h2>
 
 {% if recipe.recipereview_set.all|length > 0 %}
 <span rel="aggregateRating">
@@ -72,7 +69,7 @@
   <p>Rating:</p>
   <p>
     {% for rate in RATING_CHOICES %}
-      <input type="radio" name="rating" id="rating{{ forloop.counter }}" value="{{ rate.0 }}" />
+      <input type="radio" name="overallRating" id="overallRating{{ forloop.counter }}" value="{{ rate.0 }}" />
       <label for="choice{{ forloop.counter }}">{{ rate.1 }} star{{rate.0|pluralize }}</label>
       <br/>
     {% endfor %}

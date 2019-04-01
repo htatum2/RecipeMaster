@@ -1,4 +1,7 @@
 from django.urls import path, include
+from django.utils import timezone
+from .models import Recipe
+from django.views.generic import DetailView, ListView
 #from django.conf.urls import url, include
 from .views import (
     RecipeListView, 
@@ -12,6 +15,7 @@ from . import views
 # RecipeDetailView expects modelName_detail.html
 # RecipeCreateView expects modelName_form.html
 
+
 urlpatterns = [
     path('', RecipeListView.as_view(), name='master-home'),
 
@@ -24,12 +28,12 @@ urlpatterns = [
     #Path to Update a current recipe
     path('recipe/<pk>/update/', RecipeUpdateView.as_view(), name='recipe-update'),
 
-    #TODO: Path to Create a Review about a specific recipe
+    #TODO: Path to Create a new Review about a specific recipe
     path('recipe/<pk>/reviews/new', views.review, name='review-new'),
 
     path('about/', views.about, name='master-about'),
     path('search/', views.search, name='master-search'),
-    path('search/', views.RecipeSearchListView, name='RecipeSearch'),
+    #path('search/', views.RecipeSearchListView, name='RecipeSearch'),
     path('profile/', views.profile, name='master-profile'),
     path('search/', views.search,name='searchengine-search'),
     path('recipes/', views.recipes,name='master-recipes'),
