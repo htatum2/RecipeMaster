@@ -8,11 +8,13 @@
             <style>
 
                 ul {
+                  height: 10%;
                   list-style-type: none;
                   margin: 0;
                   padding: 0;
                   overflow: hidden;
-                  background-color: rgba(51,51,51,0.7);
+                  background-color: rgba(51,51,51,0.8);
+                  /*background-color: rgb(51,51,51);*/
                 }
 
                 .bot {
@@ -36,7 +38,7 @@
                   display: block;
                   color: white;
                   text-align: center;
-                  padding: 14px 16px;
+                  padding: 21px 30px;
                   text-decoration: none;
                 }
 
@@ -46,16 +48,18 @@
                 }
 
                 .active {
+                    height: 10%;
                     background-color: #556C5B/*#4CAF50*/;
                    
                 }
-                .logo {
+
+                li img {
+                    /*background-color: #556C5B/*#4CAF50*/;*/
                     display: inline-block;
                     vertical-align: top;
-                    width: 200px;
-                    height: 100px;
-                    margin-right: 20px;
-                    margin-top: 0px;   
+                    width: 20%;
+                    height: 10%;
+                    margin-left: 80%;
                 }
 
             </style>
@@ -85,9 +89,9 @@
         <div class="head fixed-top">
             
             <ul>
-                <img style ="float:left" class="logo" src="/media/ORANGE.png">
-                <li  style="float:right"><a class="active"  href="{% url 'master-home' %}">Home</a></li>
-                <li style="float:right"><a href="{% url 'master-discover' %}">Discover</a></li>
+                <li  style="float:left"><a class="active"  href="{% url 'master-home' %}">Home</a></li>
+                <li style="float:left"><a href="{% url 'master-discover' %}">Discover</a></li>
+                <li style="float:center"><img class="logo" src="/media/ORANGE.png"></li>
                 {% if user.is_authenticated %}
                     <li style="float:right"><a href="{% url 'recipe-create' %}">New Recipe</a></li>
                     <li style="float:right"><a href="{% url 'profile' %}">Profile</a></li>
