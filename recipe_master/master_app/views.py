@@ -113,7 +113,7 @@ def review(request, pk):
 
 
 def about(request):
-    return render(request, 'master_app/home_javier.html')
+    return render(request, 'master_app/recipe_detail_test.html')
 
 def profile(request):
     return HttpResponse('<h1>Awesome profile view coming soon!</h1>')
