@@ -5,14 +5,80 @@
 <head>
 <title>RecipeMaster</title>
 <link href="main.css" rel="stylesheet" type="text/css">
-<style>
+<style> 
+    body {
+        background-color: #f1f1f1;
+        padding: 10px;
+        font-family: Arial;
+    }
+
+    .main {
+        max-width: 1000px;
+        margin: auto;
+    }
     
+    .button {
+        border: none;
+        outline: none;
+        padding: 12px 16px;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .button:hover {
+        background-color: #ddd;
+    }
+
+    .button.active {
+        background-color: #666;
+        color: white;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+    
+    .pictures {
+        margin: 10px -15px;
+    }
+
+    .pictures,
+    .pictures > .column {
+        padding: 5px;
+    }
+
+    .column {
+        float: left;
+        width: 33.33%;
+    }
+
+    .pictures:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .cont {
+        background-color: white;
+        padding: 10px;
+    }
 </style>
 </head>
-
 <body>
-    <script>
-    </script>
+   
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "200px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0px";
+    }
+</script>
     
 <div class="toplinks">
     <a href="{% url 'master-home' %}"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Home</p></button></a>
@@ -23,23 +89,84 @@
     <a href="social.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Social</p></button></a>
 </div>
 
-<!DOCTYPE html>
-<html lang="en">
-<!head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-</head>
-<body>
-
 <div id="toplogin">
     <p><a href="signInPage.html">Log in</a> | <a href="signUpPage.html">Sign up</a></p>
 </div>
+
+<div class="main">
+
+<h2>RECIPES</h2>
+<span style="cursor:pointer;float:right;" onclick="openNav()">&#9776; </span>
     
-<p>Coming soon..</p>
+<div id="buttons">
+  <button class="button active" onclick="filterSelection('all')"> All</button>
+  <button class="button" onclick="filterSelection('keto')"> Keto</button>
+  <button class="button" onclick="filterSelection('vegan')"> Vegan</button>
+  <button class="button" onclick="filterSelection('vegetarian')">Vegetarian</button>
+</div>
+
+<div class="pictures">
+  <div class="column vegan">
+    <div class="cont">
+      <img src="veganqueso.jpg" alt="Vegan Queso" style="width:100%">
+      <h4>Vegan Queso</h4>
+    </div>
+  </div>
+  <div class="column vegan">
+    <div class="cont">
+    <img src="veganSammich.jpeg" alt="Vegan Sandwich" style="width:100%">
+      <h4>Vegan Sandwich</h4>
+    </div>
+  </div>
+  <div class="column vegetarian">
+    <div class="cont">
+    <img src="VegeLasagnaSoup.jpg" alt="Vegetarian Lasagna Soup" style="width:100%">
+      <h4>Vegetarian Lasagna Soup</h4>
+    </div>
+  </div>
+  
+  <div class="column keto">
+    <div class="cont">
+      <img src="featured_rolls.jpg" alt="Spring Rolls" style="width:100%">
+      <h4>Spring Rolls</h4>
+    </div>
+  </div>
+  <div class="column vegan">
+    <div class="cont">
+    <img src="salad.jpg" alt="Salad" style="width:100%">
+      <h4>Salad</h4>
+    </div>
+  </div>
+  <div class="column all">
+    <div class="cont">
+    <img src="strawberrycake.jpg" alt="Strawberry Cake" style="width:100%">
+      <h4>Strawberry Cake</h4>
+    </div>
+  </div>
+
+  <div class="column all">
+    <div class="cont">
+      <img src="ChickenTacos.jpg" alt="Chicken Tacos" style="width:100%">
+      <h4>Chicken Tacos</h4>
+    </div>
+  </div>
+  <div class="column all">
+    <div class="cont">
+    <img src="creamypotatoes.jpg" alt="Creamy Potatoes" style="width:100%">
+      <h4>Creamy Potatoes</h4>
+    </div>
+  </div>
+  <div class="column all">
+    <div class="cont">
+    <img src="burger.jpg" alt="Burger" style="width:100%">
+      <h4>Burger</h4>
+    </div>
+  </div>
+</div>
+
+</div>
+    
+<hr>
 
 </body>
 </html>
