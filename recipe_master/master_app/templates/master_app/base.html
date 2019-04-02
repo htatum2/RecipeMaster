@@ -52,8 +52,8 @@
                 .logo {
                     display: inline-block;
                     vertical-align: top;
-                    width: 250px;
-                    height: 130px;
+                    width: 200px;
+                    height: 100px;
                     margin-right: 20px;
                     margin-top: 0px;   
                 }
@@ -86,7 +86,7 @@
             
             <ul>
                 <img style ="float:left" class="logo" src="/media/ORANGE.png">
-                <li><a class="active" style="float:right" href="{% url 'master-home' %}">Home</a></li>
+                <li  style="float:right"><a class="active"  href="{% url 'master-home' %}">Home</a></li>
                 <li style="float:right"><a href="{% url 'master-discover' %}">Discover</a></li>
                 {% if user.is_authenticated %}
                     <li style="float:right"><a href="{% url 'recipe-create' %}">New Recipe</a></li>
