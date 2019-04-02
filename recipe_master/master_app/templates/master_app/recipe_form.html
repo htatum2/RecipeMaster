@@ -1,6 +1,20 @@
 {% extends "master_app/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
+<style>
+    
+
+        body{
+            background: url("/media/yeah.jpg") no-repeat;
+            height: 2880;
+            width: 3200;
+            background-size: 2000px;
+
+        }
+        </style>
+        <br>
+        <br>
+        <br>
     <div class="content-section">
         <form method="POST">
             {% csrf_token %}
@@ -13,4 +27,7 @@
             </div>
         </form>
     </div>
+    <br>
+        <br>
+        <br>
 {% endblock content %}
