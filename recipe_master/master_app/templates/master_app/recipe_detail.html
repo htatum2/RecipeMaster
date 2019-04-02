@@ -22,12 +22,22 @@
 				  <div class="collapse navbar-collapse" id="navbarNav">
 				    <ul class="navbar-nav">
 						  {% if user.is_authenticated %}
-																<li class="nav-item active">
+									<li class="nav-item active">
 										<a class="nav-link" href="{% url 'profile' %}">Profile</a>
 									</li>
 									<li class="nav-item active">
 										<a class="nav-link" href="{% url 'logout' %}">Log Out</a>
 									</li>
+									{% if object.recipe_creator == user %}
+										<li class="nav-item active">
+											<a class="nav-link" href="{% url 'recipe-update' object.id %}">Update Recipe</a>
+										</li>
+									{% else %}
+									<li class="nav-item active">
+											<!-- The href will route to url recipe-review when model is implemented -->
+											<a class="nav-link" href="#">Rate Recipe</a>
+										</li>
+									{% endif %}
 									<li class="nav-item active">
 										<a class="nav-link" href="{% url 'master-discover' %}" tabindex="-1" aria-disabled="true">Discover</a>
 							{% else %}
