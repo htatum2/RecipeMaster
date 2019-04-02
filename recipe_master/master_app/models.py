@@ -34,7 +34,7 @@ class Recipe(models.Model):
     country = models.TextField(blank = True, null = True)
     category_choices = ((1, 'Vegan'), (2, 'Keto'), (3, 'Paleo'), (4, 'Vegetarian'), (5, 'General'))
     category = models.PositiveSmallIntegerField('Category', blank=False, default = 5, choices = category_choices)
-    calories = MinMaxFloat(min_value=0.0, max_value=10000.0)
+    calories = MinMaxFloat(min_value=0.0, max_value=10000.0, default=0.0)
     #rating=models.FloatRangeField(min_value=1.0, max_value=5.0)
     meal_PrepTime_Minutes= MinMaxFloat(min_value=5.0, max_value=10000.0)
     image = models.ImageField(default='food_default.jpg', upload_to='recipe_pics')
@@ -43,11 +43,11 @@ class Recipe(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)
     recipe_creator = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def __unicode__(self, **kwargs):
-        return u"%s" % self.name
+    # def __unicode__(self, **kwargs):
+    #     return u"%s" % self.name
 
     def get_absolute_url(self):
-        return reverse('master_app:recipe_detail', kwargs={'pk': self.pk})
+        return reverse('recipe-detail', kwargs={'pk': self.pk})
     
     def averageRating(self):
         reviewCount=self.recipereview_set.count()

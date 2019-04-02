@@ -69,9 +69,8 @@ class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     fields = ['recipe_name', 
               'ingredients_list',
               'instructions', 
-              'overallRating', 
               'image', 
-              'mealPrepTimeMinutes']
+              'meal_PrepTime_Minutes']
 
     def form_valid(self, form):
         form.instance.recipe_creator = self.request.user
