@@ -1,66 +1,53 @@
+{% extends "master_app/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
 <!DOCTYPE html>
 <html>
 
 <head>
 	<title>{{ object.recipe_name }}</title>
-	<link rel="stylesheet" type="text/css" href="recipePagesStyle.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" type="text/css" href="recipePagesStyle.css"> -->
+
+	<style>
+
+		#recipeName{
+			text-align: center;
+			padding-bottom: 1%;
+		}
+
+		#recipePicture{
+			border-radius: 1%;
+		}
+
+		.summary{
+			padding: 3%;
+		}
+
+		h2{
+			font-size: 40px;
+		}
+
+		li{
+			font-size: 20px;
+		}
+
+		.summary{
+			font-size: 20px;
+		}
+
+		.howTo{
+			margin-left: 3%%;
+		}
+
+		body{
+			margin-left: 20%;
+		}
+
+	</style>
 
 </head>
 
 <body>
-
-	<div class="heading">
-
-		<div class="jumbotron jumbotron-fluid">
-  			<div class="container">
-				<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				  <a class="navbar-brand" href="{% url 'master-home' %}">RecipeMaster</a>
-				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-				    <span class="navbar-toggler-icon"></span>
-				  </button>
-				  <div class="collapse navbar-collapse" id="navbarNav">
-				    <ul class="navbar-nav">
-						  {% if user.is_authenticated %}
-									<li class="nav-item active">
-										<a class="nav-link" href="{% url 'profile' %}">Profile</a>
-									</li>
-									<li class="nav-item active">
-										<a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-									</li>
-									{% if object.recipe_creator == user %}
-										<li class="nav-item active">
-											<a class="nav-link" href="{% url 'recipe-update' object.id %}">Update Recipe</a>
-										</li>
-										<li class="nav-item active">
-											<a class="nav-link" href="{% url 'recipe-delete' object.id %}">Delete Recipe</a>
-										</li>
-									{% else %}
-									<li class="nav-item active">
-											<!-- The href will route to url recipe-review when model is implemented -->
-											<a class="nav-link" href="#">Rate Recipe</a>
-										</li>
-									{% endif %}
-									<li class="nav-item active">
-										<a class="nav-link" href="{% url 'master-discover' %}" tabindex="-1" aria-disabled="true">Discover</a>
-							{% else %}
-									<li class="nav-item active">
-										<a class="nav-link" href="{% url 'login' %}">Login</a>
-									</li>
-									<li class="nav-item active">
-										<a class="nav-link" href="{% url 'register' %}">Sign Up</a>
-									</li>
-									<li class="nav-item active">
-										<a class="nav-link" href="{% url 'master-discover' %}%" tabindex="-1" aria-disabled="true">Discover</a>
-									</li>
-							{% endif %}
-				    </ul>
-				  </div>
-				</nav>
-  			</div>
-		</div>
-
-	</div>
 
 	<class="bodyNotNav">
 
@@ -91,7 +78,7 @@
 	  <div class="row">
 	    <div class="col">
 	    	<h2><u>Ingredients:</u></h2>
-			<ul>
+			<ol>
 				<li>1 tablespoon of salted butter</li>
 				<li>1/2 a garlic clove, grated</li>
 				<li>1/2 a tablspoon of parsley</li>
@@ -100,7 +87,7 @@
 				<li>3/4 a cup of shredded cheddar cheese</li>
 				<li>1/4 a cup of fontina cheese</li>
 				<li>honey</li>
-			</ul>
+			</ol>
 		</div>
 	    <div class="col">
 	    	<h2><u>Directions:</u></h2>
@@ -125,3 +112,4 @@
 </body>
 
 </html>
+{% endblock content %}
