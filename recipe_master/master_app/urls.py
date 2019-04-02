@@ -1,6 +1,7 @@
 from django.urls import path, include
 from django.utils import timezone
 from .models import Recipe
+#from filterview import FilterView
 from django.views.generic import DetailView, ListView
 #from django.conf.urls import url, include
 from .views import (
@@ -32,10 +33,10 @@ urlpatterns = [
     path('recipe/<pk>/reviews/new', views.review, name='review-new'),
 
     path('about/', views.about, name='master-about'),
-    path('search/', views.search, name='master-search'),
+    path('search/', views.recipe_list),
     #path('search/', views.RecipeSearchListView, name='RecipeSearch'),
     path('profile/', views.profile, name='master-profile'),
-    path('search/', views.search,name='searchengine-search'),
+    #path('search/', views.search,name='searchengine-search'),
     path('recipes/', views.recipes,name='master-recipes'),
     path('discover/', views.discover, name='master-discover'),
     path('search/veg_search.html', views.veg_search, name='searchengine-search'),

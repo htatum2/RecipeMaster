@@ -39,11 +39,11 @@ def home(request):
     context = {
         'recipes': Recipe.objects.all()
     }
-    return render(request, 'master_app/home.html', context)
+    return render(request, 'master_app/home_javier.html', context)
 
 class RecipeListView(ListView):
     model = Recipe
-    template_name = 'master_app/home.html'
+    template_name = 'master_app/home_javier.html'
     context_object_name = 'recipes'
     ordering = ['-date_posted']
 
@@ -107,7 +107,7 @@ def review(request, pk):
 
 
 def about(request):
-    return render(request, 'master_app/grilledCheeseNaan.html')
+    return render(request, 'master_app/home_javier.html')
 
 def profile(request):
     return HttpResponse('<h1>Awesome profile view coming soon!</h1>')
@@ -118,15 +118,7 @@ def veganrecipes(request):
 def recipes(request):
     return render(request, 'master_app/recipes.html')
 
-def search(request):
-    recipes = Recipe.objects.all()
-    recipe_filter = RecipeFilter(request.GET, queryset=recipes)
-    return render(request, 'master_app/recipe_list.html',{'filter':recipe_filter})
-    #if request.POST:
-      #  return render_to_response('master_app/search.html', {'result': google()})
-        #return HttpResponseRedirect("/")
-    #else:
-        #return render_to_response('master_app/search.html')
+
 
 def veg_search(request):
     return render(request, 'master_app/veg_search.html')   
@@ -154,3 +146,13 @@ class RecipeSearchListView(RecipeListView):
             )
 
         return result
+
+def recipe_list(request):
+    recipes = Recipe.objects.all()
+    recipe_filter = RecipeFilter(request.GET, queryset=recipes)
+    return render(request, 'master_app/recipe_list.html',{'filter':recipe_filter})
+    #if request.POST:
+      #  return render_to_response('master_app/search.html', {'result': google()})
+        #return HttpResponseRedirect("/")
+    #else:
+        #return render_to_response('master_app/search.html')

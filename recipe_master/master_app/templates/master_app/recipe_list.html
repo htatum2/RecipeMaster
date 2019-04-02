@@ -1,29 +1,14 @@
-{% extends "master_app/base.html" %}
+
+
 
 
 {% block content %}
-<form method="get">
-  {{ filter.form.as_p }}
-  <button type="submit">Search</button>
-</form>
-<ul>
-{% for recipe in filter.qs %}
-  <li>{{ recipe. }} - {{ recipe.country }}</li>
-{% endfor %}
-</ul>
-
-<!---
-<h1>
-  Recipe
-  {% if user %}(<a href="{% url 'master_app:recipe_create' %}">add</a>){% endif %}
-</h1>
-
-<ul>
-  {% for recipe in latest_recipe_list %}
-    <li><a href="{% url 'master_app:recipe_detail' recipe.id %}">
-    {{ recipe.name }}</a></li>
-  {% empty %}<li>Sorry, no recipes registered yet.</li>
-  {% endfor %}
-</ul>-->
-
+    <form action="" method="get">
+        {{ filter.form.as_p }}
+        <input type="submit" />
+    </form>
+    {% for obj in filter.qs %}
+        {{ obj.name }} - ${{ obj.price }}<br />
+    {% endfor %}
 {% endblock %}
+

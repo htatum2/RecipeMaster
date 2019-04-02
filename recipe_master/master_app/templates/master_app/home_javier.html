@@ -9,9 +9,11 @@
               <small class="text-muted">{{ recipe.date_posted|date:"F d, Y" }}</small>
             </div>
             <h2><a class="article-title" href="{% url 'recipe-detail' recipe.id %}">{{ recipe.recipe_name }}</a></h2>
-            <p class="article-content">{{ recipe.content }}</p>
+            <p class="article-content">{{ recipe.ingredients_list }}</p>
           </div>
           <a href="{% url 'recipe-detail' recipe.id %}"> <img class="rounded-circle account-img" src="{{ recipe.image.url }}"></a></img>
         </article>
+       
+
     {% endfor %}
 {% endblock content %}
