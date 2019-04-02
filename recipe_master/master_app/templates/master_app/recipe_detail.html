@@ -66,7 +66,7 @@
 
 	<div class="summary">
 		<div class="text-center">
-			This vegetarian dish is easy to make and even easier to love. The interesting mix of garlic, honey, and cheese may have you going "Huh?", but after making this delicious recipe you'll find yourself with an empty plate soon and only wanting more.
+			{{ object.description }}
 		</div>
 	</div>
 
@@ -78,27 +78,11 @@
 	  <div class="row">
 	    <div class="col">
 	    	<h2><u>Ingredients:</u></h2>
-			<ol>
-				<li>1 tablespoon of salted butter</li>
-				<li>1/2 a garlic clove, grated</li>
-				<li>1/2 a tablspoon of parsley</li>
-				<li>1/2 a tablespoon of cilantro</li>
-				<li>1 piece of naan</li>
-				<li>3/4 a cup of shredded cheddar cheese</li>
-				<li>1/4 a cup of fontina cheese</li>
-				<li>honey</li>
-			</ol>
+				{{object.ingredients_list}}
 		</div>
 	    <div class="col">
 	    	<h2><u>Directions:</u></h2>
-			<ol>
-				<li>Mix the garlic, herbs, and butter together in a bowl</li>
-				<li>Spread garlic butter on one side of the naan</li>
-				<li>Layer the cheese on one half of the other, garlic-less side of naan</li>
-				<li>Fold the cheese-less side of the naan over the side with the cheese so that it resembles a pizza</li>
-				<li>Heat the naan on a skillet until each side is golden</li>
-				<li>Serve topped with honey and enjoy!</li>
-			</ol>
+				{{object.instructions}}
 	    </div>
 	  </div>
 	</div>
