@@ -43,7 +43,6 @@ button.toplinksbutton {
 .toplinks {
     position: relative;
     display: inline-block;
-    float: left;
 }
 
 .toplinks:hover {

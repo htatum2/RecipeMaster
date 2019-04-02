@@ -48,6 +48,14 @@
                 .active {
                     background-color: #556C5B/*#4CAF50*/;
                 }
+                .logo {
+                    display: inline-block;
+                    vertical-align: top;
+                    width: 100px;
+                    height: 70px;
+                    margin-right: 20px;
+                    margin-top: 0px;   
+                }
 
             </style>
 
@@ -71,7 +79,9 @@
     <header class="site-header">
         <div class="row">
         <div class="head fixed-top">
+            
             <ul>
+                <img style ="float:left" class="logo" src="/media/greenlogo.jpg">
                 <li><a class="active" href="{% url 'master-home' %}">Home</a></li>
                 <li><a href="{% url 'master-discover' %}">Discover</a></li>
                 {% if user.is_authenticated %}
@@ -85,6 +95,10 @@
             </ul>
         </div>
         </div>
+        <div class="sidenav">
+            {% block sidenav %}
+            {% endblock %}
+              </div>
         <div class="bottom fixed-bottom bot">
             <div class="text-center">
                 <a style="color:white;" class="about" href="{% url 'master-about' %}">About</a>
