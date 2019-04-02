@@ -16,35 +16,19 @@ class MinMaxFloat(models.FloatField):
         defaults.update(kwargs)
         return super(MinMaxFloat, self).formfield(**defaults)
 
-'''
-class RecipeManager(models.Manager):
-    
-    def create_recipe(self, recipe_name, overallRating, authenticityRating,
-    mealPrepTimeMinutes, descriptionTags, image, content, date_posted, 
-    recipe_creater):
-        recipe=self.create(recipe_name=recipe_name, overallRating=overallRating, 
-        authenticityRating=authenticityRating, mealPrepTimeMinutes=mealPrepTimeMinutes, 
-        descriptionTags=descriptionTags, image=image, content=content, 
-        date_posted=date_posted)
-        return recipe
-'''        
-
 class Recipe(models.Model):
     recipe_name = models.CharField(max_length=100)
-    country = models.TextField(blank = True, null = True)
+    country = models.CharField(max_length=100, default='')
     category_choices = ((1, 'Vegan'), (2, 'Keto'), (3, 'Paleo'), (4, 'Vegetarian'), (5, 'General'))
     category = models.PositiveSmallIntegerField('Category', blank=False, default = 5, choices = category_choices)
+    description = models.CharField(max_length=200, default='')
     calories = MinMaxFloat(min_value=0.0, max_value=10000.0, default=0.0)
-    #rating=models.FloatRangeField(min_value=1.0, max_value=5.0)
     meal_PrepTime_Minutes= MinMaxFloat(min_value=5.0, max_value=10000.0)
     image = models.ImageField(default='food_default.jpg', upload_to='recipe_pics')
     ingredients_list = models.TextField(max_length=500, default='')
     instructions = models.TextField(max_length=1000, default='')
     date_posted = models.DateTimeField(default=timezone.now)
     recipe_creator = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    # def __unicode__(self, **kwargs):
-    #     return u"%s" % self.name
 
     def get_absolute_url(self):
         return reverse('recipe-detail', kwargs={'pk': self.pk})
