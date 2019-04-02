@@ -8,7 +8,7 @@ class RecipeFilter(django_filters.FilterSet):
     #calories_gt= django_filters.NumberFilter(name='calories', lookup_expr='gt')
     class Meta:
         model=Recipe
-        fields = ['calories']
+        fields = ['country', 'calories','meal_PrepTime_Minutes']
 
 
 

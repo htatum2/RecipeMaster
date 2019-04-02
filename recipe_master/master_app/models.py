@@ -33,6 +33,7 @@ class Recipe(models.Model):
     recipe_name = models.CharField(max_length=100)
     country = models.TextField(blank = True, null = True)
     category_choices = ((1, 'Vegan'), (2, 'Keto'), (3, 'Paleo'), (4, 'Vegetarian'))
+    #category = models.PositiveSmallIntegerField('Category', blank=False, default =3 , choices = category_choices)
     calories = MinMaxFloat(min_value=0.0, max_value=10000.0)
     #rating=models.FloatRangeField(min_value=1.0, max_value=5.0)
     meal_PrepTime_Minutes= MinMaxFloat(min_value=5.0, max_value=10000.0)
