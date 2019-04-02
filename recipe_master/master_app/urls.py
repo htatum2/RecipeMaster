@@ -37,11 +37,11 @@ urlpatterns = [
     path('recipe/<pk>/reviews/new', views.review, name='review-new'),
 
     path('about/', views.about, name='master-about'),
-    path('search/', views.recipe_list),
-    #path('search/', views.RecipeSearchListView, name='RecipeSearch'),
+
+    #Removing this because the search ability will now be on the Discover page
+    # path('search/', views.recipe_list),
     path('profile/', views.profile, name='master-profile'),
-    #path('search/', views.search,name='searchengine-search'),
     path('recipes/', views.recipes,name='master-recipes'),
-    path('discover/', views.discover, name='master-discover'),
+    path('discover/', views.recipe_list, name='master-discover'),
     path('search/veg_search.html', views.veg_search, name='searchengine-search'),
 ]
