@@ -1,0 +1,99 @@
+{% extends "master_app/base.html" %}
+{% block content %}
+<h1>
+{{ recipe.name }}
+    {% if user == recipe.user %}
+        (<a href="{% url 'master_app:recipe_edit' recipe.id %}">edit</a>)
+    {% endif %}
+<p>    {{recipe.country}}</p>
+
+</h1>
+
+<h2>Description</h2>
+
+{% if recipe.image %}
+  <p><img src="{{ recipe.image.url }}"/></p>
+{% endif %}
+
+{% if recipe.recipereview_set.all|length > 0 %}
+<span rel="aggregateRating">
+    <p typeof="AggregateRating">
+        Average rating <span property="ratingValue">{{ recipe.averageRating|stringformat:".1f" }}</span>
+        {% with recipe.recipereview_set.all|length as reviewCount %}
+        from <span property="reviewCount">{{ reviewCount }}</span> review{{ reviewCount|pluralize }}
+        {% endwith %}
+    </p>
+</span>
+
+<ul rel="review">
+
+    {% for review in recipe.recipereview_set.all %}
+
+        <li typeof="Review">
+
+            <p rel="reviewRating" typeof="Rating">
+
+                <span property="worstRating" content="{{ RATING_CHOICES.0.0 }}"></span>
+
+                <span property="ratingValue">{{ review.rating }}</span> star{{ review.rating|pluralize }}
+
+                {% with RATING_CHOICES|last as best %}
+
+                <span property="bestRating" content="{{ best.0 }}"></span>
+
+                {% endwith %}
+
+            </p>
+
+            <p property="description">{% if review.comment %}{{ review.comment }}{% endif %}</p>
+
+            <p>Created by <span property="author">{{ review.user }}</span> on
+
+                <span property="datePublished" content="{{ review.date|date:'Y-m-d' }}">{{ review.date }}</span></p>
+
+        </li>
+
+    {% endfor %}
+
+</ul>
+
+{% endif %}
+</span>
+
+<h3>Add Review</h3>
+
+<form action="{% url 'master_app:review_create' recipe.id %}" method="post">
+  {% csrf_token %}
+
+  Message: <textarea name="comment" id="comment" rows="4"></textarea>
+  <p>Rating:</p>
+  <p>
+    {% for rate in RATING_CHOICES %}
+      <input type="radio" name="overallRating" id="overallRating{{ forloop.counter }}" value="{{ rate.0 }}" />
+      <label for="choice{{ forloop.counter }}">{{ rate.1 }} star{{rate.0|pluralize }}</label>
+      <br/>
+    {% endfor %}
+  </p>
+  <input type="submit" value="Review" />
+</form>
+<!---
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ object.recipe_creator }}</a>
+              <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <h2 class="article-title">{{ object.recipe_name }}</h2>
+            <p class="article-content">{{ object.ingredients_list }}</p>
+            <p class="article-content">{{ object.instructions }}</p>
+          </div>
+          <img class="rounded-circle account-img" src="{{ object.image.url }}">
+        </article>
+
+      -->
+{% endblock content %}
+{% block footer %}
+
+Created by {{ recipe.user }} on {{ recipe.date }}
+
+{% endblock %}
