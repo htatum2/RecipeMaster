@@ -5,7 +5,8 @@ from django.views.generic import (
     ListView, 
     DetailView, 
     CreateView,
-    UpdateView
+    UpdateView,
+    DeleteView
 )
 from .models import Recipe
 from .filters import RecipeFilter
@@ -85,6 +86,16 @@ class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             return True
         return False
 
+class RecipeDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Recipe
+    success_url = '/'
+
+    def test_func(self):
+            recipe = self.get_object()
+            if self.request.user == recipe.recipe_creator:
+                return True
+            return False
+
 @login_required
 def review(request, pk):
     recipe = get_object_or_404(Recipe, pk=pk)
@@ -102,7 +113,7 @@ def review(request, pk):
 
 
 def about(request):
-    return render(request, 'master_app/home_javier.html')
+    return render(request, 'master_app/recipe_detail_test.html')
 
 def profile(request):
     return HttpResponse('<h1>Awesome profile view coming soon!</h1>')

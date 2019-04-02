@@ -90,7 +90,7 @@
 </div>
 
 <div id="toplogin">
-    <p><a href="signInPage.html">Log in</a> | <a href="signUpPage.html">Sign up</a></p>
+    <p><a href="{% url 'login' %}">Log in</a> | <a href="{% url 'register' %}">Sign up</a></p>
 </div>
 
 <div class="main">
@@ -108,13 +108,13 @@
 <div class="pictures">
   <div class="column vegan">
     <div class="cont">
-      <img src="veganqueso.jpg" alt="Vegan Queso" style="width:100%">
+      <img src="/media/veganqueso.jpg" alt="Vegan Queso" style="width:100%">
       <h4>Vegan Queso</h4>
     </div>
   </div>
   <div class="column vegan">
     <div class="cont">
-    <img src="veganSammich.jpeg" alt="Vegan Sandwich" style="width:100%">
+    <img src="/media/veganSammich.jpeg" alt="Vegan Sandwich" style="width:100%">
       <h4>Vegan Sandwich</h4>
     </div>
   </div>
