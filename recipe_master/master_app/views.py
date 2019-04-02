@@ -32,6 +32,7 @@ class CheckOwner(object):
         if not obj.user == self.request.user:
             raise PermissionDenied
         return obj
+
 class LogInBeforeChanging(LoginRequiredMixin, CheckOwner, UpdateView):
     template_name ='master_app/form.html'
 
@@ -39,22 +40,16 @@ def home(request):
     context = {
         'recipes': Recipe.objects.all()
     }
-    return render(request, 'master_app/home.html', context)
+    return render(request, 'master_app/home_javier.html', context)
 
 class RecipeListView(ListView):
     model = Recipe
-    template_name = 'master_app/home.html'
+    template_name = 'master_app/home_javier.html'
     context_object_name = 'recipes'
     ordering = ['-date_posted']
 
 class RecipeDetailView(DetailView):
     model = Recipe
-    template_name='master_app/recipe_detail.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(RecipeDetailView,self).get_context_data(**kwargs)
-        context['RATING_CHOICES']=RecipeReview.RATING_CHOICES
-        return context
 
 class RecipeCreateView(LoginRequiredMixin, CreateView):
     model = Recipe
