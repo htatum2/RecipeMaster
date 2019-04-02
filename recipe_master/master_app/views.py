@@ -38,11 +38,7 @@ class LogInBeforeChanging(LoginRequiredMixin, CheckOwner, UpdateView):
     template_name ='master_app/form.html'
 
 def home(request):
-    #context = {
-        #'recipes': Recipe.objects.all()
-    #}
-    return render(request, 'master_app/home.html'#, context
-    )
+    return render(request, 'master_app/home.html')
 
 class RecipeListView(ListView):
     model = Recipe
