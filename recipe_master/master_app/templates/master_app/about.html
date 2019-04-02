@@ -1,22 +1,20 @@
-
 <!DOCTYPE HTML>
 <html>
 <!----
 <head>
     <title>ABOUT RecipeMaster</title>
-
 <style>
-body, html 
-{
-  height: 100%;
-  font-family: "Inconsolata", sans-serif;
-}
+  body, html 
+  {
+    height: 100%;
+    font-family: "Inconsolata", sans-serif;
+  }
 
-.bgimg {
-  background-position: center;
-  background-size: cover;
-  min-height: 75%;
-}
+  .bgimg {
+    background-position: center;
+    background-size: cover;
+    min-height: 75%;
+  }
 
 .menu {
   display: none;
@@ -32,44 +30,53 @@ body, html
     <a href="social.html"><button class="toplinksbutton"><p style="font-size: 5pt; color: black">Social</p></button></a>
 </div>-->
 
+    a:link {
+        color: white;
+    }
 
-<!-- Add a background color and large text to the whole page -->
-<div class="w3-sand w3-grayscale w3-large">
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+                /* Change the link color to #111 (black) on hover */
+    li a:hover {
+        background-color: #111;
+    }
+
+    .active {
+        background-color: #556C5B/*#4CAF50*/;
+    }
+</style>
+<body>
+
+  <div class="toplinks">
+    <a href="{% url 'master-home' %}"><button class="toplinksbutton"><p>Home</p></button></a>
+    <a href="{% url 'master-about' %}"><button class="toplinksbutton"><p>About</p></button></a>
+    <a href="{% url 'master-discover' %}"><button class="toplinksbutton"><p>Discover</p></button></a>
+    <a href="social.html"><button class="toplinksbutton"><p>Social</p></button></a>
+  </div>
 
 <!-- About Container -->
-<div class="w3-container" id="about">
-  <div class="w3-content" style="max-width:700px">
-    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ABOUT RecipeMaster</span></h5>
-    <p>RecipeMaster was founded by 6 Computer Science/Computer Engineering students at Louisiana State University. </p>
-    <p>We strive to bring you the most authentic recipes possible. </p>
+  <div class="w3-container" id="about">
+    <div class="w3-content" style="max-width:700px">
+      <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ABOUT RecipeMaster</span></h5>
+      <p>RecipeMaster was founded by 6 Computer Science/Computer Engineering students at Louisiana State University. </p>
+      <p>We strive to bring you the most authentic recipes possible. </p>
     <div class="w3-panel w3-leftbar w3-light-grey">
       <p><i>"Hard times arouse an instinctive desire for authenticity".</i></p>
       <p>-Coco Chanel</p>
     </div>
-    <img src="C:\Users\HaleyTatum\Documents\GitHub\RecipeMaster\recipe_master\master_app\templates\master_app\images\pie.jpg" style="width:100%;max-width:1000px" class="w3-margin-top">
+    <img src="/media/head2.jpeg" class="w3-margin-top">
   </div>
 </div>
-
-
-
-<!-- Contact/Area Container -->
-<div class="w3-container" id="where" style="padding-bottom:32px;">
-  <div class="w3-content" style="max-width:700px">
-    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">CONTACT US</span></h5>
-    <p><span class="w3-tag">FYI!</span> We gladly take any comments, recommendations, or requests for any content of our website.</p>
-    <p><strong>Contact</strong> us for a quick response, or just send us a message:</p>
-    <form action="/action_page.php" target="_blank">
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="Contact Info" required name="Contact"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Subject" required name="Subject"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message \ Special requirements" required name="Message"></p>
-      <p><button class="w3-button w3-black" type="submit">SEND MESSAGE</button></p>
-    </form>
-  </div>
-</div>
-</div>
-
-
 
 </body>
 </html>

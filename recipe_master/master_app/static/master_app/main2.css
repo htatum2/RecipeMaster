@@ -59,7 +59,7 @@ div#toplogin {
 }
 
 #headerImage {
-    background-image: url("head.jpg");
+    background-image: url('{{ STATIC_URL }}media/head2.jpg');
     /* Credit to Olenka Kotyk on Unsplash for the image @olenka_kotyk */
     height: 80%;
     background-position: center;
