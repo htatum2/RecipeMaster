@@ -2,11 +2,14 @@
 {% extends "master_app/base.html" %}
 {% load crispy_forms_tags %} 
 
-{% block sidenav %}
-
-{% endblock %}
 
 {% block content %}
+<!---<style>
+
+    body{
+        background: url("/media/peppers.jpg");
+    }
+    </style>-->
     <form action="" method="get">
         {{ filter.form.as_p }}
         <input type="submit" />

@@ -12,7 +12,7 @@
                   margin: 0;
                   padding: 0;
                   overflow: hidden;
-                  background-color: rgba(51,51,51,0.8);
+                  background-color: rgba(51,51,51,0.7);
                 }
 
                 .bot {
@@ -47,31 +47,31 @@
 
                 .active {
                     background-color: #556C5B/*#4CAF50*/;
+                   
                 }
                 .logo {
                     display: inline-block;
                     vertical-align: top;
-                    width: 100px;
-                    height: 70px;
+                    width: 250px;
+                    height: 130px;
                     margin-right: 20px;
                     margin-top: 0px;   
                 }
-           
 
             </style>
 
             <!-- Required meta tags -->
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            {% block extra_css %}{% endblock %}
+            
 
             <!-- Bootstrap CSS -->
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
             <link rel="stylesheet" type="text/css" href="{% static 'master_app/main.css' %}">
             <link rel="stylesheet" type ="text/css" href="cooler_main.css">
-            {% block extra_css %}{% endblock %}
+            
         </head>
-    
+        
     {% if title %}
         <title>RecipeMaster - {{ title}}</title>
     {% else %}
@@ -79,14 +79,15 @@
     {% endif %}
 </head>
 <body>
+    {% block background %}{% endblock %}
     <header class="site-header">
         <div class="row">
         <div class="head fixed-top">
             
             <ul>
-                <img style ="float:left" class="logo" src="/media/greenlogo.jpg">
-                <li><a class="active" href="{% url 'master-home' %}">Home</a></li>
-                <li><a href="{% url 'master-discover' %}">Discover</a></li>
+                <img style ="float:left" class="logo" src="/media/ORANGE.png">
+                <li><a class="active" style="float:right" href="{% url 'master-home' %}">Home</a></li>
+                <li style="float:right"><a href="{% url 'master-discover' %}">Discover</a></li>
                 {% if user.is_authenticated %}
                     <li style="float:right"><a href="{% url 'recipe-create' %}">New Recipe</a></li>
                     <li style="float:right"><a href="{% url 'profile' %}">Profile</a></li>
