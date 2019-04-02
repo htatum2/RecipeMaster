@@ -19,7 +19,8 @@ from . import views
 
 
 urlpatterns = [
-    path('', RecipeListView.as_view(), name='master-home'),
+    #path('', RecipeListView.as_view(), name='master-home'),
+    path('', views.home, name='master-home'),
 
     #Path to see details about a specific recipe
     path('recipe/<pk>/', RecipeDetailView.as_view(), name='recipe-detail'),

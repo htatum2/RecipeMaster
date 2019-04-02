@@ -41,7 +41,7 @@ def home(request):
     context = {
         'recipes': Recipe.objects.all()
     }
-    return render(request, 'master_app/home_javier.html', context)
+    return render(request, 'master_app/home.html', context)
 
 class RecipeListView(ListView):
     model = Recipe
