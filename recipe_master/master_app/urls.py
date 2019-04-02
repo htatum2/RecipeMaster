@@ -9,6 +9,7 @@ from .views import (
     RecipeDetailView, 
     RecipeCreateView,
     RecipeUpdateView,
+    RecipeDeleteView,
     review
 )
 from . import views
@@ -28,6 +29,8 @@ urlpatterns = [
 
     #Path to Update a current recipe
     path('recipe/<pk>/update/', RecipeUpdateView.as_view(), name='recipe-update'),
+
+    path('recipe/<pk>/delete/', RecipeDeleteView.as_view(), name='recipe-delete'),
 
     #TODO: Path to Create a new Review about a specific recipe
     path('recipe/<pk>/reviews/new', views.review, name='review-new'),
