@@ -1,4 +1,5 @@
 
+{% extends "master_app/base.html" %}
 {% load crispy_forms_tags %} 
 
 
@@ -8,21 +9,20 @@
         <input type="submit" />
     </form>
     {% for obj in filter.qs %}
-   
-    {% for recipe in recipes %}
-  
+
     <article class="media content-section">
-        <div class="media-body">
-          <div class="article-metadata">
-                <a class="mr-2" href="#">{{ recipe.recipe_creator }}</a>
-                <small class="text-muted">{{ recipe.date_posted|date:"F d, Y" }}</small>
-              </div>
-              <h2><a class="article-title" href="{% url 'recipe-detail' recipe.id %}">{{ recipe.recipe_name }}</a></h2>
-            <p class="article-content">{{ recipe.ingredients_list }}</p>
-          </div>
-          <a href="{% url 'recipe-detail' recipe.id %}"> <img class="rounded-circle account-img" src="{{ recipe.image.url }}"></a></img>
-        </article>
-        {% endfor %}
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="#">{{ obj.recipe_creator }}</a>
+          <small class="text-muted">{{ obj.date_posted|date:"F d, Y" }}</small>
+        </div>
+        <h2><a class="article-title" href="{% url 'recipe-detail' obj.id %}">{{ obj.recipe_name }}</a></h2>
+        <p class="article-content">Prep Time: {{ obj.meal_PrepTime_Minutes }} m </p>
+      </div>
+      <a href="{% url 'recipe-detail' obj.id %}"> <img class="rounded-circle account-img" src="{{ obj.image.url }}"></a></img>
+    </article>
+   
+
     {% endfor %}
 {% endblock %}
 
