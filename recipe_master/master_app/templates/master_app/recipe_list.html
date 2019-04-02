@@ -8,7 +8,7 @@
         <input type="submit" />
     </form>
     {% for obj in filter.qs %}
-        {{ obj.name }} - ${{ obj.calories }}<br />
+        {{ obj.recipe_name }} - {{ obj.countries }}<br />
     {% endfor %}
 {% endblock %}
 
