@@ -1,9 +1,13 @@
+
 <!DOCTYPE>
 <html>
 
 <head>
 <title>RecipeMaster</title>
-<link href="main.css" rel="stylesheet" type="text/css">
+{% load static %}
+<link rel="stylesheet" type="text/css" 
+    href="{% static 'master_app/main2.css' %}">
+
 <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> -->
 <style>
 
@@ -105,7 +109,6 @@
     </main>
 
     
-<!--
 <div id="headerImage">
     <div class="headerText">
         <h1 style="color:white; font-size:40pt">Discover Recipes</h1>
@@ -114,23 +117,6 @@
         </div>
     </div>
 </div>
--->
-
-
-<!--We may add a login box later...
-    <div id="login">
-        <form>
-            <p>Login Here</p>
-            <p>Username</p>
-            <input type="text" name="" placeholder="Enter Username">
-            <p>Password</p>
-            <input type="password" name="" placeholder="Enter Password">
-            <input type="submit" name="" value="Login">
-            <br/>
-            <a href="#">Lost your password?</a><br/>
-            <a href="#">Don't have an account?</a>
-        </form>
-    </div>-->
     
 
 <div id="mid">
@@ -145,6 +131,7 @@
 
     <div class="featuredpics">
     
+        
     <h3>Salad </h3><h3>Vegan Sandwich </h3><h3>Strawberry and Raspberry Cake </h3>
     <img src="/media/salad.jpg" alt="Salad" class="featuredRecipes" />
     <img src="/media/veganSammich.jpeg" alt="Vegan Sandwich" class="featuredRecipes" />
