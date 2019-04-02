@@ -42,21 +42,9 @@ INSTALLED_APPS = [
     #'django.contrib.sites', # If you add this build will break
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'simple_elasticsearch',
     'django_filters'
 ]
 
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': 'http://127.0.0.1:9200/',
-        'INDEX_NAME': 'haystack',
-    },
-}
-
-HAYSTACK_SIGNAL_PROCESSOR = {
-    'haystack.signals.RealtimeSignalProcessor'
-}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
