@@ -1,4 +1,4 @@
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, get_object_or_404
 from .forms import RecipeForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
@@ -8,7 +8,8 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-from .models import Recipe
+from .models import Recipe, Review
+from django.db.models import Avg
 from .filters import RecipeFilter
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import Http404,HttpResponse, HttpResponseRedirect
@@ -110,7 +111,12 @@ def review(request, pk):
 
 
 def about(request):
-    return render(request, 'master_app/about.html')
+    recipe3= Recipe.objects.order_by('recipe_name')
+    
+    users = Review.objects.order_by('user')
+    avg = Review.objects.aggregate(rating = Avg('rating'), authenticityRating = Avg('authenticityRating'))
+    dict = {'records': recipe3, 'users': users, 'avg':avg}
+    return render(request, 'master_app/social.html', context = dict)
 
 def profile(request):
     return HttpResponse('<h1>Awesome profile view coming soon!</h1>')

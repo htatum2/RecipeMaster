@@ -36,7 +36,7 @@
 		}
 
 		.howTo{
-			margin-left: 3%%;
+			margin-left: 3%;
 		}
 
 		body{
@@ -87,12 +87,23 @@
 	  </div>
 	</div>
 	</div>
+	<h2>Reviews</h2>
+	<ul>
+		{% for review in recipe.RecipeReview_set.all %}
+			<li>
+				<p>{{ review.rating }} star{{ review.rating|pluralize }}</p>
+				<p>{{ review.comment }}</p>
+				<p>Created by {{ review.user }} on {{ review.date }}</p>
+			</li>
+		{% endfor %}
+	</ul>
 
 	</class="bodyNotNav">
 
 	<p></p>
 	<p></p>
 
+	
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-from .models import Recipe, Review, RecipeReview
+from .models import Recipe, Review
 from django import forms
 import django_filters
 

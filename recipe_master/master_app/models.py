@@ -29,10 +29,14 @@ class Recipe(models.Model):
     instructions = models.TextField(max_length=1000, default='')
     date_posted = models.DateTimeField(default=timezone.now)
     recipe_creator = models.ForeignKey(User, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.recipe_name
 
-    def get_absolute_url(self):
-        return reverse('recipe-detail', kwargs={'pk': self.pk})
+    def avg(self):
+        return
     
+
+'''
     def averageRating(self):
         reviewCount=self.recipereview_set.count()
         if not reviewCount:
@@ -40,23 +44,20 @@ class Recipe(models.Model):
         else:
             ratingSum = sum([float(review.rating) for review in self.recipereview_set.all()])
             return ratingSum /reviewCount
+'''
+
+   
 
 class Review(models.Model):
-    RATING_CHOICES = ((1, 'one'), (2, 'two'), (3, 'three'), (4, 'four'), (5, 'five'))
-    overallRating = models.PositiveSmallIntegerField('Overall Rating (stars) ', blank=False, default = 3, choices = RATING_CHOICES)
+    RATING_CHOICES = ((1, 1), (2, 2), (3, 3), (4, 4), (5, 5))
+    rating = models.PositiveSmallIntegerField('Overall Rating (stars) ', blank=False, default = 3, choices = RATING_CHOICES)
     authenticityRating = models.PositiveSmallIntegerField('Authenticity Rating (stars) ', blank=False, default = 3, choices = RATING_CHOICES)
     comment=models.TextField(blank=True, null=True)
     user = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
     date = models.DateField(default=date.today)
-
-    class Meta:
-        abstract = True
-
-class RecipeReview(Review):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-
-    class Meta:
-        unique_together= ("recipe", "user")
+    def __str__(self):
+        return str(self.recipe)
 
 
 
