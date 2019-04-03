@@ -102,10 +102,10 @@ class RecipeDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 @login_required
 def review(request, pk):
     recipe = get_object_or_404(Recipe, pk=pk)
-    if RecipeReview.objects.filter(recipe=recipe, user=request.user).exists():
-        RecipeReview.objects.get(recipe=recipe, user=request.user).delete()
-    valid_review = RecipeReview(
-        overallRating=request.POST['overallRating'],
+    if Review.objects.filter(recipe=recipe, user=request.user).exists():
+        Review.objects.get(recipe=recipe, user=request.user).delete()
+    valid_review = Review(
+        rating=request.POST['rating'],
         authenticityRating=request.POST['authenticityRating'],
         comment=request.POST['comment'],
         user=request.user,
@@ -120,7 +120,7 @@ def about(request):
     users = Review.objects.order_by('user')
     avg = Review.objects.aggregate(overall_rating = Avg('rating'), authenticityRating = Avg('authenticityRating'))
     dict = {'records': recipe3, 'users': users, 'avg':avg}
-    return render(request, 'master_app/social.html', context = dict)
+    return render(request, 'master_app/about.html', context = dict)
 
 
 def profile(request):
