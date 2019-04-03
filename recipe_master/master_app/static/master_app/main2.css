@@ -59,7 +59,7 @@ div#toplogin {
 }
 
 #headerImage {
-    background-image: url('{{ STATIC_URL }}media/head2.jpg');
+    background-image: url('/static/media/head.jpg');
     /* Credit to Olenka Kotyk on Unsplash for the image @olenka_kotyk */
     height: 80%;
     background-position: center;
@@ -114,18 +114,6 @@ div#toplogin {
     width: 90%;
 }
 
-/* If we decide to do a login bar.
-.login {
-    width: 300px;
-    height: 100px;
-    background: #000;
-    color: #fff;
-    top: 20%
-    left: 20%;
-    position: absolute;
-    box-sizing:border-box;
-}*/
-
 div#bottomlinks {
     text-align: center;
     font-size: 10pt;
@@ -138,7 +126,7 @@ a {
 }
 
 a:active {
-    background-color: cornflowerblue;
+    background-color: rgb(209, 212, 218);
 }
 
 
