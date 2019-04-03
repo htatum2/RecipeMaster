@@ -45,12 +45,12 @@
                   <small class="text-muted">{{ obj.date_posted|date:"F d, Y" }}</small>
                 </div>
                 <h2><a class="article-title" href="{% url 'recipe-detail' obj.id %}">{{ obj.recipe_name }}</a></h2>
-                <p class="article-content">Prep Time: {{ obj.meal_PrepTime_Minutes }} m </p>
+                <p class="article-content">Prep Time: {{ obj.meal_PrepTime_Minutes }}  </p>
                
-                {% for recipe3 in records %}
-                <p class="article-content">Average Rating: {{ avg.overall_rating}} m </p>
-                <p class="article-content">Authenticity  Rating: {{ avg.authenticityRating }} m </p>
-                {% endfor %}
+
+                <p class="article-content">Average Rating: {{ recipe3.avg_rating}}  </p>
+                <p class="article-content">Authenticity  Rating: {{ obj.authenticityRating }}  </p>
+
               </div>
               <a href="{% url 'recipe-detail' obj.id %}"> <img class="rounded-circle account-img" src="{{ obj.image.url }}"></a></img>
             </article>
