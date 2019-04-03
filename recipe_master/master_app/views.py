@@ -103,17 +103,17 @@ def review(request, pk):
         user=request.user,
         recipe=recipe)
     valid_review.save()
-    return HttpResponseRedirect(reverse('master_app:recipe_detail', args=(recipe.id,)))
+    return HttpResponseRedirect(reverse('master_app:recipe_detail', args=(recipe_id,)))
 
 
 
 def about(request):
     recipe3= Recipe.objects.order_by('recipe_name')
-    
     users = Review.objects.order_by('user')
-    avg = Review.objects.aggregate(rating = Avg('rating'), authenticityRating = Avg('authenticityRating'))
+    avg = Review.objects.aggregate(overall_rating = Avg('rating'), authenticityRating = Avg('authenticityRating'))
     dict = {'records': recipe3, 'users': users, 'avg':avg}
     return render(request, 'master_app/social.html', context = dict)
+
 
 def profile(request):
     return HttpResponse('<h1>Awesome profile view coming soon!</h1>')
