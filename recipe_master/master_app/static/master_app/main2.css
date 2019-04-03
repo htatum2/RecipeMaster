@@ -58,16 +58,6 @@ div#toplogin {
     font-size: 10pt;
 }
 
-#headerImage {
-    background-image: url('/static/media/head.jpg');
-    /* Credit to Olenka Kotyk on Unsplash for the image @olenka_kotyk */
-    height: 80%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-}
-
 .headerText {
     /*find a better looking font*/
     font-family:sans-serif;
