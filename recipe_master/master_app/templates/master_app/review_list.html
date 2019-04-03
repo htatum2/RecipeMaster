@@ -1,17 +1,17 @@
-{% extends "master_app/base.html" %}
-{% load crispy_forms_tags %} 
-{% block content %}
-    {% for review in reviews %}
-        <article class="media content-section">
-          <div class="media-body">
-            <div class="article-metadata">
-                <small class="text-muted">Rating: {{ review.rating}}</small>
-                <small class="text-muted"> Authenticity: {{ review.authenticityRating}}</small>
-                <small class="text-muted">{{ review.date|date:"F d, Y" }}</small>
-            </div>
-            <h2><a class="article-title" href="{% url 'recipe-reviews' review.id %}">{{ review.review_name }}</a></h2>
-            <p class="article-content">{{ review.comment }}</p>
-          </div>
-        </article>
+<h2>Latest reviews</h2>
+
+{% if latest_review_list %}
+<div>
+    {% for review in latest_review_list %}
+    <div>
+        <h4><a href="{% url 'reviews:review_detail' review.id %}">
+        {{ review.recipe.name }}
+        </a></h4>
+        <h6>rated {{ review.rating }} of 5 by {{ review.user }}</h6>
+        <p>{{ review.comment }}</p>
+    </div>
     {% endfor %}
-{% endblock content %}
+</div>
+{% else %}
+<p>No reviews are available.</p>
+{% endif %}

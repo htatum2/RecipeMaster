@@ -59,6 +59,7 @@ class RecipeDetailView(DetailView):
 
 class RecipeCreateView(LoginRequiredMixin, CreateView):
     model = Recipe
+    success_url = '/'
     fields = ['recipe_name', 
              'ingredients_list',
              'instructions', 
@@ -67,10 +68,11 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.recipe_creator = self.request.user
-        return super(RecipeCreateView, self).form_valid(form)
+        return super().form_valid(form)
 
 class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Recipe
+    success_url = '/'
     fields = ['recipe_name', 
               'ingredients_list',
               'instructions', 

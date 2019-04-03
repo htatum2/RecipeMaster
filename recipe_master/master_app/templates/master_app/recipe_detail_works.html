@@ -1,21 +1,29 @@
+<h2>{{ recipe.recipe_name }}</h2>
+<h5>{{ recipe.review_set.count }} reviews ({{ recipe.average_rating | floatformat }} average rating)</h5>
 
-{% extends "master_app/base.html" %}
-{% block content %}
-  <article class="media content-section">
-    <img class="rounded-circle article-img" src="{{ object.image.url }}">
-    <div class="media-body">
-      <div class="article-metadata">
-        <a class="mr-2" href="#">{{ object.author }}</a>
-        <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
-        {% if object.author == user %}
-          <div>
-            {% comment %} <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'master-update' object.id %}">Update</a>
-            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'master-delete' object.id %}">Delete</a> {% endcomment %}
-          </div>
-        {% endif %}
-      </div>
-      <h2 class="article-title">{{ object.recipe_name }}</h2>
-      <p class="article-content">{{ object.content }}</p>
+<h3>Recent reviews</h3>
+
+{% if recipe.review_set.all %}
+<div>
+    {% for review in wine.review_set.all %}
+    <div>
+        <em>{{ review.comment }}</em>
+        <h6>Rated {{ review.rating }} of 5 by {{ review.user }}</h6>
+        <h5><a href="{% url 'reviews:review_detail' review.id %}">
+        Read more
+        </a></h5>
     </div>
-  </article>
-{% endblock content %}
+    {% endfor %}
+</div>
+{% else %}
+<p>No reviews for this wine yet</p>
+{% endif %}
+
+<h3>Add your review</h3>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'reviews:add_review' wine.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Add" />
+</form>

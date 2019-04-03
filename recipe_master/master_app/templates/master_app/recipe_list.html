@@ -45,7 +45,7 @@
                   <small class="text-muted">{{ obj.date_posted|date:"F d, Y" }}</small>
                 </div>
                 <h2><a class="article-title" href="{% url 'recipe-detail' obj.id %}">{{ obj.recipe_name }}</a></h2>
-                <p class="article-content">Prep Time: {{ obj.meal_PrepTime_Minutes }} m </p>
+                <p class="article-content">Prep Time: {{ obj.meal_PrepTime_Minutes }}  </p>
                
 
                 <p class="article-content">Average Rating: {{ obj.average_rating }}  </p>
