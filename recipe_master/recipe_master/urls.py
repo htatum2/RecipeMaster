@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 from users import views as user_views
 
 app_name = "master_app"
-
+app_name='ratings'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', user_views.register, name='register'),

@@ -19,6 +19,7 @@ import operator
 from django.utils.decorators import method_decorator
 from django.db.models import Q
 from functools import reduce
+from django.db.models import Avg
 
 # Create your views here.
 # Class based views look for <app>/<model>_<viewtype>.html by default
@@ -108,16 +109,17 @@ def review(request, pk):
         user=request.user,
         recipe=recipe)
     valid_review.save()
-    return HttpResponseRedirect(reverse('master_app:recipe_detail', args=(recipe.id,)))
+    return HttpResponseRedirect(reverse('master_app:recipe_detail', args=(recipe_id,)))
 
 
 
 def about(request):
     recipe3= Recipe.objects.order_by('recipe_name')
     users = Review.objects.order_by('user')
-    avg = Review.objects.aggregate(rating = Avg('rating'), authenticityRating = Avg('authenticityRating'))
+    avg = Review.objects.aggregate(overall_rating = Avg('rating'), authenticityRating = Avg('authenticityRating'))
     dict = {'records': recipe3, 'users': users, 'avg':avg}
     return render(request, 'master_app/social.html', context = dict)
+
 
 def profile(request):
     return HttpResponse('<h1>Awesome profile view coming soon!</h1>')
@@ -158,7 +160,10 @@ class RecipeSearchListView(RecipeListView):
         return result
 
 def recipe_list(request):
-    recipes = Recipe.objects.all()
+    #recipes = Recipe.objects.all()
+    recipes = Recipe.objects.order_by('recipe_name').annotate(
+    average_rating=Avg('review__rating'),
+)
     recipe_filter = RecipeFilter(request.GET, queryset=recipes)
     return render(request, 'master_app/recipe_list.html',{'filter':recipe_filter})
     #if request.POST:
