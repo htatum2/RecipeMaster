@@ -48,7 +48,7 @@
                 <p class="article-content">Prep Time: {{ obj.meal_PrepTime_Minutes }} m </p>
                
 
-                <p class="article-content">Average Rating: {{ obj.average_rating }} m </p>
+                <p class="article-content">Average Rating: {{ obj.average_rating }}  </p>
                 <p class="article-content">Authenticity  Rating: {{ obj.authenticity_rating }} m </p>
               </div>
               <a href="{% url 'recipe-detail' obj.id %}"> <img class="rounded-circle account-img" src="{{ obj.image.url }}"></a></img>
