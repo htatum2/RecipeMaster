@@ -23,10 +23,10 @@ from functools import reduce
 # Create your views here.
 # Class based views look for <app>/<model>_<viewtype>.html by default
 
-class LoginRequiredMixin(object):
-    @method_decorator(login_required())
-    def dispatch(self, *args, **kwargs):
-        return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
+# class LoginRequiredMixin(object):
+#     @method_decorator(login_required())
+#     def dispatch(self, *args, **kwargs):
+#         return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
 
 class CheckOwner(object):
     def get_object(self, *args, **kwargs):
@@ -47,8 +47,14 @@ class RecipeListView(ListView):
     context_object_name = 'recipes'
     ordering = ['-date_posted']
 
+class ReviewListView(ListView):
+    model = Review
+    context_object_name = 'reviews'
+    ordering = ['-date']
+
 class RecipeDetailView(DetailView):
     model = Recipe
+    context_object_name = 'recipe'
 
 class RecipeCreateView(LoginRequiredMixin, CreateView):
     model = Recipe
@@ -108,7 +114,6 @@ def review(request, pk):
 
 def about(request):
     recipe3= Recipe.objects.order_by('recipe_name')
-    
     users = Review.objects.order_by('user')
     avg = Review.objects.aggregate(rating = Avg('rating'), authenticityRating = Avg('authenticityRating'))
     dict = {'records': recipe3, 'users': users, 'avg':avg}
