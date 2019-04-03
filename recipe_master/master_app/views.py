@@ -19,14 +19,15 @@ import operator
 from django.utils.decorators import method_decorator
 from django.db.models import Q
 from functools import reduce
+from django.db.models import Avg
 
 # Create your views here.
 # Class based views look for <app>/<model>_<viewtype>.html by default
 
-class LoginRequiredMixin(object):
-    @method_decorator(login_required())
-    def dispatch(self, *args, **kwargs):
-        return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
+# class LoginRequiredMixin(object):
+#     @method_decorator(login_required())
+#     def dispatch(self, *args, **kwargs):
+#         return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
 
 class CheckOwner(object):
     def get_object(self, *args, **kwargs):
@@ -47,11 +48,18 @@ class RecipeListView(ListView):
     context_object_name = 'recipes'
     ordering = ['-date_posted']
 
+class ReviewListView(ListView):
+    model = Review
+    context_object_name = 'reviews'
+    ordering = ['-date']
+
 class RecipeDetailView(DetailView):
     model = Recipe
+    context_object_name = 'recipe'
 
 class RecipeCreateView(LoginRequiredMixin, CreateView):
     model = Recipe
+    success_url = '/'
     fields = ['recipe_name', 
              'ingredients_list',
              'instructions', 
@@ -60,10 +68,11 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.recipe_creator = self.request.user
-        return super(RecipeCreateView, self).form_valid(form)
+        return super().form_valid(form)
 
 class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Recipe
+    success_url = '/'
     fields = ['recipe_name', 
               'ingredients_list',
               'instructions', 
@@ -153,7 +162,10 @@ class RecipeSearchListView(RecipeListView):
         return result
 
 def recipe_list(request):
-    recipes = Recipe.objects.all()
+    #recipes = Recipe.objects.all()
+    recipes = Recipe.objects.order_by('recipe_name').annotate(
+    average_rating=Avg('review__rating'),
+)
     recipe_filter = RecipeFilter(request.GET, queryset=recipes)
     return render(request, 'master_app/recipe_list.html',{'filter':recipe_filter})
     #if request.POST:

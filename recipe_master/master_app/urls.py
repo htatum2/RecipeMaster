@@ -10,8 +10,8 @@ from .views import (
     RecipeCreateView,
     RecipeUpdateView,
     RecipeDeleteView,
-    review,
-    about
+    ReviewListView,
+    review
 )
 from . import views
 
@@ -25,6 +25,8 @@ urlpatterns = [
 
     #Path to see details about a specific recipe
     path('recipe/<pk>/', RecipeDetailView.as_view(), name='recipe-detail'),
+
+    path('recipe/<pk>/reviews', ReviewListView.as_view(), name='recipe-reviews'),
 
     #Path to upload a new recipe
     path('post/new/', RecipeCreateView.as_view(), name='recipe-create'),

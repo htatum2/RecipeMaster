@@ -46,18 +46,18 @@ class Recipe(models.Model):
             return ratingSum /reviewCount
 '''
 
-   
-
 class Review(models.Model):
+    review_name = models.CharField(max_length=100, default='')
     RATING_CHOICES = ((1, 1), (2, 2), (3, 3), (4, 4), (5, 5))
     rating = models.PositiveSmallIntegerField('Overall Rating (stars) ', blank=False, default = 3, choices = RATING_CHOICES)
     authenticityRating = models.PositiveSmallIntegerField('Authenticity Rating (stars) ', blank=False, default = 3, choices = RATING_CHOICES)
-    comment=models.TextField(blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
     user = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
     date = models.DateField(default=date.today)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+
     def __str__(self):
-        return str(self.recipe)
+        return self.review_name
 
 
 

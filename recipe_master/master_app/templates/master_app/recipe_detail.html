@@ -5,7 +5,7 @@
 <html>
 
 <head>
-	<title>{{ object.recipe_name }}</title>
+	<title>{{ recipe.recipe_name }}</title>
 	<!-- <link rel="stylesheet" type="text/css" href="recipePagesStyle.css"> -->
 
 	<style>
@@ -53,11 +53,11 @@
 	<class="bodyNotNav">
 
 	<div class="text-center recipeTitle">
-		<h1 class="article-title"><u>{{ object.recipe_name }}</u></h1>
+		<h1 class="article-title"><u>{{ recipe.recipe_name }}</u></h1>
 			<p></p>
 			<div class="titlePicAndSum">
 				<div class="text-center">
-					<img id="recipePicture" src="{{ object.image.url }}" "rounded center" alt="..." width="30%" height="30%">
+					<img id="recipePicture" src="{{ recipe.image.url }}" "rounded center" alt="..." width="30%" height="30%">
 				</div>
 			</div>
 	</div>
@@ -67,7 +67,7 @@
 
 	<div class="summary">
 		<div class="text-center">
-			{{ object.description }}
+			{{ recipe.description }}
 		</div>
 	</div>
 
@@ -79,26 +79,16 @@
 	  <div class="row">
 	    <div class="col">
 	    	<h2><u>Ingredients:</u></h2>
-				{{object.ingredients_list}}
+				{{recipe.ingredients_list}}
 		</div>
 	    <div class="col">
 	    	<h2><u>Directions:</u></h2>
-				{{object.instructions}}
+				{{recipe.instructions}}
 	    </div>
 	  </div>
 	</div>
 	</div>
-	<h2>Reviews</h2>
-	<ul>
-		{% for review in recipe.RecipeReview_set.all %}
-			<li>
-				<p>{{ review.rating }} star{{ review.rating|pluralize }}</p>
-				<p>{{ review.comment }}</p>
-				<p>Created by {{ review.user }} on {{ review.date }}</p>
-			</li>
-		{% endfor %}
-	</ul>
-
+	<h2><a class="article-title" href="{% url 'recipe-reviews' object.id %}"><u>Reviews</u></a></h2>
 	</class="bodyNotNav">
 
 	<p></p>
