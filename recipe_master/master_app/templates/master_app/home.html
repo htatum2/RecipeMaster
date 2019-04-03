@@ -117,6 +117,7 @@
         <div class="head fixed-top">
             <ul>
                 <li><a class="active" href="{% url 'master-home' %}">Home</a></li>
+                <li><a href="{% url 'master-about' %}">About</a></li>
                 <li><a href="{% url 'master-discover' %}">Discover</a></li>
                 {% if user.is_authenticated %}
                     <li style="float:right"><a href="{% url 'profile' %}">Profile</a></li>
@@ -146,7 +147,7 @@
 
 <div id="headerImage">
     <div class="headerText">
-        <h1 style="color:white; font-size:40pt">Discover Recipes</h1>
+        <a href="{% url 'master-discover' %}"><h1 style="color:white; font-size:40pt">Discover Recipes</h1></a>
         <hr>
         <!--
        <div class="searchbar">
@@ -187,10 +188,9 @@
     </div>
 <br/>
 
-        <div class="bottom fixed-bottom bot">
+        <div class="bottom fixed-bottom bot" style="height: 45px">
             <div class="text-center">
                 <a class="about" href="{% url 'master-about' %}"><p style="color:white; text-align:center;">About</p></a>
-                <p>CSC 3380</p>
             </div>
         </div>
 
