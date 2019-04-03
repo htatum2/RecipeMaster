@@ -10,7 +10,8 @@ from .views import (
     RecipeCreateView,
     RecipeUpdateView,
     RecipeDeleteView,
-    review
+    review,
+    about
 )
 from . import views
 
