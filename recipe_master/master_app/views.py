@@ -156,7 +156,7 @@ class RecipeSearchListView(RecipeListView):
 def recipe_list(request):
     #recipes = Recipe.objects.all()
     recipes = Recipe.objects.order_by('recipe_name').annotate(
-    average_rating=Avg('review__average_rating'),
+    average_rating=Avg('review__rating'),
 )
     recipe_filter = RecipeFilter(request.GET, queryset=recipes)
     return render(request, 'master_app/recipe_list.html',{'filter':recipe_filter})
