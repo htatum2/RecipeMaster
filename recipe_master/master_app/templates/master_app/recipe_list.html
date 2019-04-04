@@ -11,38 +11,28 @@
 <style>
 
     body{
-        background: url("/media/wood.jpg");
-        margin-top: 5%;
-        margin-bottom: 3.5%;
-        margin-left: 25%;
+        background: url("/media/cutting board.jpg");
     }
-
-    .search{
-        background-color: white;
-        padding: 10px 10px;
-    }
-
-</style>
+    </style>
 
 </head>
-
-<body>
-    
-    <div class="search">
-        <h1>Have any specifications?</h1>
-        <div class="float-left-area">
-            <div class="inner-left">
-            
-                <form action="" method="get">
-                    {{ filter.form.as_p }}
-                    <input type="submit" />
-                </form>
-            <br/>
-            </div>
-        </div>
-    </div>
+<br>
+    <br>
+    <br>
+   
+  
+    <div class="float-left-area">
+        <div class="inner-left">
         
-    <div class="float-right-area search">
+            <form action="" method="get">
+                {{ filter.form.as_p }}
+                <input type="submit" />
+            </form>
+        
+        </div>
+        </div>
+        
+        <div class="float-right-area">
         <div class="inner-right">
         
             {% for obj in filter.qs %}
@@ -59,7 +49,7 @@
                
 
                 <p class="article-content">Average Rating: {{ obj.average_rating }}  </p>
-                <p class="article-content">Authenticity  Rating: {{ obj.authenticity_rating }} m </p>
+                <p class="article-content">Authenticity  Rating: {{ obj.authenticity }}  </p>
                 {% for recipe3 in records %}
                 <p class="article-content">Average Rating: {{ avg.overall_rating}} m </p>
                 <p class="article-content">Authenticity  Rating: {{ avg.authenticityRating }} m </p>
@@ -69,11 +59,9 @@
             </article>
             {% endfor %}
         </div>
-    </div>
+        </div>
         
         <div class="clear-floated"></div>
-
-</body>
     
 {% endblock %}
 
