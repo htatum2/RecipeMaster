@@ -50,10 +50,7 @@
 
                 <p class="article-content">Average Rating: {{ obj.average_rating }}  </p>
                 <p class="article-content">Authenticity  Rating: {{ obj.authenticity }}  </p>
-                {% for recipe3 in records %}
-                <p class="article-content">Average Rating: {{ avg.overall_rating}} m </p>
-                <p class="article-content">Authenticity  Rating: {{ avg.authenticityRating }} m </p>
-                {% endfor %}
+
               </div>
               <a href="{% url 'recipe-detail' obj.id %}"> <img class="rounded-circle account-img" src="{{ obj.image.url }}"></a></img>
             </article>
