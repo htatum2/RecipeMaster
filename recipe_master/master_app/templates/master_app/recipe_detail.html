@@ -97,24 +97,21 @@
 
 	<h3>Recent reviews</h3>
 
-{% if recipereview_set.all %}
-<div>
-    {% for review in recipe.review_set.all %}
-    <div>
-        <em>{{ review.comment }}</em>
-        <h6>Rated {{ review.rating }} of 5 by {{ review.user }}</h6>
-        <h5><a href="{% url 'master_app:review_detail' review.id %}">
-        Read more
-        </a></h5>
-    </div>
-    {% endfor %}
-</div>
-{% else %}
-<p>No reviews for this wine yet</p>
-{% endif %}
+	{% if recipe.review_set.all %}
+	<div>
+		{% for review in recipe.review_set.all %}
+		<div>
+			<h6>Overall Rated {{ review.rating }} of 5 by {{ review.user }}</h6>
+			<h6>Authencity Rated {{ review.authenticityRating }} of 5 by {{ review.user }}</h6>
+			<em>{{ review.comment }}</em>
 
-<h3>Add your review</h3>
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+		</div>
+		{% endfor %}
+	</div>
+	{% else %}
+	<p>No reviews yet.</p>
+	{% endif %}
+	</div>
 
 
 

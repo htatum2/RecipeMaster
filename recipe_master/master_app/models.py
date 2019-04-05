@@ -31,12 +31,12 @@ class Recipe(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)
     recipe_creator = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def average_rate(self):
-        avg_overall = map(lambda x: x.rating, self.review_set.all())
-        return np.mean(avg_overall)
-    def authentic_rate(self):
-        avg_authenticity = map(lambda x: x.authenticityRating, self.review_set.all())
-        return np.mean(avg_authenticity) 
+    #def average_rate(self):
+        #avg_overall = map(lambda x: x.rating, self.review_set.all())
+        #return np.mean(avg_overall)
+    #def authentic_rate(self):
+        #avg_authenticity = map(lambda x: x.authenticityRating, self.review_set.all())
+        #return np.mean(avg_authenticity) 
     def __str__(self):
         return self.recipe_name
     
