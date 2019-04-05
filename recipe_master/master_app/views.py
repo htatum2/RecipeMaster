@@ -61,7 +61,9 @@ class RecipeDetailView(DetailView):
 class RecipeCreateView(LoginRequiredMixin, CreateView):
     model = Recipe
     success_url = '/'
-    fields = ['recipe_name', 
+    fields = ['recipe_name',
+             'country',
+             'calories', 
              'ingredients_list',
              'instructions', 
              'image', 
