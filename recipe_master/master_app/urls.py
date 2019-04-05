@@ -5,7 +5,7 @@ from .models import Recipe
 from django.views.generic import DetailView, ListView
 #from django.conf.urls import url, include
 from .views import (
-    RecipeListView, 
+    #RecipeListView, 
     RecipeDetailView, 
     RecipeCreateView,
     RecipeUpdateView,
@@ -36,11 +36,11 @@ urlpatterns = [
    
    
     #TODO: Path to Create a new Review about a specific recipe
-    path('recipe/<pk>/review/new/', views.review, name='recipe_detail'),
+    path('recipe/<pk>/review/new/', views.add_review, name='add_review'),
     #Path to see a specific review.
-#    path('review/<pk>/', views.review_detail, name= 'review_detail'),
+    path('review/<pk>/', views.review_detail, name= 'review_detail'),
     #See a list of reviews
-    #path('review/', views.review_list, name='review-list'),
+    path('reviews/', views.review_list, name='review_list'),
    
    
    #About RecipeMaster

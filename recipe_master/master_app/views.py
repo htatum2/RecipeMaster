@@ -13,7 +13,7 @@ from django.db.models import Avg
 from .filters import RecipeFilter
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import Http404,HttpResponse, HttpResponseRedirect
-from searchengine.web_search import google
+#from searchengine.web_search import google
 from django.contrib.auth.decorators import login_required
 import operator
 from django.utils.decorators import method_decorator
@@ -24,10 +24,10 @@ from django.db.models import Avg
 # Create your views here.
 # Class based views look for <app>/<model>_<viewtype>.html by default
 
-# class LoginRequiredMixin(object):
-#     @method_decorator(login_required())
-#     def dispatch(self, *args, **kwargs):
-#         return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
+class LoginRequiredMixin(object):
+     @method_decorator(login_required())
+     def dispatch(self, *args, **kwargs):
+         return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
 
 class CheckOwner(object):
     def get_object(self, *args, **kwargs):
@@ -42,16 +42,16 @@ class LogInBeforeChanging(LoginRequiredMixin, CheckOwner, UpdateView):
 def home(request):
     return render(request, 'master_app/home.html')
 
-class RecipeListView(ListView):
-    model = Recipe
-    template_name = 'master_app/home_javier.html'
-    context_object_name = 'recipes'
-    ordering = ['-date_posted']
+#class RecipeListView(ListView):
+    #model = Recipe
+    #template_name = 'master_app/home_javier.html'
+    #context_object_name = 'recipes'
+    #ordering = ['-date_posted']
 
-class ReviewListView(ListView):
-    model = Review
-    context_object_name = 'reviews'
-    ordering = ['-date']
+#class ReviewListView(ListView):
+    #model = Review
+    #context_object_name = 'reviews'
+    #ordering = ['-date']
 
 class RecipeDetailView(DetailView):
     model = Recipe
@@ -111,7 +111,7 @@ def review(request, pk):
         user=request.user,
         recipe=recipe)
     valid_review.save()
-    return HttpResponseRedirect(reverse('master_app:recipe_detail', args=(recipe_id,)))
+    #return HttpResponseRedirect(reverse('master_app:recipe_detail', args=(recipe_id,)))
 
 
 
@@ -126,24 +126,24 @@ def about(request):
 def profile(request):
     return HttpResponse('<h1>Awesome profile view coming soon!</h1>')
 
-def veganrecipes(request):
-    return HttpResponse('<h1>I like vegan recipes.<h1>')
 
-def recipes(request):
-    return render(request, 'master_app/recipes.html')
-
+#May delete
+#def recipes(request):
+    #return render(request, 'master_app/recipes.html')
 
 
-def veg_search(request):
-    return render(request, 'master_app/veg_search.html')   
 
-def discover(request):
-    return render(request, 'master_app/discover.html')
+#May delete
+# def veg_search(request):
+    #return render(request, 'master_app/veg_search.html')   
 
+#def discover(request):
+    #return render(request, 'master_app/discover.html')
+"""
 class RecipeSearchListView(RecipeListView):
-    """
+    
     Display a Blog List page filtered by the search query.
-    """
+    
     paginate_by = 10
 
     def get_queryset(self):
@@ -160,7 +160,7 @@ class RecipeSearchListView(RecipeListView):
             )
 
         return result
-
+"""
 def recipe_list(request):
     #recipes = Recipe.objects.all()
     recipes = Recipe.objects.order_by('recipe_name').annotate(
@@ -173,3 +173,38 @@ def recipe_list(request):
         #return HttpResponseRedirect("/")
     #else:
         #return render_to_response('master_app/search.html')
+
+def review_list(request):
+    latest_review_list = Review.objects.order_by('-date')[:9]
+    context = {'latest_review_list': latest_review_list}
+    return render(request, 'master_app/review_list.html', context)
+
+def review_detail(request, pk):
+    review = get_object_or_404(Review, pk=pk)
+    return render(request, 'master_app/review_detail.html', {'review':review})
+
+#def RecipeDetailView(request):
+    #recipe = get_object_or_404(Recipe)
+    #form = RecipeForm()
+    #return render(request, 'master_app/recipe_detail.html', {'recipe': recipe, 'form': form})
+
+def add_review(request):
+    wine = get_object_or_404(Recipe)
+    form = ReviewForm(request.POST)
+    if form.is_valid():
+        rating = form.cleaned_data['rating']
+        comment = form.cleaned_data['comment']
+        user_name = form.cleaned_data['user_name']
+        review = Review()
+        #review.recipe = recipe
+        review.user = user_name
+        review.rating = rating
+        review.comment = comment
+        review.date = datetime.datetime.now()
+        review.save()
+        # Always return an HttpResponseRedirect after successfully dealing
+        # with POST data. This prevents data from being posted twice if a
+        # user hits the Back button.
+        #return HttpResponseRedirect(reverse('master_app:recipe_detail', args=(recipe.id,)))
+
+    return render(request, 'reviews/wine_detail.html', {'wine': wine, 'form': form})

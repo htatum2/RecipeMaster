@@ -1,11 +1,12 @@
 {% extends "master_app/base.html" %}
 {% load crispy_forms_tags %}
+
 {% block content %}
 <!DOCTYPE html>
 <html>
 
 <head>
-	<title>{{ recipe.recipe_name }}</title>
+
 	<!-- <link rel="stylesheet" type="text/css" href="recipePagesStyle.css"> -->
 
 	<style>
@@ -54,6 +55,7 @@
 
 	<div class="text-center recipeTitle">
 		<h1 class="article-title"><u>{{ recipe.recipe_name }}</u></h1>
+			<h5>{{recipe.review_set.count}} reviews ({{recipe.averagee_rate | floatformat}} average rating)</h5>
 			<p></p>
 			<div class="titlePicAndSum">
 				<div class="text-center">
@@ -93,7 +95,32 @@
 	<p></p>
 	<p></p>
 
-	
+	<h3>Recent reviews</h3>
+
+{% if recipereview_set.all %}
+<div>
+    {% for review in recipe.review_set.all %}
+    <div>
+        <em>{{ review.comment }}</em>
+        <h6>Rated {{ review.rating }} of 5 by {{ review.user }}</h6>
+        <h5><a href="{% url 'master_app:review_detail' review.id %}">
+        Read more
+        </a></h5>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>No reviews for this wine yet</p>
+{% endif %}
+
+<h3>Add your review</h3>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+
+
+
+
+
 </body>
 
 </html>
