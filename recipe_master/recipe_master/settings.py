@@ -40,9 +40,8 @@ INSTALLED_APPS = [
     #'django.contrib.sites', # If you add this build will break
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django-filters'
-    'bootstrap3',
-    
+    'django_filters',
+    'recipe_master',
 
 ]
 
