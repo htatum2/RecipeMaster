@@ -1,5 +1,5 @@
 from django.shortcuts import render, render_to_response, get_object_or_404
-from .forms import RecipeForm
+from .forms import RecipeForm, ReviewForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
     ListView, 
@@ -19,25 +19,26 @@ import operator
 from django.utils.decorators import method_decorator
 from django.db.models import Q
 from functools import reduce
+import datetime
 from django.db.models import Avg
 
 # Create your views here.
 # Class based views look for <app>/<model>_<viewtype>.html by default
 
-class LoginRequiredMixin(object):
-     @method_decorator(login_required())
-     def dispatch(self, *args, **kwargs):
-         return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
+#class LoginRequiredMixin(object):
+     #@method_decorator(login_required())
+     #def dispatch(self, *args, **kwargs):
+         #return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
 
-class CheckOwner(object):
-    def get_object(self, *args, **kwargs):
-        obj=super(CheckOwner, self).get_object(*args, **kwargs)
-        if not obj.user == self.request.user:
-            raise PermissionDenied
-        return obj
+#class CheckOwner(object):
+    #def get_object(self, *args, **kwargs):
+        #obj=super(CheckOwner, self).get_object(*args, **kwargs)
+        #if not obj.user == self.request.user:
+           # raise PermissionDenied
+        #return obj
 
-class LogInBeforeChanging(LoginRequiredMixin, CheckOwner, UpdateView):
-    template_name ='master_app/form.html'
+#class LogInBeforeChanging(LoginRequiredMixin, CheckOwner, UpdateView):
+    #template_name ='master_app/form.html'
 
 def home(request):
     return render(request, 'master_app/home.html')
@@ -187,17 +188,17 @@ def review_detail(request, pk):
     #recipe = get_object_or_404(Recipe)
     #form = RecipeForm()
     #return render(request, 'master_app/recipe_detail.html', {'recipe': recipe, 'form': form})
-
-def add_review(request):
-    wine = get_object_or_404(Recipe)
+@login_required
+def add_review(request, recipe_id):
+    recipe = get_object_or_404(Recipe, pk=recipe_id)
     form = ReviewForm(request.POST)
     if form.is_valid():
         rating = form.cleaned_data['rating']
         comment = form.cleaned_data['comment']
-        user_name = form.cleaned_data['user_name']
+        user = form.cleaned_data['user']
         review = Review()
-        #review.recipe = recipe
-        review.user = user_name
+        review.recipe = recipe
+        review.user = user
         review.rating = rating
         review.comment = comment
         review.date = datetime.datetime.now()
@@ -206,5 +207,5 @@ def add_review(request):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         #return HttpResponseRedirect(reverse('master_app:recipe_detail', args=(recipe.id,)))
-
-    return render(request, 'reviews/wine_detail.html', {'wine': wine, 'form': form})
+        #return HttpResponseRedirect(reverse('master_app/recipe_detail', args=(recipe.id,)))
+    return render(request, 'master_app/recipe_detail.html', {'recipe': recipe, 'form': form})

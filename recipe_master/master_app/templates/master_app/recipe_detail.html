@@ -8,7 +8,9 @@
 <head>
 
 	<!-- <link rel="stylesheet" type="text/css" href="recipePagesStyle.css"> -->
-
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+	<script src="jquery.star-rating-svg.js"></script>
+	<link rel="stylesheet" type="text/css" href="star-rating-svg.css">
 	<style>
 
 		#recipeName{
@@ -52,18 +54,22 @@
 <body>
 
 	<class="bodyNotNav">
-
 	<div class="text-center recipeTitle">
 		<h1 class="article-title"><u>{{ recipe.recipe_name }}</u></h1>
-			<h5>{{recipe.review_set.count}} reviews ({{recipe.averagee_rate | floatformat}} average rating)</h5>
-			<p></p>
+		</div>
+
+			<h5>{{recipe.review_set.count}} reviews</h5> 
+			<h5>Average Overall Rating : {{recipe.average_rate | floatformat}}</h5>
+			<h5>Average Authenticity Rating: {{recipe.authentic_rate | floatformat}}</h5>
+
+		
 			<div class="titlePicAndSum">
 				<div class="text-center">
 					<img id="recipePicture" src="{{ recipe.image.url }}" "rounded center" alt="..." width="30%" height="30%">
 				</div>
 			</div>
 	</div>
-
+	
 	<p></p>
 	<p></p>
 
@@ -104,7 +110,8 @@
 			<h6>Overall Rated {{ review.rating }} of 5 by {{ review.user }}</h6>
 			<h6>Authencity Rated {{ review.authenticityRating }} of 5 by {{ review.user }}</h6>
 			<em>{{ review.comment }}</em>
-
+<br>
+<br>
 		</div>
 		{% endfor %}
 	</div>
@@ -113,7 +120,9 @@
 	{% endif %}
 	</div>
 
-
+<br>
+<br>
+<br>
 
 
 
