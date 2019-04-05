@@ -63,9 +63,11 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
     success_url = '/'
     fields = ['recipe_name',
              'country',
-             'calories', 
+             'calories',
+             'category', 
              'ingredients_list',
              'instructions', 
+             'description',
              'image', 
              'meal_PrepTime_Minutes']
 
@@ -76,9 +78,13 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
 class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Recipe
     success_url = '/'
-    fields = ['recipe_name', 
+    fields = ['recipe_name',
+             'country',
+             'calories', 
               'ingredients_list',
-              'instructions', 
+              'instructions',
+              'description', 
+              'category',
               'image', 
               'meal_PrepTime_Minutes']
 
