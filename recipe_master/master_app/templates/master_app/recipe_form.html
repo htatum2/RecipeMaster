@@ -3,19 +3,25 @@
 {% block content %}
 <style>
     
-
         body{
-            background: url("/media/yeah.jpg") no-repeat;
-            height: 2880;
-            width: 3200;
-            background-size: 2000px;
-
+            background: url("/media/cutting board.jpg");
+            background: url("/media/wood.jpg");
+            margin-top: 5%;
+            margin-bottom: 3.5%;
+            margin-left: 25%;
         }
-        </style>
-        <br>
-        <br>
-        <br>
-    <div class="content-section">
+
+        .makeRecipe{
+            background-color: white;
+            padding: 10px 10px;
+            margin-bottom: 3.5%;
+        }
+
+</style>
+
+<body>
+
+    <div class="content-section makeRecipe">
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
@@ -27,7 +33,7 @@
             </div>
         </form>
     </div>
-    <br>
-        <br>
-        <br>
+
+</body>
+
 {% endblock content %}
