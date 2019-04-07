@@ -1,19 +1,32 @@
 {% extends "master_app/base.html" %}
 {% block content %}
-<style>
+<head>
+    <style>
 
         body{
-            background: url("/media/peppers.jpg");
-            height: 2880;
-            width: 3200;
-            background-size: 1000px;
-            background-position: center bottom;
+            background: url("/media/clearerlettuce.jpg");
         }
-        </style>
+
+        .logout{
+            margin-top: 5%;
+            margin-bottom: 3.5%;
+            margin-left: 50%;
+            margin-top: 25%;
+            text-decoration-color: black;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="logout">
     <h2>You have been logged out</h2>
         <div class="border-top pt-3">
             <small class="text-muted">
                 <a href="{% url 'login' %}">Log In Again</a>
             </small>
         </div>
+    </div>
+
+</body>
 {% endblock content %}
