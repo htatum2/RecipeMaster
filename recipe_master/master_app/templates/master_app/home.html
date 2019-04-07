@@ -14,23 +14,10 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <style>
 
- {% comment %} #headerImage {
-        /* Credit to Olenka Kotyk on Unsplash for the image @olenka_kotyk */
-        background-image: url( "/media/salad.jpg");
-        height: 75%;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        position: relative;
-    }
-    div.featuredpics {
-        text-align: center;
-    }
+ {% comment %} 
+ 
 
-    div.featuredpics img {
-        width: 350px;
-        height: 500px;
-    }
+    
 
     .featuredRecipes {
         width: 100%;
@@ -62,10 +49,7 @@
         color: white;
     }
 
-    li {
-        float: left;
-        height: 100%;
-    }
+
 
     li a {
         display: block;
@@ -87,41 +71,24 @@
         box-sizing: border-box;
     }
     
-    .pictures {
-        margin: 10px -15px;
-    }
-    .pictures,
-    .pictures > .column {
-        padding: 5px;
-    }
-
-    .column {
-        float: left;
-        width: 33.33%;
-    }
-
-    .pictures:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
+    
 
     .cont {
         background-color: #f7f7f7;
         padding: 7px;
     }
 
-    li img {
-        /*background-color: #556C5B/*#4CAF50*/
-        display: inline-block;
-        vertical-align: top;
-        width: 30%;
-        height: 100%;
-        margin-left: 75%;
-    }
-
  {% endcomment %}
 
+    #headerImage {
+            /* Credit to Olenka Kotyk on Unsplash for the image @olenka_kotyk */
+            background-image: url( "/media/salad.jpg");
+            height: 75%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
     #recipeName{
 			text-align: center;
 			padding-bottom: 1%;
@@ -147,6 +114,32 @@
 			margin-top: 7%;
 			margin-left: 25%;
 		}
+        .pictures {
+        margin: 10px -15px;
+        }
+        .pictures,
+        .pictures > .column {
+            padding: 5px;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+        }
+        
+        div.featuredpics img {
+            width: 350px;
+            height: 500px;
+        }
+        div.featuredpics {
+            text-align: center;
+        }
+        .pictures:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    
 
 </style>
 
@@ -175,19 +168,19 @@
             <div class="column">
               <div class="cont">
                 <img src="/media/salad.jpg" alt=“Salad” style="width:100%; height:550px">
-                <h4 style="text-align:center;">Salad</h4>
+                {% comment %} <h4 style="text-align:center;">Salad</h4> {% endcomment %}
               </div>
             </div>
             <div class="column">
               <div class="cont">
               <img src="/media/veganSammich.jpeg" alt="Vegan Sandwich" style="width:100%; height:550px">
-                <h4 style="text-align:center;">Vegan Sandwich</h4>
+                {% comment %} <h4 style="text-align:center;">Vegan Sandwich</h4> {% endcomment %}
               </div>
             </div>
             <div class="column">
               <div class="cont">
               <img src="/media/strawberrycake.jpg" alt="Strawberry and Raspberry Cake" style="width:100%; height:550px">
-                <h4 style="text-align:center;">Berry Cake</h4>
+                {% comment %} <h4 style="text-align:center;">Berry Cake</h4> {% endcomment %}
               </div>
             </div>
     </div>
