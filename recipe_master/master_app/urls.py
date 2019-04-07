@@ -36,7 +36,7 @@ urlpatterns = [
    
    
     #TODO: Path to Create a new Review about a specific recipe
-    path('recipe/<pk>/review/new/', views.add_review, name='add_review'),
+    path('recipe/<pk>/add_review', views.add_review, name='add_review'),
     #Path to see a specific review.
     path('review/<pk>/', views.review_detail, name= 'review_detail'),
     #See a list of reviews

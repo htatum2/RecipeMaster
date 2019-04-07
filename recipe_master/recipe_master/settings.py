@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_filters',
     'recipe_master',
+    'bootstrap3',
 
 ]
 

@@ -197,8 +197,8 @@ def review_detail(request, pk):
     #form = RecipeForm()
     #return render(request, 'master_app/recipe_detail.html', {'recipe': recipe, 'form': form})
 @login_required
-def add_review(request, recipe_id):
-    recipe = get_object_or_404(Recipe, pk=recipe_id)
+def add_review(request, pk):
+    recipe = get_object_or_404(Recipe, pk=pk)
     form = ReviewForm(request.POST)
     if form.is_valid():
         rating = form.cleaned_data['rating']
