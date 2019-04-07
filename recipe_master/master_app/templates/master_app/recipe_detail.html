@@ -11,6 +11,9 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 	<script src="jquery.star-rating-svg.js"></script>
 	<link rel="stylesheet" type="text/css" href="star-rating-svg.css">
+	<!--Fonts-->
+	<link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Leckerli+One' rel='stylesheet' type='text/css'>
 	<style>
 
 		#recipeName{
@@ -26,8 +29,10 @@
 			padding: 3%;
 		}
 
-		h2{
-			font-size: 40px;
+		h1{
+			font: 200 100px/1.2 'Leckerli One', Helvetica, sans-serif;
+  			color: #000;
+  			text-shadow: 2px 2px 0px rgba(0,0,0,0.2), 4px 4px 8px rgba(0,0,0,0.2); 
 		}
 
 		li{
@@ -46,6 +51,46 @@
 			margin-top: 7%;
 			margin-left: 25%;
 		}
+		.container2{
+  border: 2px solid #ccc;
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+/* Clear floats after containers */
+.container2::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Float images inside the container to the left. Add a right margin, and style the image as a circle */
+.container2 img {
+  float: left;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+/* Increase the font-size of a span element */
+.container2 span {
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+/* Add media queries for responsiveness. This will center both the text and the image inside the container */
+@media (max-width: 500px) {
+  .container2 {
+    text-align: center;
+  }
+
+  .container2 img {
+    margin: auto;
+    float: none;
+    display: block;
+  }
+}
 
 	</style>
 
@@ -83,7 +128,7 @@
 	<p></p>
     
     <div class="howTo">
-	<div class="container">
+
 	  <div class="row">
 	    <div class="col">
 	    	<h2><u>Ingredients:</u></h2>
@@ -107,12 +152,15 @@
 	<div>
 		{% for review in recipe.review_set.all %}
 		<div>
-			<h6>Overall Rated {{ review.rating }} of 5 by {{ review.user }}</h6>
+				<div class="container2">
+				<img src="/media/fruit.jpg" alt="Avatar" style="width:90px">
+				<p><span>{{ review.user }}</span>
+			<h6>Overall Rated {{ review.rating }} </h6>
 			<h6>Authencity Rated {{ review.authenticityRating }} of 5 by {{ review.user }}</h6>
-			<em>{{ review.comment }}</em>
-<br>
-<br>
+			<p>{{ review.comment }}</p>
+				</div>
 		</div>
+	</div>
 		{% endfor %}
 	</div>
 	{% else %}

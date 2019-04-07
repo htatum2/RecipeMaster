@@ -205,7 +205,7 @@ def add_review(request, pk):
         rating = form.cleaned_data['rating']
         authenticityRating = form.cleaned_data['authenticityRating']
         comment = form.cleaned_data['comment']
-        user = request.user.username
+        user = form.cleaned_data['user']
         review = Review()
         review.recipe = recipe
         review.user = user
