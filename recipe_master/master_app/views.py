@@ -16,6 +16,7 @@ from django.shortcuts import Http404,HttpResponse, HttpResponseRedirect
 #from searchengine.web_search import google
 from django.contrib.auth.decorators import login_required
 import operator
+from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.db.models import Q
 from functools import reduce
@@ -132,8 +133,8 @@ def about(request):
     return render(request, 'master_app/about.html', context = dict)
 
 
-def profile(request):
-    return HttpResponse('<h1>Awesome profile view coming soon!</h1>')
+#def profile(request):
+    #return HttpResponse('<h1>Awesome profile view coming soon!</h1>')
 
 
 #May delete
@@ -202,12 +203,14 @@ def add_review(request, pk):
     form = ReviewForm(request.POST)
     if form.is_valid():
         rating = form.cleaned_data['rating']
+        authenticityRating = form.cleaned_data['authenticityRating']
         comment = form.cleaned_data['comment']
-        user = form.cleaned_data['user']
+        user = request.user.username
         review = Review()
         review.recipe = recipe
         review.user = user
         review.rating = rating
+        review.authenticityRating = authenticityRating
         review.comment = comment
         review.date = datetime.datetime.now()
         review.save()
@@ -215,5 +218,12 @@ def add_review(request, pk):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         #return HttpResponseRedirect(reverse('master_app:recipe_detail', args=(recipe.id,)))
-        #return HttpResponseRedirect(reverse('master_app/recipe_detail', args=(recipe.id,)))
+        return HttpResponseRedirect(reverse('recipe-detail', args=(recipe.id,)))
     return render(request, 'master_app/recipe_detail.html', {'recipe': recipe, 'form': form})
+
+def user_review_list(request, username=None):
+    if not username:
+        username=request.user.username
+    latest_review_list = Review.objects.filter(user=username).orderby('-date')
+    context = {'latest_review_list':latest_review_list, 'username':username}
+    return render(request, 'master_app/review_list.html', context)

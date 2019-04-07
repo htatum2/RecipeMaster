@@ -1,7 +1,8 @@
-{% extends "master_app/base.html" %}
+{% extends 'master_app/review_list.html' %}
 {% load crispy_forms_tags %} 
-{% block content %} 
 
+
+{% block content %} 
 <style>
     
     .content-section{
@@ -37,5 +38,11 @@
                 <button class="btn btn-outline-info" type="submit">Update</button>
             </div>
     </form>
+
+    {% block title %}
+    <h2>Reviews by {{ user.username }}</h2>
+        {% endblock title %}  
 </div>
 {% endblock content %}
+
+

@@ -46,7 +46,7 @@ urlpatterns = [
    #About RecipeMaster
     path('about/', views.about, name='master-about'),
     #User Profile
-    path('profile/', views.profile, name='master-profile'),
+    #path('profile/', views.profile, name='master-profile'),
 
     #path('reviews/', include('reviews.urls')),
     #path('recipes/', views.recipes,name='master-recipes'),
