@@ -39,17 +39,6 @@ class Recipe(models.Model):
         return np.mean(list(avg_authenticity)) 
     def __str__(self):
         return self.recipe_name
-    
-
-'''
-    def averageRating(self):
-        reviewCount=self.recipereview_set.count()
-        if not reviewCount:
-            return 0
-        else:
-            ratingSum = sum([float(review.rating) for review in self.recipereview_set.all()])
-            return ratingSum /reviewCount
-'''
 
 class Review(models.Model):
     review_name = models.CharField(max_length=100, default='')
