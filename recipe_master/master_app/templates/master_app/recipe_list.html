@@ -6,14 +6,20 @@
 {% block content %}
 
 <head>
-
+	<!-- <link rel="stylesheet" type="text/css" href="recipePagesStyle.css"> -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+	<script src="jquery.star-rating-svg.js"></script>
+    <link rel="stylesheet" type="text/css" href="star-rating-svg.css">
+    
+    	
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
     <style>
 
         body{
             background: url("/media/wood.jpg");
             background-size: cover;
-            margin-top: 5%;
+            margin-top: 10%;
             margin-bottom: 3.5%;
             margin-left: 25%;
         }
@@ -23,6 +29,45 @@
             padding: 10px 10px;
             margin-bottom: 3.5%;
         }
+        .container {
+  overflow: hidden;
+}
+
+.filterDiv {
+  float: left;
+  background-color: #2196F3;
+  color: #ffffff;
+  width: 100px;
+  line-height: 100px;
+  text-align: center;
+  margin: 2px;
+  display: none; /* Hidden by default */
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: block;
+}
+
+/* Style the buttons */
+.btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Add a light grey background on mouse-over */
+.btn:hover {
+  background-color: #ddd;
+}
+
+/* Add a dark background to the active button */
+.btn.active {
+  background-color: #666;
+  color: white;
+}
 
     </style>
 
@@ -46,22 +91,25 @@
         
         <div class="float-right-area">
         <div class="inner-right">
+            </div>
         
             {% for obj in filter.qs %}
+   
+                 
             
             <article class="media content-section">
               <div class="media-body">
                 <div class="article-metadata">
-                  <a class="mr-2" >{{ obj.recipe_creator }}</a>
-                  <small class="text-muted">{{ obj.country }}</small>
-                  <small class="text-muted">{{ obj.date_posted|date:"F d, Y" }}</small>
+                  <a class="mr-2",  style="margin-right: 200px" >{{ obj.recipe_creator }}</a>
+                  <small class="text-muted",  style="margin-right: 200px">{{ obj.date_posted|date:"F d, Y" }}</small><br>
+                  <small class="text-muted", style="margin-right: 200px">{{ obj.country }}</small>
                 </div>
                 <h2><a class="article-title" href="{% url 'recipe-detail' obj.id %}">{{ obj.recipe_name }}</a></h2>
                 <p class="article-content">Prep Time: {{ obj.meal_PrepTime_Minutes }}  </p>
                
-
-                <p class="article-content">Average Rating: {{ obj.average_rating }}  </p>
-                <p class="article-content">Authenticity  Rating: {{ obj.authenticity }}  </p>
+                <p class="article-content">Average Rating: {{ obj.average_rating }} 
+                        <span class = "stars" data-rating="{{ obj.average_rating }}" data-num-stars="5" ></span></p>
+                <p class="article-content">Authenticity  Rating: {{ obj.authenticity }}<span class = "stars" data-rating="{{ obj.authenticity }}" data-num-stars="5" ></span></p>
 
               </div>
               <a href="{% url 'recipe-detail' obj.id %}"> <img class="rounded-circle account-img" src="{{ obj.image.url }}"></a></img>
@@ -72,6 +120,34 @@
         
         <div class="clear-floated"></div>
 
+
+
+        <script>
+                $.fn.stars = function() {
+                    return $(this).each(function() {
+            
+                        var rating = $(this).data("rating");
+            
+                        var numStars = $(this).data("numStars");
+            
+                        var fullStar = new Array(Math.floor(rating + 1)).join('<i class="fa fa-star"></i>');
+            
+                        var halfStar = ((rating%1) !== 0) ? '<i class="fa fa-star-half-empty"></i>': '';
+            
+                        var noStar = new Array(Math.floor(numStars + 1 - rating)).join('<i class="fa fa-star-o"></i>');
+            
+                        $(this).html(fullStar + halfStar + noStar);
+            
+                    });
+                }
+            
+                $('.stars').stars();
+        </script>
+       
+       
+
+
+       
 </body>
     
 {% endblock %}

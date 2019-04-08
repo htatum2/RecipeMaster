@@ -70,6 +70,7 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
              'instructions', 
              'description',
              'image', 
+             'image2',
              'meal_PrepTime_Minutes']
 
     def form_valid(self, form):

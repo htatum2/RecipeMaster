@@ -1,197 +1,483 @@
-{% extends "master_app/base.html" %}
+
 {% load static %}
 
-{% block content %}
 <!DOCTYPE html>
 <html>
+<header>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">           
 
-<head>
-<title>RecipeMaster</title>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-<script src="jquery.star-rating-svg.js"></script>
-<link rel="stylesheet" type="text/css" href="star-rating-svg.css">
-<link rel="stylesheet" type="text/css" href="{% static 'master_app/main2.css' %}">
+<!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{% static 'master_app/main.css' %}">
+<link rel="stylesheet" type ="text/css" href="main.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <link rel="stylesheet" href="css/style.css"/>
+ <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+ <link href='http://fonts.googleapis.com/css?family=Wellfleet' rel='stylesheet' type='text/css'>
+
+ <link href='http://fonts.googleapis.com/css?family=Wellfleet' rel='stylesheet' type='text/css'>
+ <link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'> 
+ <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+ <link href='http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911' rel='stylesheet' type='text/css'>
+ 
+ <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+
+
+ <script>
+ $(document).ready(function() {
+$('a[href*=#]').each(function() {
+if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+&& location.hostname == this.hostname
+&& this.hash.replace(/#/,'') ) {
+var $targetId = $(this.hash), $targetAnchor = $('[name=' + this.hash.slice(1) +']');
+var $target = $targetId.length ? $targetId : $targetAnchor.length ? $targetAnchor : false;
+if ($target) {
+var targetOffset = $target.offset().top;
+$(this).click(function() {
+$("#nav li a").removeClass("active");
+$(this).addClass('active');
+$('html, body').animate({scrollTop: targetOffset}, 1000);
+return false;
+});
+}
+}
+});
+
+ </script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 
- {% comment %} 
- 
+body {
+  margin: 0;
+  padding:0;
+  width: 100%;
+  font-size: 28px;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-    
+h1 {
+font-family:"Arvo";
+font-weight:normal;
+font-size: 55px;
+text-align: center;
+color: #fff;
+margin: 0;
+padding: 0;
+}
 
-    .featuredRecipes {
-        width: 100%;
-        padding: 3px;
-        position: relative;
-        animation: colorize 2s cubic-bezier(0, 0, .78, .36) 1;
-        border: 3px solid #e6e9e9;
-    }
-    ul {
-        height: 10%;
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: rgba(51,51,51,0.9);
-        margin-bottom: 1%;
-    }
+h2 {
+font-family:"Arvo";
+font-weight: normal;
+font-size: 40px;
+text-align: center;
+color: #fff;
+margin: 0;
+padding: 0;
+}
 
-    .bot {
-        height: 5%;
-        margin: 0;
-        padding: .5%;
-        overflow: hidden;
-        background-color: #333;
-        text-decoration-color: white;
-    }
+h3 {
+font-family: Oswald;
+font-weight: normal;
+font-size: 16px;
+text-align: center;
+margin: 5px 0;
+padding: 0;
+z-index: 1;
+position: relative;
+}
+.center { margin: 0 auto; }
+.content{ margin: 0 auto;  }
+.clear { clear: both; }
 
-    a:link {
-        color: white;
-    }
+.header {
+width: 100%;
+background-color: #f1f1f1;
+padding: 30px;
+text-align: center;
+position:fixed;
+}
+
+.quotes {
+font-family: 'Goudy Bookletter 1911', serif;
+font-weight: normal;
+font-size: 30px;
+text-align: left;
+margin: 50px auto;
+}
+
+ .author_name_white { font-family:"Wellfleet"; margin: 70px 0 0 75px; color: #fff; font-size: 20px; } 
+ .author_name_gray { font-family:"Wellfleet"; margin: 70px 0 0 75px; color: #94a4a4; font-size: 20px; } 
+ .quotes_container { width: 800px; margin: 0 auto; }
 
 
+#slide1, #slide2{ width: 100%; }
+#slide1{
+background:url('/media/home.png') 50% 0 no-repeat fixed;
+color: #fff;
+height: 600px;
+margin: 0;
+padding: 200px 0 260px 0;
+background-size: cover;
+}
 
-    li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 25px 30px;
-        text-decoration: none;
-    }
+#slide2{
+background-color: #fff;
+color: #333333;
+height: 300px;
+margin: 0 auto;
+overflow: hidden;
+padding: 200px 0;
+}
 
-    li a:hover {
-        background-color: #111;
-    }
+#slide3{
+background: url('/media/buen.jpg') 50% 0 no-repeat fixed;
+color: #fff;
+height: 600px;
+padding: 170px 0 0 0;
+background-size: cover;
+}
+#slide4{
+background-color: #fff;
+color: #333333;
+height: 300px;
+padding: 200px 0;
+}
+#slide5{
+background: url('/media/head.jpg') 50% 0 no-repeat fixed;
+height: 200px;
+margin: 0 auto;
+padding: 250px 0;
+color: #fff;
+background-size: cover;
+}
 
-    .active {
-        background-color: #556C5B;
-    }
+#navbar {
+  overflow: hidden;
+  background-color: rgb(255, 255, 255, 0.3);
+}
 
-    * {
-        box-sizing: border-box;
-    }
-    
-    
+#navbar a {
+  float: center;
+  display: block;
+  color: #050505;
+  text-align: center;
+  padding: 20px;
+  text-decoration: none;
+  font-size: 20px;
+}
 
-    .cont {
-        background-color: #f7f7f7;
-        padding: 7px;
-    }
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
 
- {% endcomment %}
+#navbar a.active {
+  background-color: #4CAF50;
+  color: rgb(7, 1, 1);
+}
 
-    #headerImage {
-            /* Credit to Olenka Kotyk on Unsplash for the image @olenka_kotyk */
-            background-image: url( "/media/salad.jpg");
-            height: 75%;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            position: relative;
-        }
-    #recipeName{
-			text-align: center;
-			padding-bottom: 1%;
-		}
+.content {
+  padding: 16px;
+}
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 5px;
+}
 
-		#recipePicture{
-			border-radius: 1%;
-		}
+.row {margin: 0 -5px;}
 
-		.summary{
-			padding: 3%;
-		}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
-		.summary{
-			font-size: 20px;
-		}
+/* Responsive columns */
+@media screen and (max-width: 0px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+  }
+}
 
-		.howTo{
-			margin-left: 3%;
-		}
+/* Style the counter cards */
+.card {
+    font-family: Oswald;
+font-weight: normal;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #444;
+  color: white;
+}
 
-		body{
-			margin-top: 7%;
-			margin-left: 25%;
-		}
-        .pictures {
-        margin: 10px -15px;
-        }
-        .pictures,
-        .pictures > .column {
-            padding: 5px;
-        }
+.fa {font-size:50px;}
 
-        .column {
-            float: left;
-            width: 33.33%;
-        }
-        
-        div.featuredpics img {
-            width: 350px;
-            height: 500px;
-        }
-        div.featuredpics {
-            text-align: center;
-        }
-        .pictures:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-    
+li img {
+/*background-color: #556C5B/*#4CAF50*/
+display: inline-block;
+vertical-align: top;
+width: 55%;
+height: 30%;
+margin-left: 50%;
+}
+
+li{
+    float:left;
+    list-style: none;
+}
+ul {
+    height: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(255, 255, 255, 0.4);
+    /*background-color: rgb(51,51,51);*/
+}
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 10px 1px;
+  text-decoration: none;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+.text {
+  background-color: white;
+  color: black;
+  font-size: 7vw; /* Responsive font size */
+  font-weight: bold;
+  margin: 0 auto; /* Center the text container */
+  padding: 10px;
+  width: 50%;
+  text-align: center; /* Center text */
+  position: absolute; /* Position text */
+  top: 60%; /* Position text in the middle */
+  left: 50%; /* Position text in the middle */
+  transform: translate(-50%, -50%); /* Position text in the middle */
+  mix-blend-mode: screen; /* This makes the cutout text possible */
+}
+.container {
+  position: relative;
+  width: 50%;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.container:hover .image {
+  opacity: 0.3;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+
+.text2 {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+}
 
 </style>
 
-</head>
+
+
+{% if title %}
+<title>RecipeMaster - {{ title}}</title>
+{% else %}
+<title>RecipeMaster</title>
+{% endif %}
+
 
 <body>
 
-<div id="headerImage">
-    <div class="headerText">
-        <a href="{% url 'master-discover' %}"><h1 style="color:white; font-size:40pt">Discover Recipes</h1></a>
-        <hr>
+<header id = "header">
+    <div class ="content">
+        <div id="navbar">
+                <ul>
+                <li style="float:left"><a class="active"  href="{% url 'master-home' %}">Home</a>
+                <li style="float:left"><a href="{% url 'master-discover' %}">Discover</a>
+                <li style="float:center"><img class="logo" src="/media/ORANGE2.png"></li>
+                {% if user.is_authenticated %}
+                <li style="float:right"><a href="{% url 'recipe-create' %}">New Recipe</a></li>
+                <li style="float:right"><a href="{% url 'profile' %}">Profile</a></li>
+                <li style="float:right"><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                <li style="float:right"><a href="{% url 'login' %}">Login</a></li>
+                <li style="float:right"><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+                </ul>
+        </nav>
     </div>
+</header>
+
+    <div id="slide1">
+  
+    <div class="text">RecipeMaster</div> </div>
+        <div class="content">
+
+            <div id="divider"> </div>
+            <h3>Recent Recipes </h3>
+        </div> 
+    </div> 
+
+
+        <div id="slide2">
+            <div class="content" >
+                  Maybe a carousel of recipes? Or pictures that show the best review or some review/stars
+  </div>
 </div>
-    
+                </div> 
+            </div> 
+   
 
-<div id="mid">
-    <h1 style = "text-align: center; border: 3px solid #e6e9e9; background-color: #f5f5f5">RecipeMaster</h1>
-    <p style = "text-align: justify;">This project is for our Spring 2019 Object Oriented Design (CSC 3380) class. RecipeMaster was founded by 6 Computer Science/Computer Engineering students at Louisiana State University.</br>
-    The students are Casey Campbell, Nadin Khalil, Rachel Pitcher, Javier Solorzano, Alyssa Smith and Haley Tatum.</p>
-    
-    
-    <h1 style = "text-align: center; border: 3px solid #e6e9e9; background-color: #f5f5f5">Top Recipes of the Week</h1>
-</div>
 
-    <div class="pictures" style="width: 93%; margin: auto">
-            <div class="column">
-              <div class="cont">
-                <img src="/media/salad.jpg" alt=“Salad” style="width:100%; height:550px">
-                {% comment %} <h4 style="text-align:center;">Salad</h4> {% endcomment %}
-              </div>
-            </div>
-            <div class="column">
-              <div class="cont">
-              <img src="/media/veganSammich.jpeg" alt="Vegan Sandwich" style="width:100%; height:550px">
-                {% comment %} <h4 style="text-align:center;">Vegan Sandwich</h4> {% endcomment %}
-              </div>
-            </div>
-            <div class="column">
-              <div class="cont">
-              <img src="/media/strawberrycake.jpg" alt="Strawberry and Raspberry Cake" style="width:100%; height:550px">
-                {% comment %} <h4 style="text-align:center;">Berry Cake</h4> {% endcomment %}
-              </div>
-            </div>
-    </div>
-<br/>
-
-        <div class="bottom fixed-bottom bot" style="height: 45px;">
-            <div class="text-center">
-                <a class="about" href="{% url 'master-about' %}"><p style="color:white; text-align:center;">About</p></a>
-            </div>
+        <div id="slide3">
+            <div class="content">
+        <div class="column">
+          <div class="card">
+            <p><i class="fa fa-user-circle"></i></p>
+            <p>110+</p>
+            <p>Users</p>
+          </div>
         </div>
 
-</body>
+        <div class="column">
+                <div class="card">
+                  <p><i class="fa fa-comment"></i></p>
+                  <p>550+</p>
+                  <p>Reviews</p>
+                </div>
+              </div>
+              
+              <div class="column">
+                <div class="card">
+                  <p><i class="fa fa-star"></i></p>
+                  <p>100+</p>
+                  <p>Authentic Recipes</p>
+                </div>
+              </div>
+              
+              <div class="column">
+                <div class="card">
+                  <p><i class="fas fa-hamburger"></i></p>
+                  <p>100+</p>
+                  <p>7 Food Categories</p>
+                </div>
+              </div>
+        </div>
+  </div>
+
+        <div id="slide4">
+            <div class="content">
+     <h3>Let me know what you guys want to put here.</h3>
+                </div> 
+             </div> 
+        </div> 
+
+        <div id="slide5">
+            <div class="content">
+                        About us something
+                </div> 
+            </div> 
+        </div> 
+    <!----- SLIDES END --->
+ 
+
+
+
+    </body>
 </html>
-{% endblock content %}
+
+
+<script>
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) 
+  {
+    navbar.classList.add("sticky")
+    }
+else {
+    navbar.classList.remove("sticky");
+  }
+}
+</script>
+

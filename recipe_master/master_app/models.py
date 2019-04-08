@@ -27,6 +27,7 @@ class Recipe(models.Model):
     calories = MinMaxFloat(min_value=0.0, max_value=10000.0, default=0.0)
     meal_PrepTime_Minutes= MinMaxFloat(min_value=5.0, max_value=10000.0)
     image = models.ImageField(default='food_default.jpg', upload_to='recipe_pics')
+    image2 = models.ImageField(default='food_default.jpg', upload_to='recipe_pics', blank=True)
     ingredients_list = models.TextField(max_length=1000, default='')
     instructions = models.TextField(max_length=2000, default='')
     date_posted = models.DateTimeField(default=timezone.now)
