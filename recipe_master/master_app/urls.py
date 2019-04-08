@@ -1,9 +1,9 @@
 from django.urls import path, include
 from django.utils import timezone
+from django.conf import settings
+from django.conf.urls.static import static
 from .models import Recipe
-#from filterview import FilterView
 from django.views.generic import DetailView, ListView
-#from django.conf.urls import url, include
 from .views import (
     #RecipeListView, 
     RecipeDetailView, 
@@ -51,4 +51,4 @@ urlpatterns = [
     #path('reviews/', include('reviews.urls')),
     #path('recipes/', views.recipes,name='master-recipes'),
     
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
