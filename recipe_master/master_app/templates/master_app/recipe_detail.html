@@ -23,6 +23,7 @@
 		#recipeName{
 			text-align: center;
 			padding-bottom: 1%;
+			color: #000;
 		}
 		html {
   		height: 100%;
@@ -44,6 +45,16 @@
   			color: #000;
   			text-shadow: 2px 2px 0px rgba(0,0,0,0.2), 4px 4px 8px rgba(0,0,0,0.2); 
 		}
+		h3{
+			font: 100 75px/1.2 'Leckerli One', Helvetica, sans-serif;
+			font-size:30px;
+  		color: #000;
+  		text-shadow: 2px 2px 0px rgba(0,0,0,0.2), 4px 4px 8px rgba(0,0,0,0.2); 
+		}
+		p {
+			font-family: Snell Roundhand, cursive;
+			font-size:30px;
+  		color: #000;}
 
 		li{
 			font-size: 20px;
@@ -190,6 +201,7 @@ body {font-family: Arial;}
 /* Style the tab */
 .tab {
   overflow: hidden;
+	font-family: 'Leckerli One', Helvetica, sans-serif;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
 }
@@ -237,20 +249,20 @@ body {font-family: Arial;}
 	<br>
 	<br>
 					<div class="text-center" id=recipeName>
+						<br>
 						<h1 class="article-title"><u>{{ recipe.recipe_name }}</u></h1></div>
 					<class="bodyNotNav">
-							{{ recipe.description }}
-			<h5>{{recipe.review_set.count}} reviews</h5> 
-			<h5>Average Overall Rating : 
-					<span class="stars" data-rating="{{recipe.average_rate | floatformat}}" data-num-stars="5" ></span></h5>
-			<h5>Average Authenticity Rating: <span class="stars" data-rating="{{recipe.authenticity | floatformat}}" data-num-stars="5" ></span></h5>
-
+						<div class ="text-center">	{{ recipe.description }}</div>
+						<div class = "text-center">
+			<h5>Average Overall Rating : <span class="stars" data-rating="{{recipe.average_rate | floatformat}}" data-num-stars="5" ></span>{{recipe.average_rate | floatformat}} based on {{recipe.review_set.count}} reviews</h5>
+			<h5>Average Authenticity Rating: <span class="stars" data-rating="{{recipe.authentic_rate | floatformat}}" data-num-stars="5" ></span>{{recipe.authentic_rate | floatformat}} based on {{recipe.review_set.count}} reviews</h5>
+		</div>
 			<div class = "text-center" id='recipePicture'>
 					<img class="mySlides" id="recipePicture" src="{{ recipe.image.url }}" "rounded center" alt="..." width="100%" >
 					<img class = "mySlides" id="recipePicture" src="{{ recipe.image2.url }}" "rounded center" alt="..." width="100%">
 					<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
 					<button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
-				  </div>
+			</div>
 </div>
 
 <br>
@@ -266,8 +278,7 @@ body {font-family: Arial;}
 <br>
 
 <br>
-<h2>Recipe Features</h2>
-<p>Click on the buttons inside the tabbed menu:</p>
+<br>
 
 		<div class="tab">
 				<button class="tablinks" onclick="openCity(event, 'London')">Ingredients</button>
