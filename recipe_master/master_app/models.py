@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 from datetime import date
+from PIL import Image
 import numpy as np
 
 # You must save the file and run python manage.py makemigrations 
