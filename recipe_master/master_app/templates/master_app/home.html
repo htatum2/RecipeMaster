@@ -131,7 +131,7 @@ background-size: cover;
 #slide2{
 background-color: #003F5B;
 color: #333333;
-height: 800px;
+height: 600px;
 margin: 0 auto;
 overflow: hidden;
 padding: 100px 0;
@@ -181,10 +181,6 @@ background-size: cover;
   color: black;
 }
 
-#navbar a.active {
-  background-color: #4CAF50;
-  color: rgb(7, 1, 1);
-}
 
 .content {
   padding: 16px;
@@ -301,7 +297,7 @@ button:hover, a:hover {
 }
 
 .text {
-  background-color: white;
+  background-color: rgba(248, 247, 246, 0.938);
   color: black;
   font-size: 7vw; /* Responsive font size */
   font-weight: bold;
@@ -407,10 +403,10 @@ cite a {
 <body>
 
 <header id = "header">
-    <div class ="content">
+ 
         <div id="navbar">
                 <ul>
-                <li style="float:left"><a class="active"  href="{% url 'master-home' %}">Home</a>
+                <li style="float:left"><a href="{% url 'master-home' %}">Home</a>
                 <li style="float:left"><a href="{% url 'master-discover' %}">Discover</a>
                 {% if user.is_authenticated %}
                 <li style="float:right"><a href="{% url 'recipe-create' %}">New Recipe</a></li>
@@ -422,7 +418,7 @@ cite a {
                 {% endif %}
                 </ul>
         </nav>
-    </div>
+ 
 </header>
 
     <div id="slide1">
