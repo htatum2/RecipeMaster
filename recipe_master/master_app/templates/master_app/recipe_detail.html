@@ -11,6 +11,8 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 	<script src="jquery.star-rating-svg.js"></script>
 	<link rel="stylesheet" type="text/css" href="star-rating-svg.css">
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<!--Fonts-->
 	<link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Leckerli+One' rel='stylesheet' type='text/css'>
@@ -38,6 +40,7 @@
 
 		h1{
 			font: 100 75px/1.2 'Leckerli One', Helvetica, sans-serif;
+			font-size:50px;
   			color: #000;
   			text-shadow: 2px 2px 0px rgba(0,0,0,0.2), 4px 4px 8px rgba(0,0,0,0.2); 
 		}
@@ -89,6 +92,7 @@
   		background-image: url('/media/cookbook.jpg');
 
 		}
+		.mySlides {display:none;}
 
 		/* Control the right side */
 		.right {
@@ -230,9 +234,10 @@ body {font-family: Arial;}
 <body>
 	<!--LEFT SIDE-->
 <div class="split left">
-		<div class="centered">
-				<div class="centered">
-						<h1 class="article-title"><u>{{ recipe.recipe_name }}</u></h1>
+	<br>
+	<br>
+					<div class="text-center" id=recipeName>
+						<h1 class="article-title"><u>{{ recipe.recipe_name }}</u></h1></div>
 					<class="bodyNotNav">
 							{{ recipe.description }}
 			<h5>{{recipe.review_set.count}} reviews</h5> 
@@ -240,19 +245,20 @@ body {font-family: Arial;}
 					<span class="stars" data-rating="{{recipe.average_rate | floatformat}}" data-num-stars="5" ></span></h5>
 			<h5>Average Authenticity Rating: <span class="stars" data-rating="{{recipe.authenticity | floatformat}}" data-num-stars="5" ></span></h5>
 
-			<div class="titlePicAndSum">
-				<div class="text-center">
-					<img id="recipePicture" src="{{ recipe.image.url }}" "rounded center" alt="..." width="30%" height="30%" margin-left= "90%">
-					<img id="recipePicture" src="{{ recipe.image2.url }}" "rounded center" alt="..." width="30%" height="30%">
-				</div>
-			</div>
-	<!--Comments??-->
-<br>
-<br>
-<br>
-		</div>
-	</div>
+			<div class = "text-center" id='recipePicture'>
+					<img class="mySlides" id="recipePicture" src="{{ recipe.image.url }}" "rounded center" alt="..." width="100%" >
+					<img class = "mySlides" id="recipePicture" src="{{ recipe.image2.url }}" "rounded center" alt="..." width="100%">
+					<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+					<button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+				  </div>
 </div>
+
+<br>
+<br>
+<br>
+		
+
+
 	
 <!--RIGHT SIDE-->
 <div class="split right">
@@ -305,17 +311,18 @@ body {font-family: Arial;}
 							{{ form.as_p }}
 							<input type="submit" value="Add" />
 							</form>
+						</div>
 <br>
 <br>
 <br>
 							
 								
-	</div>
+	
 		
 </div>
 
 
-
+<!--Stars-->
 <script>
 		$.fn.stars = function() {
 			return $(this).each(function() {
@@ -338,13 +345,31 @@ body {font-family: Arial;}
 		$('.stars').stars();
 </script>
 
+<!--Recipe Image Slideshow-->
 
+<script>
+		var slideIndex = 1;
+		showDivs(slideIndex);
+		
+		function plusDivs(n) {
+		  showDivs(slideIndex += n);
+		}
+		
+		function showDivs(n) {
+		  var i;
+		  var x = document.getElementsByClassName("mySlides");
+		  if (n > x.length) {slideIndex = 1}
+		  if (n < 1) {slideIndex = x.length}
+		  for (i = 0; i < x.length; i++) {
+			x[i].style.display = "none";  
+		  }
+		  x[slideIndex-1].style.display = "block";  
+		}
+		
+</script>
+		
 
-
-
-
-
-
+<!--Recipe Feature Buttons-->
 
 <script>
 		function openCity(evt, cityName) {
