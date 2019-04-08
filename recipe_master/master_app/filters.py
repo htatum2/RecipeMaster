@@ -8,9 +8,12 @@ class RecipeFilter(django_filters.FilterSet):
     meal_PrepTime_Minutes = django_filters.NumberFilter(lookup_expr='lt')
     calories = django_filters.NumberFilter( lookup_expr='lt')
     calories = django_filters.NumberFilter(lookup_expr='gt')
+    average_rating = django_filters.NumberFilter(lookup_expr='gt')
+    authenticity= django_filters.NumberFilter(lookup_expr='gt')
+
     class Meta:
         model=Recipe
-        fields = ['country', 'calories','meal_PrepTime_Minutes','category']
+        fields = ['country', 'calories','meal_PrepTime_Minutes','category', 'average_rating', 'authenticity']
 
 
 
