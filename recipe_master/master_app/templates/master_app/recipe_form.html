@@ -22,7 +22,7 @@
 <body>
 
     <div class="content-section makeRecipe">
-        <form method="POST">
+        <form method="post" action='' enctype='multipart/form-data'>
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">New Recipe</legend>

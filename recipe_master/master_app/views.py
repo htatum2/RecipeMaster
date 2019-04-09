@@ -1,4 +1,4 @@
-from django.shortcuts import render, render_to_response, get_object_or_404
+from django.shortcuts import render, render_to_response, get_object_or_404, redirect
 from .forms import RecipeForm, ReviewForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
@@ -26,34 +26,8 @@ from django.db.models import Avg
 # Create your views here.
 # Class based views look for <app>/<model>_<viewtype>.html by default
 
-#class LoginRequiredMixin(object):
-     #@method_decorator(login_required())
-     #def dispatch(self, *args, **kwargs):
-         #return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
-
-#class CheckOwner(object):
-    #def get_object(self, *args, **kwargs):
-        #obj=super(CheckOwner, self).get_object(*args, **kwargs)
-        #if not obj.user == self.request.user:
-           # raise PermissionDenied
-        #return obj
-
-#class LogInBeforeChanging(LoginRequiredMixin, CheckOwner, UpdateView):
-    #template_name ='master_app/form.html'
-
 def home(request):
     return render(request, 'master_app/home.html')
-
-#class RecipeListView(ListView):
-    #model = Recipe
-    #template_name = 'master_app/home_javier.html'
-    #context_object_name = 'recipes'
-    #ordering = ['-date_posted']
-
-#class ReviewListView(ListView):
-    #model = Review
-    #context_object_name = 'reviews'
-    #ordering = ['-date']
 
 class RecipeDetailView(DetailView):
     model = Recipe
@@ -61,7 +35,7 @@ class RecipeDetailView(DetailView):
 
 class RecipeCreateView(LoginRequiredMixin, CreateView):
     model = Recipe
-    success_url = '/'
+    success_url = '/discover/'
     fields = ['recipe_name',
              'country',
              'calories',
@@ -79,7 +53,7 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
 
 class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Recipe
-    success_url = '/'
+    success_url = '/discover/'
     fields = ['recipe_name',
              'country',
              'calories', 
@@ -91,8 +65,9 @@ class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
               'meal_PrepTime_Minutes']
 
     def form_valid(self, form):
-        form.instance.recipe_creator = self.request.user
-        return super().form_valid(form)
+        post = form.save(commit=False)
+        post.save()
+        return HttpResponseRedirect(reverse('redirect'))
 
     def test_func(self):
         recipe = self.get_object()
@@ -133,45 +108,6 @@ def about(request):
     dict = {'records': recipe3, 'users': users, 'avg':avg}
     return render(request, 'master_app/about.html', context = dict)
 
-
-#def profile(request):
-    #return HttpResponse('<h1>Awesome profile view coming soon!</h1>')
-
-
-#May delete
-#def recipes(request):
-    #return render(request, 'master_app/recipes.html')
-
-
-
-#May delete
-# def veg_search(request):
-    #return render(request, 'master_app/veg_search.html')   
-
-#def discover(request):
-    #return render(request, 'master_app/discover.html')
-"""
-class RecipeSearchListView(RecipeListView):
-    
-    Display a Blog List page filtered by the search query.
-    
-    paginate_by = 10
-
-    def get_queryset(self):
-        result = super(RecipeSearchListView, self).get_queryset()
-
-        query = self.request.GET.get('q')
-        if query:
-            query_list = query.split()
-            result = result.filter(
-                reduce(operator.and_,
-                       (Q(title__icontains=q) for q in query_list)) |
-                reduce(operator.and_,
-                       (Q(content__icontains=q) for q in query_list))
-            )
-
-        return result
-"""
 def recipe_list(request):
     #recipes = Recipe.objects.all()
     recipes = Recipe.objects.order_by('recipe_name').annotate(
@@ -194,10 +130,6 @@ def review_detail(request, pk):
     review = get_object_or_404(Review, pk=pk)
     return render(request, 'master_app/review_detail.html', {'review':review})
 
-#def RecipeDetailView(request):
-    #recipe = get_object_or_404(Recipe)
-    #form = RecipeForm()
-    #return render(request, 'master_app/recipe_detail.html', {'recipe': recipe, 'form': form})
 @login_required
 def add_review(request, pk):
     recipe = get_object_or_404(Recipe, pk=pk)
