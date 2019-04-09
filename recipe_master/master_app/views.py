@@ -115,11 +115,6 @@ def recipe_list(request):
 )
     recipe_filter = RecipeFilter(request.GET, queryset=recipes)
     return render(request, 'master_app/recipe_list.html',{'filter':recipe_filter})
-    #if request.POST:
-      #  return render_to_response('master_app/search.html', {'result': google()})
-        #return HttpResponseRedirect("/")
-    #else:
-        #return render_to_response('master_app/search.html')
 
 def review_list(request):
     latest_review_list = Review.objects.order_by('-date')[:9]
