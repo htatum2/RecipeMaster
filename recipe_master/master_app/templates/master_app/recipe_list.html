@@ -22,7 +22,7 @@
     <style>
 
         body{
-            background: url("/media/wood2.jpg");
+            background-color: aliceblue;
             background-size: auto;
             margin-top: 6%;
             margin-bottom: 3%;
@@ -96,40 +96,39 @@
                     z-index:1;
                     margin-top: 3px;
                 }
+                .h1 {
+                    background-color: rgba(73, 53, 32, 0.938);
+                    color: rgb(94, 7, 7);
+                    font-size: 7vw; /* Responsive font size */
+                    font-weight: bold;
+                    margin: 0 auto; /* Center the text container */
+                    padding: 10px;
+                    width: 50%;
+                    text-align: center; /* Center text */
+                    position: absolute; /* Position text */
+                    top: 60%; /* Position text in the middle */
+                    left: 50%; /* Position text in the middle */
+                    transform: translate(-50%, -50%); /* Position text in the middle */
+                    mix-blend-mode: screen; /* This makes the cutout text possible */
+                }
 
                 .search{
                 background-color: rgb(255, 255, 255, 0.4);
                 padding: 0px 0px;
-                position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-                z-index: 1; /* Stay on top */
-                top: 60; /* Stay at the top */
+                position: fixed; 
+                z-index: 1;
+                top: 60; 
                 left: 0;
                 margin-left: 0%;
+                color: rgb(5, 1, 1);
                 width: 350px;
                 height:100%;
-                overflow-x: hidden; /* Disable horizontal scroll */
+                overflow-x: hidden; 
             }
             .container {
                  overflow: hidden;
             }
-            /*
-            h2 
-            { 
-                position: absolute; /* To place the text on the image*
-                top: 200px;  The exact location of the text from the top of the image*
-                left: 0; /* Other beautification stuff *
-                width: 100%; 
-            }
-            h2 span /* decorating the text within the span tag *
-            { 
-                color: white; 
-                font: bold 24px/45px Helvetica, Sans-Serif; 
-                letter-spacing: -1px; 
-                background: rgb(0, 0, 0); /* fallback color *
-                background: rgba(0, 0, 0, 0.7); padding: 10px; 
-                }
-            h2 span.spacer { padding:0 5px; } /* to pad the background color of text to make it look more elegant */
-
+            
             .filterDiv {
             float: left;
             background-color: #2196F3;
@@ -209,7 +208,7 @@
 .service-wrapper-inner span  
 { 
                 color: white; 
-                font: bold 24px/45px Helvetica, Sans-Serif; 
+                font: bold 24px/45px Arvo;
                 letter-spacing: -1px; 
 
 }    
@@ -226,14 +225,15 @@
    
 <body>
 
-        <div class="sidenav">
+    <div class="sidenav">
             {% block sidenav %}
             {% endblock %}
-              </div>
+    </div>
      
     <div class="search">
         <h1>
-
+            <img src="/media/hat.png"  width="50%">
+            <div>DISCOVER</div> 
         </h1>
         <div class="float-left-area">
             <div class="inner-left">
@@ -256,7 +256,7 @@
                     <div class="service-wrapper">
                     <div>
                         <div class= "image">
-                                <img src="{{ obj.image.url }}" alt="Cinque Terre" width="345" height="300"></a>
+                                <img src="{{ obj.image.url }}" alt="" width="345" height="300"></a>
                                 <div class="service-wrapper-inner">
                                 <h2>
                                         <a target="_blank" href="{% url 'recipe-detail' obj.id %}">
