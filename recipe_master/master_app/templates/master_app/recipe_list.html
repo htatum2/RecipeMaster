@@ -5,13 +5,18 @@
 {% block content %}
 
 <header>
-  
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">      
 	<!-- <link rel="stylesheet" type="text/css" href="recipePagesStyle.css"> -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 	<script src="jquery.star-rating-svg.js"></script>
     <link rel="stylesheet" type="text/css" href="star-rating-svg.css">
     
-    	
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,300,200,100,900' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
+	
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
     <style>
@@ -22,7 +27,9 @@
             margin-top: 6%;
             margin-bottom: 3%;
             margin-left: 28%;
+            font-family: "Arvo"
         }
+
                 ul {
                   height: 10%;
                   list-style-type: none;
@@ -73,6 +80,10 @@
                     width: 50%;
                     height: 100%;
                     margin-left: 50%;
+                }
+                logo-img{
+                    width:20px;
+                    height:10px;
                 }
                 site-header {
                     width: 100%;
@@ -132,6 +143,7 @@
             background-color: #666;
             color: white;
         }
+
         div.gallery {
             background: #ddd;
             margin: 5px;
@@ -139,117 +151,19 @@
             float: left;
             width: 180px;
         }
-
-        div.gallery:hover {
-            border: 1px solid #777;
-        }
-
-        div.gallery img {
-            width: 100%;
-            height: auto;
-        }
-
-        div.desc {
-            padding: 15px;
-            text-align: center;
-        }
-        .wrapper {
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-}
-#portfolioGrid {
-  width: 40%;
-  margin: auto 0;
+.grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+  padding: 10px;
+}
+.grid > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid black;
 }
 
-.grid-item {
-  overflow: hidden;
-  position: relative;
-}
-
-.grid-item > a {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.overlay-top:after {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: -1px;
-  left: 45%;
-  width: 10%;
-  text-align: center;
-  z-index: 1;
-  border-bottom: 3px solid #fff;
-}
-.grid-item img {
-  width: 100%;
-  display: block;
-}
-.overlay-top,
-.overlay-bot {
-  position: absolute;
-  background-color: #000;
-  text-align: center;
-  width: 100%;
-  overflow: hidden;
-  height: 50%;
-  color: #fff;
-  opacity: 0.9;
-}
-/*hide*/
-.overlay-top {
-  top: -50%;
-}
-.overlay-bot {
-  bottom: -50%;
-}
-.grid-item h1 {
-  padding: 50% 0 0 0;
-}
-.grid-item p {
-  padding: 0 0 50% 0;
- }
-/*silding*/
-.overlay-top,
-.overlay-bot {
-  transition: top 0.2s ease-out, bottom 0.2s ease-out;
-}
-.grid-item h1,
-.grid-item h2,
-.grid-item p {
-  transition: padding 0.2s ease-out 0.4s;
-  font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana,
-    "sans-serif";
-  font-size: 15px;
-  font-weight: 300;
-}
-/*hover effect*/
-.grid-item:hover .overlay-top {
-  top: 0;
-  transition-delay: 0.2s;
-}
-.grid-item:hover .overlay-bot {
-  bottom: 0;
-  transition-delay: 0.2s;
-}
-.grid-item:hover h1,
-.grid-item:hover h2 {
-  padding: 25% 0;
-  margin: 0;
-}
-.grid-item:hover p {
-  padding: 10% 0;
-  margin: 0;
-}
         
+
 </style>
 </header>
 
@@ -268,7 +182,10 @@
               </div>
      
     <div class="search">
-        <h1>Have any specifications?</h1>
+        <h1>
+
+        <img class="logo-img" src="/media/ORANGE2.png">
+        </h1>
         <div class="float-left-area">
             <div class="inner-left">
             
@@ -281,19 +198,18 @@
         </div>
     </div>
         
-        <div class="float-right-area">
-        <div class="inner-right">
-            </div>
+       
         
-            {% for obj in filter.qs %}
-            
-                             
-            <div class="gallery">
+                                     
+            <div class="grid">
+                    {% for obj in filter.qs %}   
+                    <div><img src="{{ obj.image.url }}" alt="Cinque Terre" width="300" height="300"></div>
+                    <!----
                 <a target="_blank" href="{% url 'recipe-detail' obj.id %}">
                     <a class="mr-2",  style="margin-right: 200px" >{{ obj.recipe_creator }}</a>
 
                     <small class="text-muted",  style="margin-right: 200px">{{ obj.date_posted|date:"F d, Y" }}</small><br>
-                    <img src="{{ obj.image.url }}" alt="Cinque Terre" width="900" height="500">
+                    <img src="{{ obj.image.url }}" alt="Cinque Terre" width="100" height="100">
                 </a>
                 <div class="desc"><a class="article-title" href="{% url 'recipe-detail' obj.id %}">{{ obj.recipe_name }}</a></div>
                   <small class="text-muted", style="margin-right: 200px">{{ obj.country }}</small>
@@ -302,20 +218,8 @@
                 <p class="article-content">Authenticity  Rating: {{ obj.authenticity }}<span class = "stars" data-rating="{{ obj.authenticity }}" data-num-stars="5" ></span></p>
 
                 <p class="article-content">Prep Time: {{ obj.meal_PrepTime_Minutes }}  </p>
-                <p class="article-content"> {{ obj.description }}  </p>
-
-
-            </div>
-
-
-
-
-           
-                  
-                
-               
-              </div>
-              
+                <p class="article-content"> {{ obj.description }}  </p></div></div>-->
+             
             {% endfor %}
         </div>
         </div>

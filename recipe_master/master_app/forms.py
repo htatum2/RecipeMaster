@@ -4,7 +4,7 @@ from .models import Recipe, Review
 class RecipeForm(ModelForm):
     class Meta:
         model = Recipe
-        exclude= ('user','date',)
+        exclude= ('user','date')
 
 
 
