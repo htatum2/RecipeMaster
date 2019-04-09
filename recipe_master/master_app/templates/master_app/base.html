@@ -53,14 +53,31 @@
                     /*background-color: #556C5B/*#4CAF50*/
                     display: inline-block;
                     vertical-align: top;
-                    width: 50%;
-                    height: 30%;
+                    width: 60%;
+                    height: 20%;
                     margin-left: 50%;
                 }
-                site-header {
+                .site-header {
                     width: 100%;
                     position:fixed;
                     margin-top: 0px;
+                    background-color: #f1f1f1;
+                    padding: 20px;
+                    font-family: "Arvo";
+                }
+                #navbar {
+                    overflow: hidden;
+                    background-color:  rgb(255, 255, 255, 0.4);
+                    font-family: "Arvo"
+                }
+                #navbar a {
+                    float: center;
+                    display: block;
+                    color: #050505;
+                    text-align: center;
+                    padding: 15px;
+                    text-decoration: none;
+                    font-size: 20px;
                 }
 
             </style>
@@ -69,12 +86,20 @@
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
             
-
+            <link href='http://fonts.googleapis.com/css?family=Wellfleet' rel='stylesheet' type='text/css'>
+            <link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'> 
+            <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+            <link href='http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911' rel='stylesheet' type='text/css'>
+            
+            <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+            <link href='https://fonts.googleapis.com/css?family=Josefin+Sans|Abril+Fatface' rel='stylesheet' type='text/css'>
+           
             <!-- Bootstrap CSS -->
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
             <link rel="stylesheet" type="text/css" href="{% static 'master_app/main.css' %}">
             <link rel="stylesheet" type ="text/css" href="main.css">
             
+ <link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'> 
         </head>
         
     {% if title %}
@@ -85,12 +110,12 @@
 </head>
 <body>
     {% block background %}{% endblock %}
-    <header class="site-header">
+    <header id="site-header">
         <div class="row">
         <div class="head fixed-top">
-            
+                <div id="navbar">
             <ul>
-                <li  style="float:left"><a class="active"  href="{% url 'master-home' %}">Home</a></li>
+                <li  style="float:left"><a href="{% url 'master-home' %}">Home</a></li>
                 <li style="float:left"><a href="{% url 'master-discover' %}">Discover</a></li>
                 <li style="float:center"><img class="logo" src="/media/ORANGE2.png"></li>
                 {% if user.is_authenticated %}
@@ -104,6 +129,7 @@
             </ul>
         </div>
         </div>
+    </div>
         <div class="sidenav">
             {% block sidenav %}
             {% endblock %}
