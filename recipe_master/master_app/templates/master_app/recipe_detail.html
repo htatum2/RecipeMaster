@@ -28,14 +28,7 @@
 			position: fixed;
 			float: right;
 		}
-		#recipeName{
-			text-align: center;
-			padding-bottom: 1%;
-			color: #000;
-			padding:50%;
-			position: fixed;
-			float: left;
-		}
+
 		html {
   		height: 100%;
   		width: 100%;
@@ -43,8 +36,17 @@
 		
 
 		#recipePicture{
-			border-radius: 8%;
-			
+			border-radius: 3%;
+			height: 400px; 
+			width: 400px; 
+			width: 50%;
+			overflow: hidden;
+			position: center;
+			padding: 0%;
+			display: block;
+  margin-left: auto;
+  margin-right: auto;
+			transform: rotate(90deg);
 		}
 
 		.summary{
@@ -52,20 +54,20 @@
 		}
 
 		h1{
-			font: 100 75px/1.2 'Leckerli One', Helvetica, sans-serif;
+			font: 100 75px/1.2 "Arvo";
 			font-size:50px;
   			color: #000;
   			text-shadow: 2px 2px 0px rgba(0,0,0,0.2), 4px 4px 8px rgba(0,0,0,0.2); 
 		}
 		h3{
-			font: 100 75px/1.2 'Leckerli One', Helvetica, sans-serif;
+			font: 100 75px/1.2 "Arvo";
 			font-size:30px;
   		color: #000;
   		text-shadow: 2px 2px 0px rgba(0,0,0,0.2), 4px 4px 8px rgba(0,0,0,0.2); 
 		}
 		p {
-			font-family: Snell Roundhand, cursive;
-			font-size:30px;
+			font-family: "Arvo";
+			font-size:20px;
   		color: #000;}
 
 		li{
@@ -130,7 +132,7 @@
 .container img {
   float: left;
   margin-right: 20px;
-  border-radius: 50%;
+  border-radius: 10%;
 }
 
 /* Increase the font-size of a span element */
@@ -149,7 +151,8 @@
  /* Style the tab */
  .tab {
   overflow: hidden;
-  border: 1px solid #ccc;
+  border: 3px solid #ccc;
+	font: "Arvo";
   background-color: #f1f1f1;
 }
 
@@ -212,7 +215,9 @@ body {font-family: Arial;}
 .tab button:hover {
   background-color: #ddd;
 }
-
+* {
+  box-sizing: border-box;
+}
 /* Create an active/current tablink class */
 .tab button.active {
   background-color: #ccc;
@@ -225,7 +230,16 @@ body {font-family: Arial;}
   border: 1px solid #ccc;
   border-top: none;
 }
-
+.card {
+   background-color: white;
+   padding: 20px;
+   margin-top: 20px;
+}
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
 
 } 
 
@@ -235,21 +249,38 @@ body {font-family: Arial;}
 
 <body>
 	<!--LEFT SIDE-->
-<div class="split left">
+
+	<div class = "row"></div>
+	<div class="split left">
 	<br>
 	<br>
-					<div class="text-center" id=recipeName>
+
+			<div class="card">
 				<br>
-						<h1 class="article-title"><u>{{ recipe.recipe_name }}</u></h1></div>
-					<class="bodyNotNav">
-						<div class ="text-center">	{{ recipe.description }}</div>
-						<div class = "text-center">
-			<h5>Average Overall Rating : <span class="stars" data-rating="{{recipe.average_rate | floatformat}}" data-num-stars="5" ></span>{{recipe.average_rate | floatformat}} based on {{recipe.review_set.count}} reviews</h5>
-			<h5>Average Authenticity Rating: <span class="stars" data-rating="{{recipe.authentic_rate | floatformat}}" data-num-stars="5" ></span>{{recipe.authentic_rate | floatformat}} based on {{recipe.review_set.count}} reviews</h5>
-		</div>
-			<div class = "text-center" id='recipePicture'>
-					<img id="recipePicture" style="center" src="{{ recipe.image.url }}" "rounded center" alt="..." width="50%" >
-					<img id="recipePicture2" style="center" src="{{ recipe.image2.url }}" "rounded center" alt="..." width="50%" >
+				<br>
+				<br>
+				<br>
+					<h1 style="float:center">
+							{{ recipe.recipe_name }}
+					</h1>
+					<h5>{{recipe.country}}</h5>
+					<h7>	{{ recipe.description }}</h7>
+				</div>
+
+				<div class="card"style="background-color:#e2e4defa">
+				<img id="recipePicture" src="{{ recipe.image.url }}"></img>
+				</div>
+
+			<div class="card">
+				<h3>Ratings(based on {{recipe.review_set.count}} reviews) </h3>
+				<h5>Average Authenticity Rating:{{recipe.authentic_rate | floatformat}} <span class="stars" data-rating="{{recipe.authentic_rate | floatformat}}" data-num-stars="5" ></span></h5>
+				<h5>Average Overall Rating : {{recipe.average_rate | floatformat}}<span class="stars" data-rating="{{recipe.average_rate | floatformat}}" data-num-stars="5" ></span></h5>
+			</div>
+				<br>
+
+
+
+			
 			</div>
 </div>
 
@@ -273,16 +304,17 @@ body {font-family: Arial;}
 				<button class="tablinks" onclick="openCity(event, 'Directions')">Directions</button>
 				<button class="tablinks" onclick="openCity(event, 'Reviews')">Reviews</button>
 		</div>
-
+		<div class="card" style="background-color: #e2e4defa">
 	<div id="London" class="tabcontent">
 		<h3>Ingredients</h3>
   		<p>{{recipe.ingredients_list}}</p>
-	</div>
+	</div></div>
 
 	<div id="Directions" class="tabcontent">
+			<div class="card">
   		<h3>Directions</h3>
   		<p>{{recipe.instructions}}</p>
-	</div>
+	</div></div>
 		
 	<div id="Reviews" class="tabcontent">
 		<h3> Reviews</h3>
@@ -293,9 +325,9 @@ body {font-family: Arial;}
 					<div class="container">																						
 							<img src="/media/fruit.jpg" alt="Avatar" style="width:80px">
 							<p><span>{{ review.user }}</span></p>
-							<h6>Overall Rated {{ review.rating }} </h6><br>
-							<h6>Authencity Rated {{ review.authenticityRating }} of 5 </h6>
-							<p>{{ review.comment }}</p></div>
+							<h6>Overall Rated {{ review.rating }}<span class="stars" data-rating="{{review.rating | floatformat}}" data-num-stars="5" ></span> </h6><br>
+							<h6>Authencity Rated {{ review.authenticityRating }} <span class="stars" data-rating="{{review.authenticityRating| floatformat}}" data-num-stars="5" ></span> </h6>
+							<p><i>{{ review.comment }}</i></p></div>
 				{% endfor %}
 				{% else %}
 					<p>No reviews yet.</p>
@@ -310,7 +342,7 @@ body {font-family: Arial;}
 							{{ form.as_p }}
 							<input type="submit" value="Add" />
 							</form>
-						</div>
+		</div>
 <br>
 <br>
 <br>
