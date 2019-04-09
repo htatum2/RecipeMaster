@@ -260,10 +260,12 @@
                                 <div class="service-wrapper-inner">
                                 <h2>
                                         <a target="_blank" href="{% url 'recipe-detail' obj.id %}">
-                                            <span>{{ obj.recipe_name }}<span class='spacer'></span></a>
-                                    <br /><div>
-                                    <span class = "stars" data-rating="{{ obj.authenticity }}" data-num-stars="5" ></span></div>
+                                            <span>{{ obj.recipe_name }}<span class='spacer'></span></a><br>
+                                            <span class = "stars" data-rating="{{obj.authenticity}}" data-num-stars="5" ></span>
+                                    
+
                                     </h2> 
+
                                     <div class = "description">
                                         <p>
                                                 {{ obj.description }}<br>
@@ -276,19 +278,6 @@
                 </div>
 
 
-                    <!----
-                <a target="_blank" href="{% url 'recipe-detail' obj.id %}">
-                    <a style="margin-right: 200px" >{{ obj.recipe_creator }}</a>
-
-                    <small class="text-muted",  style="margin-right: 200px">{{ obj.date_posted|date:"F d, Y" }}</small><br>
-
-                </a>
-
-                  <small class="text-muted", style="margin-right: 200px">{{ obj.country }}</small>
- 
-
-                <p class="article-content">Prep Time: {{ obj.meal_PrepTime_Minutes }}  </p>
-                <p class="article-content"> {{ obj.description }}  </p></div></div>-->
              
             {% endfor %}
         </div>

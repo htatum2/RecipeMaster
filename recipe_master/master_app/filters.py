@@ -12,7 +12,7 @@ class RecipeFilter(django_filters.FilterSet):
     authenticity= django_filters.NumberFilter(lookup_expr='gt',label='Authenticity Rating')
     class Meta:
         model=Recipe
-        fields = ['country', 'calories','calories_lt','meal_PrepTime_Minutes','category', 'average_rating', 'authenticity']
+        fields = ['country', 'calories','calories','meal_PrepTime_Minutes','category', 'average_rating', 'authenticity']
 
 
 
