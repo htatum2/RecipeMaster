@@ -112,23 +112,24 @@
             .container {
                  overflow: hidden;
             }
+            /*
             h2 
-{ 
-position: absolute; /* To place the text on the image*/
-top: 200px; /* The exact location of the text from the top of the image*/
-left: 0; /* Other beautification stuff */
-width: 100%; 
-}
-/* Coloring time */
-h2 span /* decorating the text within the span tag */
-{ 
-color: white; 
-font: bold 24px/45px Helvetica, Sans-Serif; 
-letter-spacing: -1px; 
-background: rgb(0, 0, 0); /* fallback color */ 
-background: rgba(0, 0, 0, 0.7); padding: 10px; 
-}
-h2 span.spacer { padding:0 5px; } /* to pad the background color of text to make it look more elegant */
+            { 
+                position: absolute; /* To place the text on the image*
+                top: 200px;  The exact location of the text from the top of the image*
+                left: 0; /* Other beautification stuff *
+                width: 100%; 
+            }
+            h2 span /* decorating the text within the span tag *
+            { 
+                color: white; 
+                font: bold 24px/45px Helvetica, Sans-Serif; 
+                letter-spacing: -1px; 
+                background: rgb(0, 0, 0); /* fallback color *
+                background: rgba(0, 0, 0, 0.7); padding: 10px; 
+                }
+            h2 span.spacer { padding:0 5px; } /* to pad the background color of text to make it look more elegant */
+
             .filterDiv {
             float: left;
             background-color: #2196F3;
@@ -182,8 +183,36 @@ h2 span.spacer { padding:0 5px; } /* to pad the background color of text to make
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid black;
 }
+.service-wrapper{
+    overflow:hidden;
+    position:relative;
+}
+.service-wrapper-inner{
+    height:100%;
+    width:100%;
+    position: absolute;
+    z-index:1;
+    top:230px;
+    color:#ccc;
+    padding: 15px 20px;
+    -webkit-transition: 0.1s;
+    -moz-transition: 0.1s;
+    -ms-transition:0.1s;
+    -o-transition: 0.1s;
+    transition: 0.1s;
+    background: rgba(32,32,32,0.7);
+}
+.service-wrapper:hover .service-wrapper-inner{
+    top:0;
+}
 
-        
+.service-wrapper-inner span  
+{ 
+                color: white; 
+                font: bold 24px/45px Helvetica, Sans-Serif; 
+                letter-spacing: -1px; 
+
+}    
 
 </style>
 </header>
@@ -223,31 +252,40 @@ h2 span.spacer { padding:0 5px; } /* to pad the background color of text to make
                                      
             <div class="grid">
                     {% for obj in filter.qs %}   
-
+                <div>
+                    <div class="service-wrapper">
                     <div>
                         <div class= "image">
-                        <img src="{{ obj.image.url }}" alt="Cinque Terre" width="345" height="300">
-                        <h2>
-                            <span>{{ obj.recipe_name }}<span class='spacer'></span>
-                            <br />
-                            <span class='spacer'></span>{{ obj.authenticity }}</span>
-                        </h2> 
+                                <img src="{{ obj.image.url }}" alt="Cinque Terre" width="345" height="300"></a>
+                                <div class="service-wrapper-inner">
+                                <h2>
+                                        <a target="_blank" href="{% url 'recipe-detail' obj.id %}">
+                                            <span>{{ obj.recipe_name }}<span class='spacer'></span></a>
+                                    <br /><div>
+                                    <span class = "stars" data-rating="{{ obj.authenticity }}" data-num-stars="5" ></span></div>
+                                    </h2> 
+                                    <div class = "description">
+                                        <p>
+                                                {{ obj.description }}<br>
+                                               
+                                        </p>
+                                    </div>
+                                </div>
+                        </div></div>
                     </div>
-                    </div>
+                </div>
 
 
                     <!----
                 <a target="_blank" href="{% url 'recipe-detail' obj.id %}">
-                    <a class="mr-2",  style="margin-right: 200px" >{{ obj.recipe_creator }}</a>
+                    <a style="margin-right: 200px" >{{ obj.recipe_creator }}</a>
 
                     <small class="text-muted",  style="margin-right: 200px">{{ obj.date_posted|date:"F d, Y" }}</small><br>
-                    <img src="{{ obj.image.url }}" alt="Cinque Terre" width="100" height="100">
+
                 </a>
-                <div class="desc"><a class="article-title" href="{% url 'recipe-detail' obj.id %}">{{ obj.recipe_name }}</a></div>
+
                   <small class="text-muted", style="margin-right: 200px">{{ obj.country }}</small>
-                  <p class="article-content">Average Rating: {{ obj.average_rating }} 
-                        <span class = "stars" data-rating="{{ obj.average_rating }}" data-num-stars="5" ></span></p>
-                <p class="article-content">Authenticity  Rating: {{ obj.authenticity }}<span class = "stars" data-rating="{{ obj.authenticity }}" data-num-stars="5" ></span></p>
+ 
 
                 <p class="article-content">Prep Time: {{ obj.meal_PrepTime_Minutes }}  </p>
                 <p class="article-content"> {{ obj.description }}  </p></div></div>-->
