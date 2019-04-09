@@ -19,6 +19,7 @@ class MinMaxFloat(models.FloatField):
         return super(MinMaxFloat, self).formfield(**defaults)
 
 class Recipe(models.Model):
+    recipe_creator = models.ForeignKey(User, on_delete=models.CASCADE)
     recipe_name = models.CharField(max_length=100)
     country = models.CharField(max_length=100, default='')
     category_choices = ((1, 'Vegan'), (2, 'Keto'), (3, 'Paleo'), (4, 'Vegetarian'), (5, 'General'))
@@ -31,7 +32,6 @@ class Recipe(models.Model):
     ingredients_list = models.TextField(max_length=1000, default='')
     instructions = models.TextField(max_length=2000, default='')
     date_posted = models.DateTimeField(default=timezone.now)
-    recipe_creator = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def average_rate(self):
         avg_overall = map(lambda x: x.rating, self.review_set.all())
@@ -40,7 +40,7 @@ class Recipe(models.Model):
         avg_authenticity = map(lambda x: x.authenticityRating, self.review_set.all())
         return np.mean(list(avg_authenticity)) 
     def __str__(self):
-        return self.recipe_name
+        return f'{self.recipe_name} Recipe'
 
 class Review(models.Model):
     review_name = models.CharField(max_length=100, default='')
