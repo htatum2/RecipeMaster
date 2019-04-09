@@ -203,7 +203,7 @@
                                      
             <div class="grid">
                     {% for obj in filter.qs %}   
-                    <div><img src="{{ obj.image.url }}" alt="Cinque Terre" width="300" height="300"></div>
+                    <div><a href="{% url 'recipe-detail' obj.id %}"><img src="{{ obj.image.url }}" alt="Cinque Terre" width="300" height="300" ></a></div>
                     <!----
                 <a target="_blank" href="{% url 'recipe-detail' obj.id %}">
                     <a class="mr-2",  style="margin-right: 200px" >{{ obj.recipe_creator }}</a>
