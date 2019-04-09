@@ -322,10 +322,9 @@ body {font-family: Arial;}
 		<div>
 			{% for review in recipe.review_set.all %}
 			<div>
-					<div class="container">																						
-							<img src="/media/fruit.jpg" alt="Avatar" style="width:80px">
+					<div class="container">	
 							<p><span>{{ review.user }}</span></p>
-							<h6>Overall Rated {{ review.rating }}<span class="stars" data-rating="{{review.rating | floatformat}}" data-num-stars="5" ></span> </h6><br>
+							<h6>Overall Rated {{ review.rating }}<span class="stars" data-rating="{{review.rating | floatformat}}" data-num-stars="5" ></span> </h6>
 							<h6>Authencity Rated {{ review.authenticityRating }} <span class="stars" data-rating="{{review.authenticityRating| floatformat}}" data-num-stars="5" ></span> </h6>
 							<p><i>{{ review.comment }}</i></p></div>
 				{% endfor %}
