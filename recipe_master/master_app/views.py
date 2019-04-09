@@ -13,7 +13,6 @@ from django.db.models import Avg
 from .filters import RecipeFilter
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import Http404,HttpResponse, HttpResponseRedirect
-#from searchengine.web_search import google
 from django.contrib.auth.decorators import login_required
 import operator
 from django.urls import reverse
