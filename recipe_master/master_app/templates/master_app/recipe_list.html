@@ -224,6 +224,7 @@ h2 span.spacer { padding:0 5px; } /* to pad the background color of text to make
                                      
             <div class="grid">
                     {% for obj in filter.qs %}   
+
                     <div>
                         <div class= "image">
                         <img src="{{ obj.image.url }}" alt="Cinque Terre" width="345" height="300">
@@ -234,6 +235,8 @@ h2 span.spacer { padding:0 5px; } /* to pad the background color of text to make
                         </h2> 
                     </div>
                     </div>
+
+
                     <!----
                 <a target="_blank" href="{% url 'recipe-detail' obj.id %}">
                     <a class="mr-2",  style="margin-right: 200px" >{{ obj.recipe_creator }}</a>

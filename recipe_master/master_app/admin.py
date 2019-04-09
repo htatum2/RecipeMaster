@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Recipe, Review
 # Register your models here.
 
-#To ciew the model/filter options in admin
+#To view the model/filter options in admin
 class ReviewAdmin(admin.ModelAdmin):
     model = Review
     list_display= ('recipe', 'rating', 'authenticityRating' ,'comment', 'user')

@@ -32,23 +32,13 @@ urlpatterns = [
     path('recipe/<pk>/update/', RecipeUpdateView.as_view(), name='recipe-update'),
     #path to Delete a Recipe
     path('recipe/<pk>/delete/', RecipeDeleteView.as_view(), name='recipe-delete'),
-
-   
-   
     #TODO: Path to Create a new Review about a specific recipe
     path('recipe/<pk>/add_review', views.add_review, name='add_review'),
     #Path to see a specific review.
     path('review/<pk>/', views.review_detail, name= 'review_detail'),
     #See a list of reviews
     path('reviews/', views.review_list, name='review_list'),
-   
-   
    #About RecipeMaster
     path('about/', views.about, name='master-about'),
-    #User Profile
-    #path('profile/', views.profile, name='master-profile'),
-
-    #path('reviews/', include('reviews.urls')),
-    #path('recipes/', views.recipes,name='master-recipes'),
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
