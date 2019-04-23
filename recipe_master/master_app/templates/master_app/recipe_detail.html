@@ -4,422 +4,373 @@
 {% block content %}
 <!DOCTYPE html>
 <html>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
-
-	<!-- <link rel="stylesheet" type="text/css" href="recipePagesStyle.css"> -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-	<script src="jquery.star-rating-svg.js"></script>
-	<link rel="stylesheet" type="text/css" href="star-rating-svg.css">
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="jquery.star-rating-svg.js"></script>
+<link rel="stylesheet" type="text/css" href="star-rating-svg.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<!--Fonts-->
-	<link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Leckerli+One' rel='stylesheet' type='text/css'>
-	
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-	<style>
+<!--Fonts-->
+<link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Leckerli+One' rel='stylesheet' type='text/css'>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
-		#recipeName{
-			text-align: center;
-			padding-bottom: 1%;
-			color: #000;
-			padding:50%;
-			position: fixed;
-			float: right;
-		}
-
-		html {
-  		height: 100%;
+<style>
+    
+    html {
+        height: 100%;
   		width: 100%;
-		}
-		
+    }
+    
+    body {
+        font-family: Arial;
+    }
+    
+    #recipeName {
+        text-align: center;
+		padding-bottom: 1%;
+		color: #000;
+		padding:50%;
+		position: fixed;
+        float: right;
+    }
 
-		#recipePicture{
-			border-radius: 3%;
-			height: 400px; 
-			width: 400px; 
-			width: 50%;
-			overflow: hidden;
-			position: center;
-			padding: 0%;
-			display: block;
-  margin-left: auto;
-  margin-right: auto;
-			transform: rotate(90deg);
-		}
+    #recipePicture {
+        border-radius: 3%;
+        height: 400px; 
+        width: 400px; 
+        width: 50%;
+        overflow: hidden;
+        position: center;
+        padding: 0%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        transform: rotate(90deg);
+    }
 
-		.summary{
-			padding: 3%;
-		}
+    .summary {
+        padding: 3%;
+    }
 
-		h1{
-			font: 100 75px/1.2 "Arvo";
-			font-size:50px;
-  			color: #000;
-  			text-shadow: 2px 2px 0px rgba(0,0,0,0.2), 4px 4px 8px rgba(0,0,0,0.2); 
-		}
-		h3{
-			font: 100 75px/1.2 "Arvo";
-			font-size:30px;
+    h1 {
+        font: 100 75px/1.2 "Arvo";
+        font-size:50px;
   		color: #000;
   		text-shadow: 2px 2px 0px rgba(0,0,0,0.2), 4px 4px 8px rgba(0,0,0,0.2); 
-		}
-		p {
-			font-family: "Arvo";
-			font-size:20px;
-  		color: #000;}
-
-		li{
-			font-size: 20px;
-		}
-
-		.summary{
-			font-size: 20px;
-		}
+    }
 		
-		.split {
-  			height: 100%;
-  			width: 50%;
-  			position: fixed;
-  			z-index: 1;
-  			top: 0;
-  			overflow-x: hidden;
-  			padding-top: 20px;
-			}	
+    h3 {
+        font: 100 75px/1.2 "Arvo";
+        font-size: 30px;
+  		color: #000;
+  		text-shadow: 2px 2px 0px rgba(0,0,0,0.2), 4px 4px 8px rgba(0,0,0,0.2); 
+    }
+    
+    p {
+        font-family: "Arvo";
+        font-size:20px;
+  		color: #000;
+    }
 
-		/* Control the left side */
-		.left {
-		padding-top: 15;
+    li {
+        font-size: 20px;
+    }
+
+    .summary {
+        font-size: 20px;
+    }
+		
+    .split {
+        height: 100%;
+  		width: 50%;
+  		position: fixed;
+  		z-index: 1;
+  		top: 0;
+  		overflow-x: hidden;
+  		padding-top: 20px;
+    }	
+
+    .left {
+        background-color: #e2e4defa;
+        padding-top: 15;
   		left: 0;
-  		background-color: #e2e4defa;
+    }
+    
+    .mySlides {
+        display: none;
+    }
 
-		}
-		.mySlides {display:none;}
-
-		/* Control the right side */
-		.right {
+    .right {
   		right: 0;
   		background-color:rgb(252, 252, 252);
-		}
+    }
 
-
-		/* If you want the content centered horizontally and vertically */
-		.centered {
-  		position: absolute;
+    .centered {
+        position: absolute;
   		top: 50%;
   		left: 50%;
   		transform: translate(-50%, -50%);
   		text-align: center;
-		}
-		 /* Style the container with a rounded border, grey background and some padding and margin */
-.container {
-  border: 3px solid #ccc;
-  background-color: #eee;
-  border-radius: 50px;
-  padding: 10px;
-  margin: 10px 0;
-}
+    }
+    
+    .container {
+        border: 3px solid #ccc;
+        background-color: #eee;
+        border-radius: 50px;
+        padding: 10px;
+        margin: 10px 0;
+    }
 
-/* Clear floats after containers */
-.container::after {
-  content: "";
-  clear: both;
-  display: table;
-}
+    .container::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
 
-/* Float images inside the container to the left. Add a right margin, and style the image as a circle */
-.container img {
-  float: left;
-  margin-right: 20px;
-  border-radius: 10%;
-}
+    .container img {
+        float: left;
+        margin-right: 20px;
+        border-radius: 10%;
+    }
 
-/* Increase the font-size of a span element */
-.container span {
-  font-size: 20px;
-  margin-right: 15px;
-  display: block;
-  margin: auto;
-}
+    .container span {
+        font-size: 20px;
+        margin-right: 15px;
+        display: block;
+        margin: auto;
+    }
 
-/* Add media queries for responsiveness. This will center both the text and the image inside the container */
-@media (max-width: 200px) {
-  .container {
-    text-align: center;
-  }
- /* Style the tab */
- .tab {
-  overflow: hidden;
-  border: 3px solid #ccc;
-	font: "Arvo";
-  background-color: #f1f1f1;
-}
+    @media (max-width: 200px) {
+        .container {
+            text-align: center;
+    }
+        
+    .tab {
+        overflow: hidden;
+        border: 3px solid #ccc;
+        font: "Arvo";
+        background-color: #f1f1f1;
+    }
 
-/* Style the buttons that are used to open the tab content */
-.tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-}
-.container2 img {
-    margin: auto;
-    float: none;
-    display: block;
-  }
+    .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+    }
+    .container2 img {
+        margin: auto;
+        float: none;
+        display: block;
+      }
 
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #ddd;
-}
+    .tab button:hover {
+        background-color: #ddd;
+    }
 
-/* Create an active/current tablink class */
-.tab button.active {
-  background-color: #ccc;
-}
+    .tab button.active {
+        background-color: #ccc;
+    }
 
-/* Style the tab content */
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
-} 
-body {font-family: Arial;}
+    .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-top: none;
+    } 
+        
+    .tab {
+        overflow: hidden;
+        font-family: 'Leckerli One', Helvetica, sans-serif;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+    }
 
-/* Style the tab */
-.tab {
-  overflow: hidden;
-	font-family: 'Leckerli One', Helvetica, sans-serif;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-}
+    /* Style the buttons inside the tab */
+    .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        font-size: 17px;
+    }
 
-/* Style the buttons inside the tab */
-.tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-  font-size: 17px;
-}
+    .tab button:hover {
+        background-color: #ddd;
+    }
+        
+    * {
+        box-sizing: border-box;
+    }
 
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #ddd;
-}
-* {
-  box-sizing: border-box;
-}
-/* Create an active/current tablink class */
-.tab button.active {
-  background-color: #ccc;
-}
+    .tab button.active {
+        background-color: #ccc;
+    }
 
-/* Style the tab content */
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
-}
-.card {
-   background-color: white;
-   padding: 20px;
-   margin-top: 20px;
-}
-.fakeimg {
-  background-color: #aaa;
-  width: 100%;
-  padding: 20px;
-}
-
-} 
-
+    .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-top: none;
+    }
+        
+    .card {
+        background-color: white;
+        padding: 20px;
+        margin-top: 20px;
+    }
+        
+    .fakeimg {
+        background-color: #aaa;
+        width: 100%;
+        padding: 20px;
+    }
+        
 </style>
-
 </head>
 
 <body>
-	<!--LEFT SIDE-->
-
 	<div class = "row"></div>
+    
 	<div class="split left">
-	<br>
-	<br>
+	<br><br>
+        <div class="card">
+            <br><br><br><br>
+            <h1 style="float:center">
+				{{ recipe.recipe_name }}
+            </h1>
+            <h5>{{recipe.country}}</h5>
+            <h7>	{{ recipe.description }}</h7>
+        </div>
 
-			<div class="card">
-				<br>
-				<br>
-				<br>
-				<br>
-					<h1 style="float:center">
-							{{ recipe.recipe_name }}
-					</h1>
-					<h5>{{recipe.country}}</h5>
-					<h7>	{{ recipe.description }}</h7>
-				</div>
+        <div class="card"style="background-color:#e2e4defa">
+            <img id="recipePicture" src="{{ recipe.image.url }}">
+        </div>
 
-				<div class="card"style="background-color:#e2e4defa">
-				<img id="recipePicture" src="{{ recipe.image.url }}"></img>
-				</div>
-
-			<div class="card">
-				<h3>Ratings(based on {{recipe.review_set.count}} reviews) </h3>
-				<h5>Average Authenticity Rating:{{recipe.authentic_rate | floatformat}} <span class="stars" data-rating="{{recipe.authentic_rate | floatformat}}" data-num-stars="5" ></span></h5>
-				<h5>Average Overall Rating : {{recipe.average_rate | floatformat}}<span class="stars" data-rating="{{recipe.average_rate | floatformat}}" data-num-stars="5" ></span></h5>
-			</div>
-				<br>
-
-
-
-			
-			</div>
-</div>
-
-<br>
-<br>
-<br>
+        <div class="card">
+            <h3>Ratings(based on {{recipe.review_set.count}} reviews) </h3>
+            <h5>Average Authenticity Rating:{{recipe.authentic_rate | floatformat}} <span class="stars" data-rating="{{recipe.authentic_rate | floatformat}}" data-num-stars="5" ></span></h5>
+            <h5>Average Overall Rating : {{recipe.average_rate | floatformat}}<span class="stars" data-rating="{{recipe.average_rate | floatformat}}" data-num-stars="5" ></span></h5>
+        </div>
+    <br>
+    </div>
+    <br><br><br>
 		
+    <div class="split right">
+    <br>
+    <br>
 
-
-	
-<!--RIGHT SIDE-->
-<div class="split right">
-<br>
-<br>
-
-<br>
-<br>
-
+    <br>
+    <br>
 		<div class="tab">
-				<button class="tablinks" onclick="openCity(event, 'London')">Ingredients</button>
-				<button class="tablinks" onclick="openCity(event, 'Directions')">Directions</button>
-				<button class="tablinks" onclick="openCity(event, 'Reviews')">Reviews</button>
+            <button class="tablinks" onclick="openCity(event, 'London')">Ingredients</button>
+            <button class="tablinks" onclick="openCity(event, 'Directions')">Directions</button>
+            <button class="tablinks" onclick="openCity(event, 'Reviews')">Reviews</button>
 		</div>
 		<div class="card" style="background-color: #e2e4defa">
-	<div id="London" class="tabcontent">
-		<h3>Ingredients</h3>
-  		<p>{{recipe.ingredients_list}}</p>
-	</div></div>
+            <div id="London" class="tabcontent">
+                <h3>Ingredients</h3>
+                <p>{{recipe.ingredients_list}}</p>
+            </div>
+        </div>
 
-	<div id="Directions" class="tabcontent">
-			<div class="card">
-  		<h3>Directions</h3>
-  		<p>{{recipe.instructions}}</p>
-	</div></div>
+        <div id="Directions" class="tabcontent">
+            <div class="card">
+  		        <h3>Directions</h3>
+  		        <p>{{recipe.instructions}}</p>
+	       </div>
+        </div>
 		
-	<div id="Reviews" class="tabcontent">
-		<h3> Reviews</h3>
-		{% if recipe.review_set.all %}
-		<div>
-			{% for review in recipe.review_set.all %}
-			<div>
-					<div class="container">	
-							<p><span>{{ review.user }}</span></p>
-							<h6>Overall Rated {{ review.rating }}<span class="stars" data-rating="{{review.rating | floatformat}}" data-num-stars="5" ></span> </h6>
-							<h6>Authencity Rated {{ review.authenticityRating }} <span class="stars" data-rating="{{review.authenticityRating| floatformat}}" data-num-stars="5" ></span> </h6>
-							<p><i>{{ review.comment }}</i></p></div>
-				{% endfor %}
-				{% else %}
-					<p>No reviews yet.</p>
-				{% endif %}</div>
-			</div>
-		
-							<!-- ADD REVIEW-->
-							<h3>Add your review</h3>
-							{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-							<form action="{% url 'add_review' recipe.id %}" method="post">
-							{% csrf_token %}
-							{{ form.as_p }}
-							<input type="submit" value="Add" />
-							</form>
-		</div>
-<br>
-<br>
-<br>
-							
-								
+        <div id="Reviews" class="tabcontent">
+            <h3> Reviews</h3>
+            {% if recipe.review_set.all %}
+            <div>
+                {% for review in recipe.review_set.all %}
+                <div>
+                    <div class="container">	
+                        <p><span>{{ review.user }}</span></p>
+                        <h6>Overall Rated {{ review.rating }}<span class="stars" data-rating="{{review.rating | floatformat}}" data-num-stars="5" ></span> </h6>
+                        <h6>Authencity Rated {{ review.authenticityRating }} <span class="stars" data-rating="{{review.authenticityRating| floatformat}}" data-num-stars="5" ></span> </h6>
+                        <p><i>{{ review.comment }}</i></p>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                        <p>No reviews yet.</p>
+                    {% endif %}
+                </div>
+            </div>
 	
-		
-</div>
+        <h3>Add your review</h3>
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+            <form action="{% url 'add_review' recipe.id %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Add" />
+            </form>
+		</div>
+        <br><br><br>
+    </div>
 
 
-<!--Stars-->
 <script>
 		$.fn.stars = function() {
 			return $(this).each(function() {
-	
 				var rating = $(this).data("rating");
-	
 				var numStars = $(this).data("numStars");
-	
 				var fullStar = new Array(Math.floor(rating + 1)).join('<i class="fa fa-star"></i>');
-	
 				var halfStar = ((rating%1) !== 0) ? '<i class="fa fa-star-half-empty"></i>': '';
-	
 				var noStar = new Array(Math.floor(numStars + 1 - rating)).join('<i class="fa fa-star-o"></i>');
-	
 				$(this).html(fullStar + halfStar + noStar);
-	
 			});
 		}
-	
-		$('.stars').stars();
+        $('.stars').stars();
 </script>
 
 <!--Recipe Image Slideshow-->
-
 <script>
-		var slideIndex = 1;
-		showDivs(slideIndex);
-		
-		function plusDivs(n) {
-		  showDivs(slideIndex += n);
-		}
-		
-		function showDivs(n) {
-		  var i;
-		  var x = document.getElementsByClassName("mySlides");
-		  if (n > x.length) {slideIndex = 1}
-		  if (n < 1) {slideIndex = x.length}
-		  for (i = 0; i < x.length; i++) {
-			x[i].style.display = "none";  
-		  }
-		  x[slideIndex-1].style.display = "block";  
-		}
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+        showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        if (n > x.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = x.length}
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";  
+        }
+        x[slideIndex-1].style.display = "block";  
+    }
 		
 </script>
 		
-
 <!--Recipe Feature Buttons-->
-
 <script>
-		function openCity(evt, cityName) {
-		  var i, tabcontent, tablinks;
-		  tabcontent = document.getElementsByClassName("tabcontent");
-		  for (i = 0; i < tabcontent.length; i++) {
-			tabcontent[i].style.display = "none";
-		  }
-		  tablinks = document.getElementsByClassName("tablinks");
-		  for (i = 0; i < tablinks.length; i++) {
-			tablinks[i].className = tablinks[i].className.replace(" active", "");
-		  }
-		  document.getElementById(cityName).style.display = "block";
-		  evt.currentTarget.className += " active";
-		}
-		</script>
-
-
-
+    function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+    }
+</script>
 </body>
-
 </html>
 {% endblock content %}
